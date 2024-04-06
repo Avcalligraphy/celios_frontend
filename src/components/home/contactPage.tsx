@@ -1,36 +1,22 @@
 import Image from 'next/image';
-import React from 'react'
+import React, { ReactNode } from 'react'
 import BoxSocial from '../molecules/boxSocial';
 import BoxContact from '../molecules/boxContact';
 
-export default function ContactPage() {
+interface ContactPageProps{
+  children?: ReactNode
+  padding?: string
+}
+export default function ContactPage(props: Partial<ContactPageProps>) {
+  const { children = null, padding = "pt-[209px] px-[157px]" } = props;
   return (
     <div className=" bg-[url('/images/backgroundContentFooter.png')] ">
       <div className=" bg-[url('/images/backgroundFooter1.png')] ">
         <div className=" bg-[url('/images/backgroundFooter2.png')] ">
-          <div className=" pt-[209px] w-full pb-[150px] px-[157px] ">
-            <div className="flex justify-center">
-              <div>
-                <Image
-                  src="/icons/bgTextSocial.png"
-                  width={532.78}
-                  height={20.36}
-                  alt="bg-text-social"
-                />
-                <h1 className="text-white text-[54px] font-bold tracking-[-2%] leading-[100%] mt-[-60px]   ">
-                  🔗Social Media
-                </h1>
-                <p className=" text-[24px] leading-[150%] text-[#BAE6FD] text-center mt-[30px] ">
-                  Let is connect and engage with us!
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-[75px]  mt-[116px] ">
-              <BoxSocial />
-              <BoxSocial />
-            </div>
-            <div className=" mt-[230px] ">
-              <div>
+          <div className={`w-full pb-[150px] ${padding} `}>
+            {children}
+            <div className=" mt-[100px] ">
+              {/* <div>
                 <Image
                   src="/icons/bgTextSocial.png"
                   width={532.78}
@@ -45,7 +31,7 @@ export default function ContactPage() {
                   activities.
                 </p>
               </div>
-              <BoxContact />
+              <BoxContact /> */}
               <div className="flex justify-center">
                 <div className="mt-[100px]">
                   <Image

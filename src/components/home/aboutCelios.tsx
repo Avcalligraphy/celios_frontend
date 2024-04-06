@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Button from '../Button.tsx';
 
 export default function AboutCelios() {
   return (
@@ -16,7 +17,7 @@ export default function AboutCelios() {
           🧰 Tentang Celios
         </h1>
       </div>
-      <div className=" bg-[url('/icons/frameAboutCelios.png')] h-[1045px] w-[1195px] mt-[33px] pt-[71px] pl-[80px] ">
+      <div className=" bg-[url('/icons/frameAboutCelios.png')]  w-[1195px] mt-[33px] py-[71px] pl-[80px] ">
         <Image
           src="/icons/logoHorizon.png"
           alt="log-horizon"
@@ -24,10 +25,11 @@ export default function AboutCelios() {
           height={131}
         />
         <p className=" text-[24px] max-w-[903px] leading-[150%] mt-[56px] ">
-          <span className='font-bold'>Lembaga riset</span> yang bergerak dibidang makro ekonomi,
-          keuangan, ekonomi hijau dan kebijakan publik dalam mendorong
-          percepatan inovasi-digitalisasi secara inklusif.
+          <span className="font-bold">Lembaga riset</span> yang bergerak
+          dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik
+          dalam mendorong percepatan inovasi-digitalisasi secara inklusif.
         </p>
+          <Button text="Learn More" bg="bg-[url('/icons/bgButton.png')] mt-[60px] " />
       </div>
     </div>
   );

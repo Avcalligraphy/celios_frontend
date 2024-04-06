@@ -15,7 +15,7 @@ export default function Header() {
           height={81}
           className="pt-[153px] ml-[465px] "
         />
-        <div className="flex justify-center mt-[-90px] items-center z-10 ">
+        <div className=" flex justify-center mt-[-90px] items-center  ">
           <h1 className="font-bold text-[87px] leading-[100px] tracking-[-4%] text-white text-center max-w-[1480px] ">
             Powering the Future: <br /> Embracing the energy for a Suistanable
             World

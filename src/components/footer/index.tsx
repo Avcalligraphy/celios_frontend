@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex justify-between">
             <div>
               <Image src="/icons/logo.png" alt="logo" width={75} height={116} />
-              <h1 className=" text-[24px] leading-[120%] text-white max-w-[723px] ">
+              <h1 className=" text-[24px] leading-[120%] text-white max-w-[723px] mt-[15px] ">
                 <span className="font-bold">Lembaga riset</span> yang bergerak
                 dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan
                 publik dalam mendorong percepatan inovasi-digitalisasi secara

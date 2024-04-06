@@ -8,7 +8,7 @@ export default function RecentPublication() {
       <div className="flex px-[48px] justify-between">
         <div>
           <Image
-            src="/icons/titleCOntent.png"
+            src="/icons/titleContent.png"
             alt="title-content"
             width={240}
             height={33}
