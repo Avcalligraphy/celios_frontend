@@ -20,7 +20,8 @@ const config: Config = {
       cmd: "768px",
       clg: "1024px",
       cxl: "1280px",
-      cxxl: "1536px"
+      cxxl: "1536px",
+      clxl:"1735px",
     },
   },
   plugins: [],

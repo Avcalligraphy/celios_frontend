@@ -11,32 +11,47 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <DeskContent />
+      <DeskContent />
       <AboutCelios />
       <RecentPublication />
       <ContactPage>
         <div className="flex justify-center">
           <div>
-            <Image
+            {/* <Image
               src="/icons/bgTextSocial.png"
               width={532.78}
               height={20.36}
               alt="bg-text-social"
-            />
-            <h1 className="text-white text-[54px] font-bold tracking-[-2%] leading-[100%] mt-[-60px]   ">
+            /> */}
+            <h1 className="text-white csm:text-[54px] text-[34px] font-bold tracking-[-2%] leading-[100%]    ">
               🔗Social Media
             </h1>
-            <p className=" text-[24px] leading-[150%] text-[#BAE6FD] text-center mt-[30px] ">
+            <p className=" csm:text-[24px] text-[18px] leading-[150%] text-[#BAE6FD] text-center csm:mt-[30px] mt-[15px] ">
               Let is connect and engage with us!
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-[75px]  mt-[116px] ">
-          <BoxSocial />
-          <BoxSocial />
+        <div className="flex justify-center">
+          <div>
+            <div className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] ">
+              <BoxSocial />
+              <BoxSocial />
+            </div>
+            <div className="flex justify-end items-center gap-[18px] mt-[56px] ">
+              <h1 className=" font-semibold text-white leading-[100%] tracking-[-2%] ">
+                See More
+              </h1>
+              <Image
+                src="/icons/arrowButton.png"
+                height={40}
+                width={40}
+                alt="arrow-buttons"
+              />
+            </div>
+          </div>
         </div>
       </ContactPage>
-      <Footer /> */}
+      <Footer />
     </>
   );
 }

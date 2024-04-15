@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuListUser from "./menuListUser";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -9,9 +9,37 @@ import Link from "next/link";
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [topbarBackground, setTopbarBackground] = useState("transparent");
+  const [topBlur, setTopBlur] = useState("blur(0px)");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      // Tentukan nilai scroll threshold di mana warna latar belakang berubah
+      const scrollThreshold = 100;
+
+      if (scrollY > scrollThreshold) {
+        setTopbarBackground(`rgba(0, 18, 13, 0.5)`); // Ganti dengan warna latar belakang yang diinginkan
+        setTopBlur("blur(20px)");
+      } else {
+        setTopbarBackground("transparent");
+        setTopBlur("blur(0px)");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <div className="navMobile:flex hidden justify-between items-center mx-[76px] pt-[38px]">
+      <div
+        className="navMobile:flex hidden justify-between items-center px-[76px] py-[28px]"
+        style={{ background: topbarBackground, backdropFilter: topBlur }}
+      >
         <Link href="/">
           <Image src="/icons/logo.png" width={75} height={116} alt="logo" />
         </Link>
@@ -36,14 +64,23 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`w-full block navMobile:hidden text-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800 ${
-          open ? "bg-[url('/images/imageNavbar.png')]" : "bg-transparent"
-        } `}
+        className="w-full block navMobile:hidden text-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800"
+        style={{ background: topbarBackground, backdropFilter: topBlur }}
       >
-        <div className="flex flex-col max-w-screen-xl px-4 pt-[38px] mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 2xl:px-[76px] ">
+        <div
+          className="flex flex-col max-w-screen-xl px-4 pt-[38px] mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 2xl:px-[76px] "
+          style={{
+            background: open ? `rgba(0, 0, 0, 0.8)` : `transparent`,
+            backdropFilter: open ? "blur(20px)" : "none",
+          }}
+        >
           <div className="p-4 flex flex-row items-center justify-between">
             <Link href="/">
-              <img src="/icons/logo.png" alt="logo" className="cmd:w-[75px] h-auto w-[55px] " />
+              <img
+                src="/icons/logo.png"
+                alt="logo"
+                className="cmd:w-[75px] h-auto w-[55px] "
+              />
             </Link>
             <button
               className="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
@@ -71,7 +108,7 @@ export default function Navbar() {
           </div>
           <nav
             className={`flex-col flex-grow pb-4 md:pb-0  ${
-              open ? "flex" : "hidden"
+              open ? "flex " : "hidden"
             } md:flex md:justify-end md:flex-row`}
           >
             {MenuListUser.map((item, index) => (
@@ -82,7 +119,7 @@ export default function Navbar() {
                   item.link === pathname
                     ? "bg-gray-200 hover:text-gray-900 focus:text-gray-900 text-gray-900 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 "
                     : "bg-transparent text-white "
-                } rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600  md:mt-0  hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline`}
+                } rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600  md:mt-0 hover:text-black  hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline`}
               >
                 {item.name}
               </Link>
