@@ -22,7 +22,7 @@ export default function Radar(props: RadarProps) {
     const { data, options } = props
     
   return (
-    <div className=' w-[500px] p-[20px] '>
+    <div className=' clg:w-[500px] cmd:w-[400px] h-auto radarLayout:w-[300px] w-[260px]  p-[20px]  '>
         <RadarChart
             data={data}
             options={options}

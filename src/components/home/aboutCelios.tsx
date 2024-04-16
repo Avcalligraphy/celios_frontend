@@ -12,9 +12,10 @@ export default function AboutCelios() {
           alt="title-content"
           width={240}
           height={33}
-          className="ml-[95px]"
+          className=""
         /> */}
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%]  ">
+        <img src="/icons/titleCOntent.png" className=' w-auto csm:h-[33px] h-[28px] ' />
+          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-50px]  ">
             🧰 Tentang Celios
           </h1>
         </div>

@@ -37,7 +37,8 @@ export default function RecentPublication() {
                 height={20.36}
                 alt="bg-text-social"
               /> */}
-              <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px]   ">
+              <img src="/icons/bgTextSocial.png" className=' h-[20.36px] w-auto ' />
+              <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px] csm:mt-[-60px] mt-[-40px]   ">
                 Recent News
               </h1>
               <div className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[80px] mt-[40px] ">

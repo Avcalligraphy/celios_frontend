@@ -16,6 +16,8 @@ const config: Config = {
     },
     screens: {
       navMobile: "1444px",
+      contactLayout: "501px",
+      radarLayout: "400px",
       csm: "640px",
       cmd: "768px",
       clg: "1024px",

@@ -23,7 +23,11 @@ export default function Home() {
               height={20.36}
               alt="bg-text-social"
             /> */}
-            <h1 className="text-white csm:text-[54px] text-[34px] font-bold tracking-[-2%] leading-[100%]    ">
+            <img
+              src="/icons/bgTextSocial.png"
+              className=" h-[20.36px] w-auto "
+            />
+            <h1 className="text-white csm:text-[54px] text-[34px] font-bold tracking-[-2%] leading-[100%] csm:mt-[-60px] mt-[-40px]   ">
               🔗Social Media
             </h1>
             <p className=" csm:text-[24px] text-[18px] leading-[150%] text-[#BAE6FD] text-center csm:mt-[30px] mt-[15px] ">

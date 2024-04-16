@@ -17,10 +17,16 @@ export default function Header() {
             height={81}
             className="pt-[153px] ml-[135px] "
           /> */}
-          <div className="cxxl:flex block justify-between csm:pt-[283px] pt-[210px]  clg:px-[162px] csm:px-[81px] px-[20px] ">
-            <h1 className="font-bold csm:text-[87px] text-[67px] leading-[100%]  tracking-[-4%] text-white  ">
-              What Is <br /> Celios
-            </h1>
+          <div className="cxxl:flex block justify-between items-center csm:pt-[283px] pt-[210px]  clg:px-[162px] csm:px-[81px] px-[20px] ">
+            <div>
+              <img
+                src="/icons/bgText.png"
+                className="w-auto csm:h-[81px] h-[60px] "
+              />
+              <h1 className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%]  tracking-[-4%] text-white  ">
+                What Is <br /> Celios
+              </h1>
+            </div>
             <h1 className=" csm:text-[30px] text-[24px] tracking-[2%] font-semibold text-white max-w-[870px] cxxl:mt-0 mt-[20px] ">
               CELIOS merupakan lembaga riset di Indonesia yang bergerak dibidang
               makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik dalam

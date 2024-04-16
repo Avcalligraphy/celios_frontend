@@ -11,7 +11,7 @@ export default function Header() {
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
         </div>
-        <div className="flex flex-col gap-[88px] csm:px-[93px] px-[25px]  csm:pt-[197px] pt-[98px] ">
+        <div className="flex flex-col gap-[88px] csm:px-[93px] px-[25px]  csm:pt-[197px] pt-[150px] ">
           {listDesk.map((item, index) => (
             <BoxDesk
               title={item.name}
