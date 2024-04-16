@@ -8,7 +8,7 @@ export default function NewestReports() {
     <div className="w-full csm:px-[70px] px-[25px] ">
       <div>
         <Image
-          src="/icons/titleCOntent.png"
+          src="/icons/titleContent.png"
           alt="title-content"
           width={240}
           height={33}
@@ -26,7 +26,7 @@ export default function NewestReports() {
       </div>
       <div className="csm:mt-[312px] mt-[150px] ">
         <Image
-          src="/icons/titleCOntent.png"
+          src="/icons/titleContent.png"
           alt="title-content"
           width={240}
           height={33}
