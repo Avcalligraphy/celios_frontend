@@ -4,24 +4,28 @@ const listDesk = [
     name: "Macro-economic Desk ",
   },
   {
-    deskId: "fiscal-desk",
-    name: "Fiscal Desk ",
+    deskId: "fiscal-justice",
+    name: "Fiscal Justice ",
   },
   {
-    deskId: "china-indonesia-desk",
-    name: "China-Indonesia Desk ",
+    deskId: "susistainable-finance",
+    name: "Suistainable Finance",
   },
   {
-    deskId: "law-desk",
-    name: "Law Desk ",
+    deskId: "digital-economy",
+    name: "Digital Economy ",
   },
   {
-    deskId: "mining-desk",
-    name: "Mining Desk ",
+    deskId: "mining-advocacy",
+    name: "Mining Advocacy ",
   },
   {
-    deskId: "sustainable-finance-desk",
-    name: "Sustainable Finance Desk ",
+    deskId: "china-indonesia-relations",
+    name: "China Indonesia Relations",
+  },
+  {
+    deskId: "law-and-litigation",
+    name: "Law and Litigation",
   },
 ];
 

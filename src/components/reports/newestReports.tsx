@@ -22,6 +22,14 @@ export default function NewestReports() {
         <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
           <BoxReports />
           <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
+          <BoxReports />
         </div>
       </div>
       <div className="csm:mt-[312px] mt-[150px] ">

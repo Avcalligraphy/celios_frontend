@@ -46,7 +46,7 @@ export default function OurTeam() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-t from-[#7CB937] to-[#ffff] w-full h-[552px]">
+      <div className="bg-gradient-to-t from-[#041C20] to-[#ffff] w-full h-[552px]">
         <div className=" bg-[url('/images/background.png')] w-full h-[552px] " />
       </div>
     </>

@@ -11,18 +11,7 @@ interface BoxContentProps {
 export default function BoxContent(props: Partial<BoxContentProps>) {
     const { image = "/icons/arrowButton.png", title, desk } = props;
   return (
-    <div className="bg-[url('/icons/bgBoxContent.png')] csm:w-[536px] w-[346px] h-[342px] flex flex-col py-[29px] px-[32px] rounded-[32px] object-cover  ">
-      {/* <Image
-        src="/images/china-desk.png"
-        width={213}
-        height={103}
-        alt="china-desk"
-      /> */}
-      <img
-        src="/images/china-desk.png"
-        alt=""
-        className="h-auto csm:w-[213px] w-[153px] "
-      />
+    <div className="bg-[url('/icons/bgBoxContent.png')] csm:w-[536px] w-[346px] h-[302px] flex flex-col py-[45px] px-[32px] rounded-[32px] object-cover  ">
       <h1 className="bg-gradient-to-r from-[#BDDFCF]  to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold csm:text-[24px] text-[18px] my-[12px] leading-[100%] ">
         {title}
       </h1>

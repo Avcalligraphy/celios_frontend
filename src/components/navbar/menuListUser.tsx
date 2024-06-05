@@ -4,7 +4,7 @@ const MenuListUser = [
     link: "/about-us",
   },
   {
-    name: "Our Desk",
+    name: "Our Desks",
     link: "/our-desk",
   },
   {
@@ -12,20 +12,20 @@ const MenuListUser = [
     link: "/reports",
   },
   {
+    name: "News",
+    link: "/news-media",
+  },
+  {
     name: "Index",
     link: "/celios-index",
   },
   {
-    name: "Celios Publishing",
+    name: "Celios Publishing House",
     link: "/celios-publishing",
   },
   {
     name: "Trainings",
     link: "/trainings",
-  },
-  {
-    name: "Contact Us",
-    link: "/contact-us",
   },
 ];
 

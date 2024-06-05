@@ -4,6 +4,7 @@ import Navbar from '../navbar';
 import ContentIndex from '../molecules/index-celios/contentIndex';
 import ContentIndicator from '../molecules/index-celios/contentIndicator';
 import Button from '../Button.tsx';
+import BarChart from './bar';
 
 export default function Header() {
    const data = {
@@ -64,6 +65,13 @@ export default function Header() {
                   className=" border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent csm:w-[288px] w-[240px] rounded-[16px] placeholder-[#DDDDDD] cmd:text-[24px] csm:text-[20px] text-[18px] font-medium text-white "
                   placeholder="Nama Daerah"
                 />
+              </div>
+            </div>
+            <div className="bg-gradient-to-r from-[#7DD3FC] to-[#001710] p-[2px] rounded-[32px] w-full mt-[33px] ">
+              <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
+                <div className="block w-full">
+                  <BarChart />
+                </div>
               </div>
             </div>
             <div className=" bg-[#fff] shadow-lg shadow-gray-400 csm:px-[81px] px-[30px] clg:py-[116px] csm:py-[76px] py-[36px]  rounded-[32px] cxxl:mt-[125px] clg:mt-[85px] mt-[65px] ">

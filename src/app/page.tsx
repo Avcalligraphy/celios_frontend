@@ -6,6 +6,7 @@ import Header from "@/components/home/header";
 import RecentPublication from "@/components/home/recentPublications";
 import BoxSocial from "@/components/molecules/boxSocial";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -41,7 +42,7 @@ export default function Home() {
               <BoxSocial />
               <BoxSocial />
             </div>
-            <div className="flex justify-end items-center gap-[18px] mt-[56px] ">
+            <Link href="/social-media" className="flex justify-end items-center gap-[18px] mt-[56px] ">
               <h1 className=" font-semibold text-white leading-[100%] tracking-[-2%] ">
                 See More
               </h1>
@@ -51,7 +52,7 @@ export default function Home() {
                 width={40}
                 alt="arrow-buttons"
               />
-            </div>
+            </Link>
           </div>
         </div>
       </ContactPage>

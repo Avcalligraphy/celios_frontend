@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 import BoxRecent from '../molecules/boxRecent';
 import BoxNews from '../molecules/boxNews';
+import Link from 'next/link';
 
 export default function RecentPublication() {
   return (
@@ -27,7 +28,7 @@ export default function RecentPublication() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-t from-[#7CB937] to-[#ffff] w-full min-h-[1152px]">
+      <div className="bg-gradient-to-t from-[#031B1F] to-[#ffff] w-full min-h-[1152px]">
         <div className=" bg-[url('/images/background.png')] w-full min-h-[1152px] pt-[360px] ">
           <div className="flex justify-center  ">
             <div>
@@ -37,7 +38,10 @@ export default function RecentPublication() {
                 height={20.36}
                 alt="bg-text-social"
               /> */}
-              <img src="/icons/bgTextSocial.png" className=' h-[20.36px] w-auto ' />
+              <img
+                src="/icons/bgTextSocial.png"
+                className=" h-[20.36px] w-auto "
+              />
               <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px] csm:mt-[-60px] mt-[-40px]   ">
                 Recent News
               </h1>
@@ -49,7 +53,7 @@ export default function RecentPublication() {
                 <BoxNews />
                 <BoxNews />
               </div>
-              <div className="flex justify-end items-center gap-[18px] my-[56px] ">
+              <Link href='/news' className="flex justify-end items-center gap-[18px] my-[56px] ">
                 <h1 className=" font-semibold text-black leading-[100%] tracking-[-2%] ">
                   See More
                 </h1>
@@ -59,7 +63,7 @@ export default function RecentPublication() {
                   width={40}
                   alt="arrow-buttons"
                 />
-              </div>
+              </Link>
             </div>
           </div>
         </div>

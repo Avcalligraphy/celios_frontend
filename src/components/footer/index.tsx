@@ -32,11 +32,17 @@ export default function Footer() {
                 height={56}
                 alt="image-ngo"
               /> */}
-              <img src="/images/imageNGO.png" className=' csm:w-[327px] w-[307px] h-auto ' />
-              <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] mt-[15px] ">
+              <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] my-[13px] ">
+                Recognition and Accreditation by:
+              </h1>
+              <img
+                src="/images/imageNGO.png"
+                className=" csm:w-[327px] w-[307px] h-auto "
+              />
+              <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] my-[13px] ">
                 Ikuti Kami
               </h1>
-              <div className="flex items-center gap-[15px] ">
+              <div className="flex items-center gap-[35px] mb-[15px] ">
                 <Image
                   src="/icons/instagram.png"
                   width={65}
@@ -57,8 +63,7 @@ export default function Footer() {
                 /> */}
                 <img src="/icons/maps.png" className="w-[65px] h-auto" />
                 <p className=" csm:text-[24px] text-[20px] font-medium text-white leading-[120%] mt-[6px] max-w-[551px] ">
-                  Tokopedia Tower 22th Fl. Jl. Prof. Dr Satrio Karet Semanggi,
-                  Setiabudi. Jakarta Selatan. Indonesia 12950
+                  Jl. Abuserin III Cilandak Jakarta Selatan
                 </p>
               </div>
             </div>
