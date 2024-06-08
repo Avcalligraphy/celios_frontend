@@ -11,11 +11,18 @@ export default function Header() {
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
         </div>
-        <div className="flex flex-col gap-[88px] csm:px-[93px] px-[25px]  csm:pt-[197px] pt-[150px] ">
+        <div
+          data-aos="fade-up-right"
+          className="flex flex-col gap-[88px] csm:px-[93px] px-[25px]  csm:pt-[197px] pt-[150px] "
+        >
           {listDesk.map((item, index) => (
             <BoxDesk
               title={item.name}
-              link={`our-desk/${item.deskId}`}
+              link={
+                item.deskId === "china-indonesia"
+                  ? "/china-indonesia"
+                  : `our-desk/${item.deskId}`
+              }
               key={index}
             />
           ))}

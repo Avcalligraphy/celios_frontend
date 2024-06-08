@@ -63,7 +63,7 @@ export default function CeliosDesk({params}: {
             Newest Reports
           </h1>
         </div>
-        <div className="flex justify-center items-center mt-[30px] ">
+        <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
             <BoxReports />
             <BoxReports />

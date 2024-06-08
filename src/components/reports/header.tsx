@@ -10,7 +10,10 @@ export default function Header() {
           <Navbar />
         </div>
         <div className="csm:px-[70px] px-[25px] clxl:flex block justify-between gap-[50px]  csm:pt-[220px] pt-[180px] ">
-          <div className=" clxl:mb-0 csm:mb-[50px] mb-[30px] ">
+          <div
+            data-aos="fade-down-right"
+            className=" clxl:mb-0 csm:mb-[50px] mb-[30px] "
+          >
             <div>
               <p className="font-semibold csm:text-[24px] text-[18px] text-[#B2B2B2]  ">
                 January 25, 2024

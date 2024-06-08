@@ -4,7 +4,7 @@ import BoxWritings from '../molecules/reports/boxWritings';
 
 export default function OurWritings() {
   return (
-    <div className="w-full csm:mt-[383px] mt-[165px] ">
+    <div data-aos="zoom-in-left" className="w-full csm:mt-[383px] mt-[165px] ">
       <div className=" block csm:px-[48px] px-[25px]">
         <div>
           <Image

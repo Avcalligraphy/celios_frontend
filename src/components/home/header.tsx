@@ -18,13 +18,20 @@ export default function Header() {
           className="pt-[153px] ml-[465px] "
         /> */}
         <div className=" flex justify-center csm:pt-[323px] csm:px-[0px] px-[15px] pt-[220px] items-center ">
-          <h1 className="font-bold cxl:text-[87px] clg:text-[67px] cmd:text-[57px] csm:text-[40px] text-[37px] csm:leading-[100%] leading-[120%] tracking-[-4%] text-white text-center max-w-[1480px]  ">
+          <h1
+            data-aos="fade-up"
+            className="font-bold cxl:text-[87px] clg:text-[67px] cmd:text-[57px] csm:text-[40px] text-[37px] csm:leading-[100%] leading-[120%] tracking-[-4%] text-white text-center max-w-[1480px]  "
+          >
             Powering the Future: <br /> Embracing the energy for a Suistanable
             World
           </h1>
         </div>
         <div className="flex justify-center items-center mt-[45px]">
-          <Button text="Read More" bg="bg-[url('/icons/bgButton.png')]" />
+          <Button
+            data-aos="fade-up"
+            text="Read More"
+            bg="bg-[url('/icons/bgButton.png')]"
+          />
         </div>
         {/* <img alt="" src="/icons/bgText2.png" className=' ml-[1230px] mt-[-130px] z-0 ' /> */}
         {/* <img alt="" src="/icons/bgText3.png" /> */}

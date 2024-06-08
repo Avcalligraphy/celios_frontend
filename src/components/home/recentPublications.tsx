@@ -21,7 +21,10 @@ export default function RecentPublication() {
               Recent Publications
             </h1>
           </div>
-          <div className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 gap-[45px] ">
+          <div
+            data-aos="flip-up"
+            className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 gap-[45px] "
+          >
             <BoxRecent />
             <BoxRecent />
             <BoxRecent />
@@ -45,7 +48,10 @@ export default function RecentPublication() {
               <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px] csm:mt-[-60px] mt-[-40px]   ">
                 Recent News
               </h1>
-              <div className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[80px] mt-[40px] ">
+              <div
+                data-aos="fade-left"
+                className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[80px] mt-[40px] "
+              >
                 <BoxNews />
                 <BoxNews />
                 <BoxNews />
@@ -53,7 +59,10 @@ export default function RecentPublication() {
                 <BoxNews />
                 <BoxNews />
               </div>
-              <Link href='/news' className="flex justify-end items-center gap-[18px] my-[56px] ">
+              <Link
+                href="/news"
+                className="flex justify-end items-center gap-[18px] my-[56px] "
+              >
                 <h1 className=" font-semibold text-black leading-[100%] tracking-[-2%] ">
                   See More
                 </h1>

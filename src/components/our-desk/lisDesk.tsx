@@ -20,7 +20,7 @@ const listDesk = [
     name: "Mining Advocacy ",
   },
   {
-    deskId: "china-indonesia-relations",
+    deskId: "china-indonesia",
     name: "China Indonesia Relations",
   },
   {

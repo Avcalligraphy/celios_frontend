@@ -1,10 +1,17 @@
-import Footer from '@/components/footer';
-import BoxPublishing from '@/components/molecules/celios-publixhing/boxPublishing';
-import Navbar from '@/components/navbar';
-import Image from 'next/image';
-import React from 'react'
+"use client";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import Footer from "@/components/footer";
+import BoxPublishing from "@/components/molecules/celios-publixhing/boxPublishing";
+import Navbar from "@/components/navbar";
+import Image from "next/image";
+import React from "react";
 
 export default function NewsMedia() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <div className=" bg-gradient-to-b from-[#031B1F] from-20% to-white to-90% csm:mb-[324px] mb-[160px] ">
@@ -33,7 +40,12 @@ export default function NewsMedia() {
                 <i className="bx bx-search text-white "></i>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full ">
+            <div
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full "
+            >
               <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
                 <div className="block">
                   <div>
@@ -132,7 +144,12 @@ export default function NewsMedia() {
                 </h1>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full ">
+            <div
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full "
+            >
               <div className=" bg-[#00130D] csm:py-[64px] py-[44px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
                 <div className="block">
                   <div>

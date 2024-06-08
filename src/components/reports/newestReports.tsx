@@ -32,22 +32,24 @@ export default function NewestReports() {
           <BoxReports />
         </div>
       </div>
-      <div className="csm:mt-[312px] mt-[150px] ">
-        <Image
-          src="/icons/titleContent.png"
-          alt="title-content"
-          width={240}
-          height={33}
-        />
+      <div data-aos="flip-up">
+        <div className="csm:mt-[312px] mt-[150px] ">
+          <Image
+            src="/icons/titleContent.png"
+            alt="title-content"
+            width={240}
+            height={33}
+          />
 
-        <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
-          Media Comentaries
-        </h1>
-      </div>
-      <div className="flex justify-center items-center mt-[30px] ">
-        <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
-          <BoxMedia />
-          <BoxMedia />
+          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+            Media Comentaries
+          </h1>
+        </div>
+        <div className="flex justify-center items-center mt-[30px] ">
+          <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
+            <BoxMedia />
+            <BoxMedia />
+          </div>
         </div>
       </div>
     </div>

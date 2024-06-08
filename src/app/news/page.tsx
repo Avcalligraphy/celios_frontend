@@ -1,10 +1,17 @@
-import Footer from '@/components/footer'
-import BoxSocial from '@/components/molecules/boxSocial';
-import Navbar from '@/components/navbar'
-import Image from 'next/image';
-import React from 'react'
+'use client'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import Footer from "@/components/footer";
+import BoxSocial from "@/components/molecules/boxSocial";
+import Navbar from "@/components/navbar";
+import Image from "next/image";
+import React from "react";
 
 export default function News() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <div className=" bg-[url('/images/backgroundContentFooter.png')] ">
@@ -25,14 +32,7 @@ export default function News() {
                   Recent News
                 </h1>
               </div>
-              <div className="flex justify-between mt-[52px] items-center ">
-                <div className="border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent rounded-[16px] placeholder-[#DDDDDD] w-fit flex items-center">
-                  <input
-                    className="  cmd:text-[24px] csm:text-[20px] text-[18px] font-medium text-white bg-transparent w-[50px] "
-                    placeholder="10"
-                  />
-                  <i className="bx bx-chevron-down text-white "></i>
-                </div>
+              <div className="cxxl:flex block justify-between mt-[52px] items-center ">
                 <div className="flex flex-row gap-[45px] items-center ">
                   <div className="border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent rounded-[16px] placeholder-[#DDDDDD] w-fit flex items-center">
                     <input
@@ -50,7 +50,11 @@ export default function News() {
                   </div>
                 </div>
               </div>
-              <div className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] ">
+              <div
+                data-aos="fade-up"
+                data-aos-duration="3000"
+                className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] "
+              >
                 <BoxSocial />
                 <BoxSocial />
               </div>

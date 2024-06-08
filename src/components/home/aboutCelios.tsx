@@ -5,7 +5,7 @@ import Button from '../Button.tsx';
 export default function AboutCelios() {
   return (
     <div className=" flex justify-center  csm:mb-[363px] mb-[263px] csm:mx-[0px] mx-[15px] ">
-      <div>
+      <div data-aos="flip-left">
         <div>
           {/* <Image
           src="/icons/titleCOntent.png"
@@ -14,7 +14,10 @@ export default function AboutCelios() {
           height={33}
           className=""
         /> */}
-        <img src="/icons/titleCOntent.png" className=' w-auto csm:h-[33px] h-[28px] ' />
+          <img
+            src="/icons/titleCOntent.png"
+            className=" w-auto csm:h-[33px] h-[28px] "
+          />
           <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-50px]  ">
             🧰 Tentang Celios
           </h1>

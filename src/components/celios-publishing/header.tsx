@@ -10,7 +10,12 @@ export default function Header() {
           <Navbar />
         </div>
         <div className="cmd:px-[96px] csm:-[66px] px-[26px] flex justify-center ">
-          <div className=" flex flex-col gap-[116px] pt-[250px] ">
+          <div
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            className=" flex flex-col gap-[116px] pt-[250px] "
+          >
             <BoxPublishing />
             <BoxPublishing />
             <BoxPublishing />

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,6 +29,12 @@ export default function RootLayout({
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://cdn.jsdelivr.net/npm/react-apexcharts"></script>
+        {/* <!-- AOS Animation --> */}
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        />
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
