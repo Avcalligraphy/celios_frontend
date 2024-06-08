@@ -60,7 +60,7 @@ export default function BarChart() {
         options={option}
         series={series}
         height={350}
-        width={1800}
+        width={1500}
       />
     </>
   );
