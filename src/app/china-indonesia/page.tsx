@@ -1,13 +1,19 @@
-import Button from '@/components/Button.tsx';
-import Footer from '@/components/footer';
-import BoxBrief from '@/components/molecules/china-indonesia/boxBrief';
-import BoxReports from '@/components/molecules/reports/boxReports';
-import Navbar from '@/components/navbar';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
+"use client";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Button from "@/components/Button.tsx";
+import Footer from "@/components/footer";
+import BoxBrief from "@/components/molecules/china-indonesia/boxBrief";
+import BoxReports from "@/components/molecules/reports/boxReports";
+import Navbar from "@/components/navbar";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 export default function China() {
+  React.useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <div className="bg-[url('/images/imageChina.png')]  w-full  min-h-[842px] ">
@@ -15,7 +21,10 @@ export default function China() {
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
           </div>
-          <div className="block cmd:pt-[283px]   clg:px-[162px] csm:px-[81px]  px-[20px] pt-[200px] ">
+          <div
+            data-aos="fade-right"
+            className="block cmd:pt-[283px]   clg:px-[162px] csm:px-[81px]  px-[20px] pt-[200px] "
+          >
             <div>
               {/* <Image
                 src="/icons/bgText.png"
@@ -56,7 +65,10 @@ export default function China() {
               Articles
             </h1>
           </div>
-          <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full mt-[33px] ">
+          <div
+            data-aos="zoom-in-up"
+            className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full mt-[33px] "
+          >
             <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
               <div className="block">
                 <div>
@@ -169,7 +181,10 @@ export default function China() {
               Media Comentaries
             </h1>
           </div>
-          <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full mt-[33px] ">
+          <div
+            data-aos="zoom-in-up"
+            className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full mt-[33px] "
+          >
             <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
               <div className="block">
                 <div>
@@ -271,7 +286,7 @@ export default function China() {
         </div>
       </div>
       <div className=" flex justify-center mt-[73px] mb-[271px] ">
-        <Link href='/china-library'>
+        <Link href="/china-library">
           <Button
             text="China Indonesia Library"
             bg="bg-[url('/icons/bgButton.png')]"
@@ -291,7 +306,10 @@ export default function China() {
             China-Indonesia Monthly Brief
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-7 mt-[60px] ">
+        <div
+          data-aos="fade-right"
+          className="grid grid-cols-3 gap-7 mt-[60px] "
+        >
           <BoxBrief />
           <BoxBrief />
           <BoxBrief />
