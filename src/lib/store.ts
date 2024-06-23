@@ -93,7 +93,7 @@ const useStoreReportId = create<StoreStateReportId>((set) => ({
   setDataReportId: (newDataReportId) => set({ dataReportId: newDataReportId }),
 }));
 
-const fetchDataReportId = async (id:string | null) => {
+const fetchDataReportId = async (id:any | null) => {
   const res = await fetch(`https://jmwrx18b-1337.asse.devtunnels.ms/api/blog-reports/${id}`);
   const result = await res.json();
   useStoreReportId.getState().setDataReportId(result.data);

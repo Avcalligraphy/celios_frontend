@@ -7,7 +7,7 @@ import listDesk from '@/components/our-desk/lisDesk';
 import { fetchDataReport, useStoreReport } from '@/lib/store';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 export default function CeliosDesk({params}: {
     params: {deskId: string}
@@ -62,9 +62,12 @@ export default function CeliosDesk({params}: {
                   .join(" ")}
               </h1>
             </div>
-            <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[870px] ">
-              {name}
-            </h1>
+
+            <Suspense fallback={<div>Loading...</div>}>
+              <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[870px] ">
+                {name}
+              </h1>
+            </Suspense>
           </div>
         </div>
       </div>
@@ -84,7 +87,7 @@ export default function CeliosDesk({params}: {
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
             {filteredData.map((item) => {
-              console.log(item.attributes.description)
+              console.log(item.attributes.description);
               return (
                 <BoxReports
                   key={item.id}

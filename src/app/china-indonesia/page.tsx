@@ -8,7 +8,7 @@ import BoxReports from "@/components/molecules/reports/boxReports";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchDataChinaArticle, fetchDataChinaBrief, fetchDataChinaEvent, fetchDataChinaMedia, fetchDataChinaReportBrief, useStoreChinaArticle, useStoreChinaBrief, useStoreChinaEvent, useStoreChinaMedia, useStoreChinaReportBrief } from "@/lib/store";
 import Loader from "@/components/loader/loader";
@@ -70,9 +70,11 @@ export default function China() {
                 China Indonesia Relations
               </h1>
             </div>
-            <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[1200px] ">
-              {name}
-            </h1>
+            <Suspense fallback={<div>Loading...</div>}>
+              <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[1200px] ">
+                {name}
+              </h1>
+            </Suspense>
           </div>
         </div>
       </div>
