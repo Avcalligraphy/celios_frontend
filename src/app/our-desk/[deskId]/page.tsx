@@ -92,6 +92,7 @@ export default function CeliosDesk({params}: {
                   image={item.attributes.file.data.attributes.url}
                   date={item.attributes.publishedAt}
                   link={1}
+                  document={item.attributes.document.data.attributes.url}
                 />
               );
             })}
