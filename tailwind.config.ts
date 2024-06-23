@@ -23,9 +23,9 @@ const config: Config = {
       clg: "1024px",
       cxl: "1280px",
       cxxl: "1536px",
-      clxl:"1735px",
+      clxl: "1735px",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

@@ -7,11 +7,25 @@ import BoxPublishing from "@/components/molecules/celios-publixhing/boxPublishin
 import Navbar from "@/components/navbar";
 import Image from "next/image";
 import React from "react";
+import { fetchDataMedia, fetchDataOpEd, useStoreMedia, useStoreOpEd } from "@/lib/store";
+import Loader from "@/components/loader/loader";
 
 export default function NewsMedia() {
+  const [isLoading, setIsLoading] = React.useState(true);
   useEffect(() => {
     AOS.init();
+    fetchDataOpEd()
+    fetchDataMedia().then(() => {
+      setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+    });
   }, []);
+
+  const storeDataOpEd = useStoreOpEd((state) => state.dataOpEd)
+  const storeDataMedia = useStoreMedia((state) => state.dataMedia);
+
+   if (isLoading) {
+     return <Loader />; // Tampilkan loading jika masih fetching data
+   }
   return (
     <>
       <div className=" bg-gradient-to-b from-[#031B1F] from-20% to-white to-90% csm:mb-[324px] mb-[160px] ">
@@ -32,13 +46,13 @@ export default function NewsMedia() {
                   OpEd
                 </h1>
               </div>
-              <div className="border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent rounded-[16px] placeholder-[#DDDDDD] w-fit flex items-center">
+              {/* <div className="border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent rounded-[16px] placeholder-[#DDDDDD] w-fit flex items-center">
                 <input
                   className="  cmd:text-[24px] csm:text-[20px] text-[18px] font-medium text-white bg-transparent "
                   placeholder="Search"
                 />
                 <i className="bx bx-search text-white "></i>
-              </div>
+              </div> */}
             </div>
             <div
               data-aos="fade-right"
@@ -48,86 +62,17 @@ export default function NewsMedia() {
             >
               <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
                 <div className="block">
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
+                  {storeDataOpEd.map((item) => (
+                    <div key={item.id}>
+                      <a
+                        target="_blank"
+                        href={item.attributes.link}
+                        className="text-[20px] font-medium text-[#BDDFCF] underline "
+                      >
+                        {item.attributes.title}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -152,86 +97,17 @@ export default function NewsMedia() {
             >
               <div className=" bg-[#00130D] csm:py-[64px] py-[44px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
                 <div className="block">
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.youtube.com/"
-                      className="text-[20px] font-medium text-[#BDDFCF] underline "
-                    >
-                      “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                      akan tetap mendekat ke Cina” The Conversation, 10 February
-                      2024. 
-                    </a>
-                  </div>
+                  {storeDataMedia.map((item) => (
+                    <div key={item.id}>
+                      <a
+                        target="_blank"
+                        href={item.attributes.link}
+                        className="text-[20px] font-medium text-[#BDDFCF] underline "
+                      >
+                        {item.attributes.title}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

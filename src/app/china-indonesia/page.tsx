@@ -9,11 +9,40 @@ import Navbar from "@/components/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useSearchParams } from "next/navigation";
+import { fetchDataChinaArticle, fetchDataChinaBrief, fetchDataChinaEvent, fetchDataChinaMedia, fetchDataChinaReportBrief, useStoreChinaArticle, useStoreChinaBrief, useStoreChinaEvent, useStoreChinaMedia, useStoreChinaReportBrief } from "@/lib/store";
+import Loader from "@/components/loader/loader";
 
 export default function China() {
+  const [isLoading, setIsLoading] = React.useState(true);
   React.useEffect(() => {
     AOS.init();
+    fetchDataChinaArticle()
+    fetchDataChinaMedia()
+    fetchDataChinaBrief()
+    fetchDataChinaReportBrief()
+    fetchDataChinaEvent().then(() => {
+      setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+    });
   }, []);
+  const storeDataArticle = useStoreChinaArticle((state) => state.dataChinaArticle)
+  const storeDataBrief = useStoreChinaBrief((state) => state.dataChinaBrief)
+  const storeDataMedia = useStoreChinaMedia(
+    (state) => state.dataChinaMedia
+  );
+  const storeDataEvent = useStoreChinaEvent((state) => state.dataChinaEvent);
+  const storeDataReportBrief = useStoreChinaReportBrief((state) => state.dataChinaReportBrief)
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name");
+  const encodedImage = (image: string) => {
+    image ? image?.replace(/ /g, "%20") : null;
+  };
+
+
+  if (isLoading) {
+    return <Loader />; // Tampilkan loading jika masih fetching data
+  }
+  
   return (
     <>
       <div className="bg-[url('/images/imageChina.png')]  w-full  min-h-[842px] ">
@@ -42,11 +71,7 @@ export default function China() {
               </h1>
             </div>
             <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[1200px] ">
-              China-Indonesia Desk at CELIOS fosters policy-oriented research on
-              China’s engagement with Indonesia in an attempt to ensure mutually
-              beneficial cooperation between the two countries which promotes
-              human well-being, financial stability, and environmental
-              sustainability.
+              {name}
             </h1>
           </div>
         </div>
@@ -71,88 +96,24 @@ export default function China() {
           >
             <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
               <div className="block">
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
+                {storeDataArticle.map((item) => (
+                  <ul
+                    className="list-disc text-[20px] font-medium text-[#BDDFCF] "
+                    key={item.id}
                   >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
+                    <li>
+                      <a
+                        target="_blank"
+                        className="underline"
+                        href={item.attributes.link}
+                      >
+                        {item.attributes.title}
+                      </a>
+                    </li>
+                  </ul>
+                ))}
                 <Link
-                  href="#"
+                  href={`/china-indonesia/articles`}
                   className="flex items-center font-medium text-[20px] text-[#BDDFCF] mt-[20px] "
                 >
                   <Image
@@ -187,88 +148,24 @@ export default function China() {
           >
             <div className=" bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full  ">
               <div className="block">
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
+                {storeDataMedia.map((item) => (
+                  <ul
+                    className="list-disc text-[20px] font-medium text-[#BDDFCF] "
+                    key={item.id}
                   >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/"
-                    className="text-[20px] font-medium text-[#BDDFCF] underline "
-                  >
-                    “Siapapun yang terpilih dalam Pilpres 2024, Indonesia
-                    akan tetap mendekat ke Cina” The Conversation, 10 February
-                    2024. 
-                  </a>
-                </div>
+                    <li>
+                      <a
+                        target="_blank"
+                        className="underline"
+                        href={item.attributes.link}
+                      >
+                        {item.attributes.title}
+                      </a>
+                    </li>
+                  </ul>
+                ))}
                 <Link
-                  href="#"
+                  href={`/china-indonesia/medias`}
                   className="flex items-center font-medium text-[20px] text-[#BDDFCF] mt-[20px] "
                 >
                   <Image
@@ -310,10 +207,15 @@ export default function China() {
           data-aos="fade-right"
           className="grid grid-cols-3 gap-7 mt-[60px] "
         >
-          <BoxBrief />
-          <BoxBrief />
-          <BoxBrief />
-          <BoxBrief />
+          {storeDataBrief.map((item) => (
+            <BoxBrief
+              key={item.id}
+              id={item.id}
+              title={item.attributes.title}
+              date={item.attributes.publishedAt}
+              description={item.attributes.description}
+            />
+          ))}
         </div>
       </div>
       <div className="csm:px-[70px] px-[25px]">
@@ -330,20 +232,29 @@ export default function China() {
           </h1>
         </div>
       </div>
-      <div className="bg-[url('/images/imageBrief.png')] flex flex-col justify-center items-center object-cover h-[644px] mt-[60px]  w-full">
-        <h1 className="text-center text-white font-bold text-[64px] max-w-[1071px] mb-[40px]  ">
-          China Muslim Diplomacy in Indonesia
-        </h1>
-        <p className="text-center text-white font-medium text-[32px] max-w-[1161px] ">
-          Terima kasih banyak kepada Saudara Septian Hario Seto dan Mas Yustinus
-          Prastowo yang telah menanggapi tulisan saya. Baru tiga orang saja
-          menyampaikan pandangannya, persoalan kehadiran smelter nikel dari
-          negara China kian terang benderang.
-        </p>
-        <button className="text-white font-semibold text-[20px] py-[20px] px-[26px] mt-[60px] border-[1px] border-white rounded-[13px] ">
-          Click Here
-        </button>
-      </div>
+      {storeDataReportBrief.map((item) => (
+        <div
+          key={item.id}
+          style={{
+            backgroundImage: `url(${item.attributes.image.data.attributes.url})`,
+          }}
+          className="flex flex-col justify-center items-center object-cover h-[644px] mt-[60px]  w-full"
+        >
+          <h1 className="text-center text-white font-bold text-[64px] max-w-[1071px] mb-[40px]  ">
+            {item.attributes.title}
+          </h1>
+          <p className="text-center text-white font-medium text-[32px] max-w-[1161px] ">
+            {item.attributes.description}
+          </p>
+          <a
+            download
+            href={item.attributes.file.data.attributes.url}
+            className="text-white font-semibold text-[20px] py-[20px] px-[26px] mt-[60px] border-[1px] border-white rounded-[13px] "
+          >
+            Click Here
+          </a>
+        </div>
+      ))}
       <div className="csm:px-[70px] px-[25px] mt-[60px]">
         <div>
           <Image
@@ -358,24 +269,17 @@ export default function China() {
           </h1>
         </div>
         <div className="clg:flex block  gap-[72px]  ">
-          <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px]  clg:w-[658px] w-full ">
-            <img
-              className="  cxl:h-[367px] csm:h-[267px] h-[167px] w-full object-cover rounded-[32px] "
-              src="/images/imageHeader.png"
-            />
-          </div>
-          <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px]  clg:w-[658px] w-full ">
-            <img
-              className="  cxl:h-[367px] csm:h-[267px] h-[167px w-full object-cover rounded-[32px] "
-              src="/images/imageHeader.png"
-            />
-          </div>
-          <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px]  clg:w-[658px] w-full ">
-            <img
-              className="  cxl:h-[367px] csm:h-[267px] h-[167px w-full object-cover rounded-[32px] "
-              src="/images/imageHeader.png"
-            />
-          </div>
+          {storeDataEvent.map((item) => (
+            <div
+              key={item.id}
+              className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px]  clg:w-[658px] w-full "
+            >
+              <img
+                className="  cxl:h-[367px] csm:h-[267px] h-[167px] w-full object-cover rounded-[32px] "
+                src={item.attributes.image.data.attributes.url}
+              />
+            </div>
+          ))}
         </div>
         <div className="mt-[60px]">
           <Image

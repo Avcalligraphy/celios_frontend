@@ -2,7 +2,7 @@ import React from 'react'
 
 interface OurTeamBoxNameProps{
     children: React.ReactNode
-    title: string
+    title: any 
     count: number
 }
 export default function OurTeamBoxName(props: OurTeamBoxNameProps) {

@@ -10,12 +10,34 @@ import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { fetchData, fetchDataNews, fetchDataReport, fetchDataSocial, useStoreSocial } from "@/lib/store";
+import Loader from "@/components/loader/loader";
+
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     AOS.init();
   }, []);
+  useEffect(() => {
+    fetchData();
+    fetchDataReport()
+    fetchDataNews()
+    fetchDataSocial().then(() => {
+      setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+    });
+  }, []);
+  const storeData = useStoreSocial((state) => state.dataSocial);
+  const sortedData = [...storeData].sort(
+    (a, b) =>
+      new Date(b.attributes.createdAt).getTime() -
+      new Date(a.attributes.createdAt).getTime()
+  );
+  const latestThree = sortedData.slice(0, 3);
+  if (isLoading) {
+    return <Loader />; // Tampilkan loading jika masih fetching data
+  }
   return (
     <>
       <Header />
@@ -46,12 +68,22 @@ export default function Home() {
         <div data-aos="zoom-in-up" className="flex justify-center">
           <div>
             <div className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] ">
-              <BoxSocial />
-              <BoxSocial />
+              {latestThree.map((item) => {
+                return (
+                  <BoxSocial
+                    key={item.id}
+                    title={item.attributes.title}
+                    titleIcon={item.attributes.titleIcon}
+                    link={item.attributes.link}
+                    icon={item.attributes.icon.data.attributes.url}
+                    image={item.attributes.image.data.attributes.url}
+                  />
+                );
+              })}
             </div>
             <Link
               href="/social-media"
-              className="flex justify-end items-center gap-[18px] mt-[56px] "
+              className="flex justify-end items-center gap-[18px] mt-[56px] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 "
             >
               <h1 className=" font-semibold text-white leading-[100%] tracking-[-2%] ">
                 See More
@@ -70,3 +102,5 @@ export default function Home() {
     </>
   );
 }
+
+  

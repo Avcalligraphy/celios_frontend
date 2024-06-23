@@ -1,17 +1,31 @@
 "use client"; // if you use app dir, don't forget this line
 
+import { fetchDataIndexTransition, useStoreIndexTransition } from "@/lib/store";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function BarChart() {
-  // const option = {
-  //   chart: {
-  //     id: "apexchart-example",
-  //   },
-  //   xaxis: {
-  //     categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-  //   },
-  // };
+  const [categories, setCategories] = useState<string[]>([]);
+  const [data, setData] = useState<number[]>([]);
+
+  const storeTransitions = useStoreIndexTransition(
+    (state) => state.dataIndexTransition
+  );
+
+  useEffect(() => {
+    if (storeTransitions.length > 0) {
+      const mappedCategories = storeTransitions.map(
+        (item: any) => item.attributes.title
+      );
+      const mappedData = storeTransitions.map((item: any) =>
+        parseInt(item.attributes.value, 10)
+      );
+
+      setCategories(mappedCategories);
+      setData(mappedData);
+    }
+  }, [storeTransitions]);
 
   const option = {
     chart: {
@@ -32,25 +46,14 @@ export default function BarChart() {
       enabled: false,
     },
     xaxis: {
-      categories: [
-        "Aceh",
-        "Banten",
-        "Jakarta",
-        "Semarang",
-        "Surabaya",
-        "Bogor",
-        "Cianjur",
-        "Lombok",
-        "Papua",
-        "Kalimantan",
-      ],
+      categories: categories,
     },
   };
 
   const series = [
     {
-      data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-    }
+      data: data,
+    },
   ];
 
   return (

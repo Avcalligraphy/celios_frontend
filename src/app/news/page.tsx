@@ -7,11 +7,22 @@ import BoxSocial from "@/components/molecules/boxSocial";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
 import React from "react";
+import { fetchDataNews, useStoreNews } from "@/lib/store";
+import BoxNews from "@/components/molecules/boxNews";
+import Loader from "@/components/loader/loader";
 
 export default function News() {
+  const [isLoading, setIsLoading] = React.useState(true);
   useEffect(() => {
     AOS.init();
+    fetchDataNews().then(() => {
+      setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+    });
   }, []);
+  const storeDataNews = useStoreNews((state) => state.dataNews);
+  if (isLoading) {
+    return <Loader />; // Tampilkan loading jika masih fetching data
+  }
   return (
     <>
       <div className=" bg-[url('/images/backgroundContentFooter.png')] ">
@@ -32,7 +43,7 @@ export default function News() {
                   Recent News
                 </h1>
               </div>
-              <div className="cxxl:flex block justify-between mt-[52px] items-center ">
+              {/* <div className="cxxl:flex block justify-between mt-[52px] items-center ">
                 <div className="flex flex-row gap-[45px] items-center ">
                   <div className="border-[1px] border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] bg-transparent rounded-[16px] placeholder-[#DDDDDD] w-fit flex items-center">
                     <input
@@ -49,14 +60,22 @@ export default function News() {
                     <i className="bx bx-search text-white "></i>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div
                 data-aos="fade-up"
                 data-aos-duration="3000"
                 className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] "
               >
-                <BoxSocial />
-                <BoxSocial />
+                {storeDataNews.map((item) => (
+                  <BoxSocial
+                    key={item.id}
+                    title={item.attributes.title}
+                    titleIcon={item.attributes.titleIcon}
+                    link={item.attributes.link}
+                    icon={item.attributes.icon.data.attributes.url}
+                    image={item.attributes.image.data.attributes.url}
+                  />
+                ))}
               </div>
             </div>
           </div>

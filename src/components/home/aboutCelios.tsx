@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Button from '../Button.tsx';
+import Link from 'next/link.js';
 
 export default function AboutCelios() {
   return (
@@ -38,10 +39,12 @@ export default function AboutCelios() {
             dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik
             dalam mendorong percepatan inovasi-digitalisasi secara inklusif.
           </p>
-          <Button
-            text="Learn More"
-            bg="bg-[url('/icons/bgButton.png')] mt-[60px] "
-          />
+          <Link href='/about-us'>
+            <Button
+              text="Learn More"
+              bg="bg-[url('/icons/bgButton.png')] mt-[60px] "
+            />
+          </Link>
         </div>
       </div>
     </div>

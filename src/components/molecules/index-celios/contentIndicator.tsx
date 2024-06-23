@@ -1,6 +1,11 @@
 import React from 'react'
 
-export default function ContentIndicator() {
+interface ContentIndicatorProps{
+  indicator: string
+  score: string 
+}
+
+export default function ContentIndicator({indicator, score}: ContentIndicatorProps) {
   return (
     <div className="max-w-[416px] mb-[12px] ">
       <div className="w-full  h-[5px] bg-[#DFDFDF]  " />
@@ -9,20 +14,8 @@ export default function ContentIndicator() {
         <h1 className=" font-semibold text-[20px] ">Score</h1>
       </div>
       <div className="flex justify-between mt-[3px]">
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">Polusi Udara</p>
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">0.07</p>
-      </div>
-      <div className="flex justify-between mt-[3px]">
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">Polusi Udara</p>
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">0.07</p>
-      </div>
-      <div className="flex justify-between mt-[3px]">
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">Polusi Udara</p>
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">0.07</p>
-      </div>
-      <div className="flex justify-between mt-[3px]">
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">Polusi Udara</p>
-        <p className=" text-[#ABBBA0] font-medium text-[18px] ">0.07</p>
+        <p className=" text-[#ABBBA0] font-medium text-[18px] ">{indicator}</p>
+        <p className=" text-[#ABBBA0] font-medium text-[18px] ">{score}</p>
       </div>
     </div>
   );

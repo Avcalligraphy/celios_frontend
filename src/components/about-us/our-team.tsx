@@ -3,10 +3,15 @@ import React from 'react'
 import BoxName from '../molecules/about-us/boxName';
 import OurTeamBoxName from '../molecules/about-us/ourTeamBoxName';
 import ListTeam from './listTeam';
+import { useStoreOurTeam } from '@/lib/store';
 
 export default function OurTeam() {
-
-  
+  const storeDataTeam = useStoreOurTeam((state) => state.dataOurTeam)
+   const categoryTeam = (item:any) => {
+     return item.attributes.category_teams.data
+       .map((team:any) => team.attributes.division)
+       .join(", ");
+   };
   return (
     <>
       <div className="mt-[277px] px-[70px]">
@@ -23,22 +28,19 @@ export default function OurTeam() {
           </h1>
           <div className="flex justify-center">
             <div className="csm:mt-[149px] mt-[74px] grid grid-cols-1 gap-[40px]  ">
-              {ListTeam.map((item, index) => {
+              {storeDataTeam.map((item) => {
                 return (
                   <OurTeamBoxName
-                    title={item.title}
+                    title={categoryTeam(item)}
                     key={item.id}
-                    count={item.data.length}
+                    count={1}
                   >
-                    {item.data.map((item, index) => {
-                      return (
-                        <BoxName
-                          key={index}
-                          name={item.name}
-                          position={item.position}
-                        />
-                      );
-                    })}
+                    <BoxName
+                      name={item.attributes.name}
+                      position={item.attributes.position}
+                      image={item.attributes.image.data.attributes.url}
+
+                    />
                   </OurTeamBoxName>
                 );
               })}

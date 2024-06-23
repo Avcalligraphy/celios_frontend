@@ -3,8 +3,10 @@ import Navbar from '../navbar';
 import BoxDesk from '../molecules/our-desk/boxDesk';
 import listDesk from './lisDesk';
 import Link from 'next/link';
+import { useStore } from '@/lib/store';
 
 export default function Header() {
+  const storeData = useStore((state) => state.data);
   return (
     <div className=" bg-gradient-to-b from-[#031B1F] from-20% to-white to-90% mb-[324px] ">
       <div className="w-full bg-[url('/images/background.png')] relative z-10 ">
@@ -15,17 +17,23 @@ export default function Header() {
           data-aos="fade-up-right"
           className="flex flex-col gap-[88px] csm:px-[93px] px-[25px]  csm:pt-[197px] pt-[150px] "
         >
-          {listDesk.map((item, index) => (
-            <BoxDesk
-              title={item.name}
-              link={
-                item.deskId === "china-indonesia"
-                  ? "/china-indonesia"
-                  : `our-desk/${item.deskId}`
-              }
-              key={index}
-            />
-          ))}
+          {storeData.map((item) => {
+            console.log(item.attributes.title);
+            return (
+              <BoxDesk
+                title={item.attributes.title}
+                link={
+                  item.attributes.title === "China-Indonesia Relations"
+                    ? "/china-indonesia"
+                    : `our-desk/${item.attributes.title
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`
+                }
+                description={item.attributes.description}
+                key={item.id}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,13 +1,40 @@
+'use client'
 import Footer from '@/components/footer';
+import Loader from '@/components/loader/loader';
 import BoxReports from '@/components/molecules/reports/boxReports';
 import Navbar from '@/components/navbar';
 import listDesk from '@/components/our-desk/lisDesk';
+import { fetchDataReport, useStoreReport } from '@/lib/store';
 import Image from 'next/image';
-import React from 'react'
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 export default function CeliosDesk({params}: {
     params: {deskId: string}
 }) {
+  const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const name = searchParams.get("name");
+  useEffect(() => {
+    fetchDataReport().then(() => {
+      setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+    });
+  }, [])
+  const storeDataReport = useStoreReport((state) => state.dataReport)
+   const filteredData = storeDataReport.filter((item) =>
+     item.attributes.our_desks.data.some(
+       (desk: any) =>
+         desk.attributes.title ===
+         params.deskId
+           .split("-")
+           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+           .join(" ")
+     )
+   );
+   if (isLoading) {
+     return <Loader />; // Tampilkan loading jika masih fetching data
+   }
+  
   return (
     <>
       <div className="bg-[url('/images/imageChina.png')]  w-full  min-h-[842px] ">
@@ -28,24 +55,15 @@ export default function CeliosDesk({params}: {
                 src="/icons/bgText.png"
                 className="w-auto csm:h-[81px] h-[60px] "
               />
-              {listDesk.map((item, index) => {
-                if (item.deskId === params.deskId) {
-                  return (
-                    <h1
-                      key={index}
-                      className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%] tracking-[-4%] text-white max-w-[404px] "
-                    >
-                      {item.name}
-                    </h1>
-                  );
-                }
-                return null;
-              })}
+              <h1 className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%] tracking-[-4%] text-white max-w-[404px] ">
+                {params.deskId
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")}
+              </h1>
             </div>
             <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[870px] ">
-              CELIOS merupakan lembaga riset di Indonesia yang bergerak dibidang
-              makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik dalam
-              mendorong percepatan inovasi-digitalisasi secara inklusif.
+              {name}
             </h1>
           </div>
         </div>
@@ -65,8 +83,18 @@ export default function CeliosDesk({params}: {
         </div>
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
-            <BoxReports />
-            <BoxReports />
+            {filteredData.map((item) => {
+              console.log(item.attributes.description)
+              return (
+                <BoxReports
+                  key={item.id}
+                  title={item.attributes.title}
+                  image={item.attributes.file.data.attributes.url}
+                  date={item.attributes.publishedAt}
+                  link={1}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

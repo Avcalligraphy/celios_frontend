@@ -4,14 +4,22 @@ import React from 'react'
 interface BoxNameProps{
   name: string,
   position: string
+  image:string
 }
 export default function BoxName(props: BoxNameProps) {
-  const {name, position} = props
+  const {name, position, image} = props
+  const encodedImage = image ? image?.replace(/ /g, "%20") : null;
   return (
     <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
       <div className=" bg-[#00130D] py-[25px] px-[26px] rounded-[32px] csm:flex block gap-[39px] items-center  ">
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
-          <div className=" bg-[url('/images/imageName.png')]  csm:h-[210px] h-[150px] csm:w-[226px] w-full object-cover rounded-[32px] ">
+          <div
+            style={{
+              backgroundImage: `url(${encodedImage})`,
+              objectFit:'cover'
+            }}
+            className=" csm:h-[210px] h-[150px] csm:w-[226px] w-full  rounded-[32px] "
+          >
             {/* <Image
               src="/images/shadowSocial.png"
               alt="shadow-social"

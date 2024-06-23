@@ -1,8 +1,17 @@
 import Button from '@/components/Button.tsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
-export default function BoxReports() {
+interface BoxReportsProps{
+  title: string
+  image: string
+  date: string
+  link: number
+  document: any
+}
+export default function BoxReports({title, image, date, link, document}: BoxReportsProps) {
+  const encodedImage = image ? image?.replace(/ /g, "%20") : null;
   const truncateText = (text : string, limit: number) => {
     const words = text.split(" ");
     if (words.length > limit) {
@@ -10,12 +19,26 @@ export default function BoxReports() {
     }
     return text;
   };
+  const formatDate = (dateString: string): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
+  };
 
   return (
     <div className="bg-gradient-to-t from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px]">
-      <div className=" bg-[#00130D] py-[27px] px-[27px] rounded-[32px] pb-[44px] clg:w-[712px] w-full ">
+      <div className=" bg-[#00130D] py-[27px] px-[27px] rounded-[32px] pb-[44px] clg:w-[712px] w-full min-h-[798px] ">
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
-          <div className=" bg-[url('/images/imageHeader.png')]  clg:h-[367px] csm:h-[267px] h-[180px] object-cover rounded-[32px] ">
+          <div
+            style={{
+              backgroundImage: `url(${encodedImage})`,
+              objectFit: "cover",
+            }}
+            className=" clg:h-[367px] csm:h-[267px] h-[180px] object-cover rounded-[32px] "
+          >
             {/* <Image
               src="/images/shadowReports.png"
               alt="shadow-social"
@@ -26,7 +49,7 @@ export default function BoxReports() {
           </div>
         </div>
         <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold clg:text-[36px] csm:text-[30px] text-[24px] leading-[100%]   mt-[36px] ">
-          {truncateText("Dampak Pensium Dini PLTU Batu Bara terhadap Ekonomi", 5)}
+          {truncateText(title, 5)}
         </h1>
         <p className="font-semibold text-white csm:text-[24px] text-[18px] csm:mt-[27px] mt-[20px] ">
           {truncateText(
@@ -35,10 +58,24 @@ export default function BoxReports() {
           )}
         </p>
         <p className="font-semibold csm:text-[20px] text-[16px] text-[#B2B2B2] mt-[17px] ">
-          January 25, 2024
+          {formatDate(date)}
         </p>
         <div className="flex items-center justify-between csm:mt-[53px] mt-[30px] ">
-          <Button text="Download Report" />
+          <Link
+            href={{
+              pathname: `/reports/${title}`,
+              query: { link: link },
+            }}
+          >
+            <Button text="Read Report" />
+          </Link>
+
+          <a download href={document}>
+            <Button
+              text="Download Report"
+              bg="w-full clxl:w-[290px] bg-[#454D38]"
+            />
+          </a>
         </div>
       </div>
     </div>
