@@ -45,14 +45,14 @@ export default function RecentNews() {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center mt-[61px] ">
+              {/* <div className="flex justify-center mt-[61px] ">
                 <div className="grid grid-cols-2 gap-[101px]">
                   <BoxSocial />
                   <BoxSocial />
                   <BoxSocial />
                   <BoxSocial />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
