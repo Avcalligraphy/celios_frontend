@@ -29,12 +29,12 @@ export default function Home() {
     });
   }, []);
   const storeData = useStoreSocial((state) => state.dataSocial);
-  const sortedData = [...storeData].sort(
+  const sortedData = storeData ? ( [...storeData].sort(
     (a, b) =>
       new Date(b.attributes.createdAt).getTime() -
       new Date(a.attributes.createdAt).getTime()
-  );
-  const latestThree = sortedData.slice(0, 3);
+  )) : null;
+  const latestThree = sortedData?.slice(0, 3);
   if (isLoading) {
     return <Loader />; // Tampilkan loading jika masih fetching data
   }
@@ -61,14 +61,14 @@ export default function Home() {
               🔗Social Media
             </h1>
             <p className=" csm:text-[24px] text-[18px] leading-[150%] text-[#BAE6FD] text-center csm:mt-[30px] mt-[15px] ">
-              Let is connect and engage with us!
+              Let connect and engage with us!
             </p>
           </div>
         </div>
         <div data-aos="zoom-in-up" className="flex justify-center">
           <div>
             <div className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] ">
-              {latestThree.map((item) => {
+              {latestThree?.map((item) => {
                 return (
                   <BoxSocial
                     key={item.id}

@@ -15,11 +15,34 @@ export default function CeliosDesk({params}: {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const name = searchParams.get("name");
+   const encodedImage = (image: string) => {
+     image ? image?.replace(/ /g, "%20") : null;
+   };
   useEffect(() => {
     fetchDataReport().then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
   }, [])
+  const getImageName = (name: string) => {
+    switch (name) {
+      case "macro-economy":
+        return "/images/Macro-economy.png";
+      case "just-energy-transition":
+        return "/images/Just Energy Transition.png";
+      case "fiscal-justice":
+        return "/images/Fiscal Justice.png";
+      case "sustainable-finance":
+        return "/images/Sustainable Finance.png";
+      case "mining-advocacy":
+        return "/images/Mining Advocacy.png";
+      case "digital-economy":
+        return "/images/Digital Economy.png";
+      case "strategic-litigation":
+        return "/images/Strategic Litigation.png";
+      default:
+        return "/images/Macro-economy.png";
+    }
+  };
   const storeDataReport = useStoreReport((state) => state.dataReport)
    const filteredData = storeDataReport.filter((item) =>
      item.attributes.our_desks.data.some(
@@ -34,10 +57,16 @@ export default function CeliosDesk({params}: {
    if (isLoading) {
      return <Loader />; // Tampilkan loading jika masih fetching data
    }
+  //  console.log(params.deskId)
   
   return (
     <>
-      <div className="bg-[url('/images/imageChina.png')]  w-full  min-h-[842px] ">
+      <div
+        style={{
+          backgroundImage: `url(${encodeURI(getImageName(params.deskId))})`,
+        }}
+        className=" w-full  min-h-[842px] "
+      >
         <div className="bg-[url('/images/background.png')] object-cover w-full min-h-[842px] relative z-10 ">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
@@ -87,14 +116,14 @@ export default function CeliosDesk({params}: {
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
             {filteredData.map((item) => {
-              console.log(item.attributes.description);
+              // console.log(item.attributes.description);
               return (
                 <BoxReports
                   key={item.id}
                   title={item.attributes.title}
                   image={item.attributes.file.data.attributes.url}
                   date={item.attributes.publishedAt}
-                  link={1}
+                  link={item.id}
                   document={item.attributes.document.data.attributes.url}
                 />
               );

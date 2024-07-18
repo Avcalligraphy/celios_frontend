@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <div className="w-full h-[2px] bg-gradient-to-r from-cyan-500 to-blue-500" />
       <div className="bg-[#00130D] pt-[82px] pb-[111px] csm:px-[139px] px-[65px]  ">
-        <div className=" bg-[url('/images/backgroundFooter.png')] w-full ">
+        <div className="  w-full ">
           <div className="grid clg:grid-cols-2 grid-cols-1 gap-[50px]">
             <div>
               {/* <Image src="/icons/logo.png" alt="logo" width={75} height={116} /> */}
@@ -33,7 +33,7 @@ export default function Footer() {
                 alt="image-ngo"
               /> */}
               <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] my-[13px] ">
-                Recognition and Accreditation by:
+                Registered in:
               </h1>
               <img
                 src="/images/imageNGO.png"
@@ -43,12 +43,7 @@ export default function Footer() {
                 Ikuti Kami
               </h1>
               <div className="flex items-center gap-[35px] mb-[15px] ">
-                <Image
-                  src="/icons/instagram.png"
-                  width={65}
-                  height={65}
-                  alt="instagram"
-                />
+                <i className="bx bxl-instagram-alt text-[65px] text-white "></i>
 
                 <p className=" csm:text-[24px] text-[20px] font-medium text-white leading-[120%] ">
                   @celios.id
@@ -61,7 +56,7 @@ export default function Footer() {
                   height={65}
                   alt="maps"
                 /> */}
-                <img src="/icons/maps.png" className="w-[65px] h-auto" />
+                <i className="bx bxs-map text-white text-[65px] "></i>
                 <p className=" csm:text-[24px] text-[20px] font-medium text-white leading-[120%] mt-[6px] max-w-[551px] ">
                   Jl. Abuserin III Cilandak Jakarta Selatan
                 </p>

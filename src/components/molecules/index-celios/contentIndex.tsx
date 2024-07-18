@@ -12,17 +12,17 @@ export default function ContentIndex({indicator, score, retataNasional}:ContextI
       <h1 className="mt-[15px] mb-[7px] font-semibold text-[20px] ">
         Indicator
       </h1>
-      <p className=" text-[#ABBBA0] font-medium text-[18px] ">{indicator}</p>
+      <p className=" text-[#000] font-medium text-[18px] ">{indicator}</p>
       <div className="flex justify-between mt-[15px]">
         <div>
           <h1 className=" mb-[7px] font-semibold text-[20px] ">Score</h1>
-          <p className=" text-[#ABBBA0] font-medium text-[18px] ">{score}</p>
+          <p className=" text-[#000] font-medium text-[18px] ">{score}</p>
         </div>
         <div>
           <h1 className=" mb-[7px] font-semibold text-[20px] ">
             National Average
           </h1>
-          <p className=" text-[#ABBBA0] font-medium text-[18px] ">{retataNasional}</p>
+          <p className=" text-[#000] font-medium text-[18px] ">{retataNasional}</p>
         </div>
       </div>
     </div>

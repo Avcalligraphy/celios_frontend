@@ -43,7 +43,7 @@ export default function Navbar() {
         <Link href="/">
           <Image src="/icons/logo.png" width={75} height={116} alt="logo" />
         </Link>
-        <div className="grid grid-cols-7 gap-[24px]">
+        <div className="grid grid-cols-7 gap-[5px]">
           {MenuListUser.map((item, index) => (
             <div
               key={index}
@@ -55,7 +55,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.link}
-                className="font-medium text-white hover:text-[#99C948] text-[18px]"
+                className="font-medium text-white hover:text-[#99C948] text-[22px]"
               >
                 {item.name}
               </Link>

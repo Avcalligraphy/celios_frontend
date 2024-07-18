@@ -2,6 +2,8 @@
 import { create } from "zustand";
 
 // fetch our desk
+
+const apiURL = process.env.NEXT_PUBLIC_API_URL
 interface ItemAttributes {
   title: string;
   description: string;
@@ -26,7 +28,7 @@ const useStore = create<StoreState>((set) => ({
 }));
 
 const fetchData = async () => {
-  const res = await fetch(`https://jmwrx18b-1337.asse.devtunnels.ms/api/our-desks`);
+  const res = await fetch(`${apiURL}/api/our-desks`);
   const result = await res.json();
   useStore.getState().setData(result.data);
 };
@@ -60,7 +62,7 @@ const useStoreReport = create<StoreStateReport>((set) => ({
 }));
 
 const fetchDataReport = async () => {
-  const res = await fetch(`https://jmwrx18b-1337.asse.devtunnels.ms/api/blog-reports?populate=*`);
+  const res = await fetch(`${apiURL}/api/blog-reports?populate=*`);
   const result = await res.json();
   useStoreReport.getState().setDataReport(result.data);
 };
@@ -93,8 +95,8 @@ const useStoreReportId = create<StoreStateReportId>((set) => ({
   setDataReportId: (newDataReportId) => set({ dataReportId: newDataReportId }),
 }));
 
-const fetchDataReportId = async (id:any | null) => {
-  const res = await fetch(`https://jmwrx18b-1337.asse.devtunnels.ms/api/blog-reports/${id}`);
+const fetchDataReportId = async (id:string | null) => {
+  const res = await fetch(`${apiURL}/api/blog-reports/${id}`);
   const result = await res.json();
   useStoreReportId.getState().setDataReportId(result.data);
 };
@@ -127,7 +129,7 @@ const useStoreNews = create<StoreStateNews>((set) => ({
 }));
 
 const fetchDataNews = async () => {
-  const res = await fetch(`https://jmwrx18b-1337.asse.devtunnels.ms/api/recent-news?populate=*`);
+  const res = await fetch(`${apiURL}/api/recent-news?populate=*`);
   const result = await res.json();
   useStoreNews.getState().setDataNews(result.data);
 };
@@ -174,7 +176,9 @@ const useStoreSocial = create<StoreStateSocial>((set) => ({
 }));
 
 const fetchDataSocial = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/social-medias?populate=*");
+  const res = await fetch(
+    `${apiURL}/api/social-medias?populate=*`
+  );
   const result = await res.json();
   useStoreSocial.getState().setDataSocial(result.data);
 };
@@ -206,7 +210,9 @@ const useStoreOpEd = create<StoreStateOpEd>((set) => ({
 }));
 
 const fetchDataOpEd = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/op-eds");
+  const res = await fetch(
+    `${apiURL}/api/op-eds`
+  );
   const result = await res.json();
   useStoreOpEd.getState().setDataOpEd(result.data);
 };
@@ -238,7 +244,9 @@ const useStoreMedia = create<StoreStateMedia>((set) => ({
 }));
 
 const fetchDataMedia = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/media-comentars");
+  const res = await fetch(
+    `${apiURL}/api/media-comentars`
+  );
   const result = await res.json();
   useStoreMedia.getState().setDataMedia(result.data);
 };
@@ -270,7 +278,9 @@ const useStoreAbout = create<StoreStateAbout>((set) => ({
 }));
 
 const fetchDataAbout = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/about-uses?populate=*");
+  const res = await fetch(
+    `${apiURL}/api/about-uses?populate=*`
+  );
   const result = await res.json();
   useStoreAbout.getState().setDataAbout(result.data);
 };
@@ -304,7 +314,9 @@ const useStoreOurTeam = create<StoreStateOurTeam>((set) => ({
 }));
 
 const fetchDataOurTeam = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/our-teams?populate=*");
+  const res = await fetch(
+    `${apiURL}/api/our-teams?populate=*`
+  );
   const result = await res.json();
   useStoreOurTeam.getState().setDataOurTeam(result.data);
 };
@@ -345,9 +357,7 @@ const useStorePubllish = create<StoreStatePublish>((set) => ({
 }));
 
 const fetchDataPublish = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/publish-houses?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/publish-houses?populate=*`);
   const result = await res.json();
   useStorePubllish.getState().setDataPublish(result.data);
 };
@@ -380,7 +390,7 @@ const useStoreTraining = create<StoreStateTraining>((set) => ({
 }));
 
 const fetchDataTraining = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/trainings?populate=*");
+  const res = await fetch(`${apiURL}/api/trainings?populate=*`);
   const result = await res.json();
   useStoreTraining.getState().setDataTraining(result.data);
 };
@@ -410,7 +420,7 @@ const useStoreChinaArticle = create<StoreStateChinaArticle>((set) => ({
 }));
 
 const fetchDataChinaArticle = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/china-articles");
+  const res = await fetch(`${apiURL}/api/china-articles`);
   const result = await res.json();
   useStoreChinaArticle.getState().setDataChinaArticle(result.data);
 };
@@ -441,7 +451,7 @@ const useStoreChinaMedia = create<StoreStateChinaMedia>((set) => ({
 }));
 
 const fetchDataChinaMedia = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/china-medias");
+  const res = await fetch(`${apiURL}/api/china-medias`);
   const result = await res.json();
   useStoreChinaMedia.getState().setDataChinaMedia(result.data);
 };
@@ -473,7 +483,7 @@ const useStoreChinaBrief = create<StoreStateChinaBrief>((set) => ({
 }));
 
 const fetchDataChinaBrief = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/china-monthly-briefs");
+  const res = await fetch(`${apiURL}/api/china-monthly-briefs`);
   const result = await res.json();
   useStoreChinaBrief.getState().setDataChinaBrief(result.data);
 };
@@ -506,7 +516,7 @@ const useStoreChinaBriefId = create<StoreStateChinaBriefId>((set) => ({
 
 const fetchDataChinaBriefId = async (id:string | null) => {
   const res = await fetch(
-    `https://jmwrx18b-1337.asse.devtunnels.ms/api/china-monthly-briefs/${id}`
+    `${apiURL}/api/china-monthly-briefs/${id}`
   );
   const result = await res.json();
   useStoreChinaBriefId.getState().setDataChinaBriefId(result.data);
@@ -542,7 +552,7 @@ const useStoreChinaReportBrief = create<StoreStateReportChinaBrief>((set) => ({
 }));
 
 const fetchDataChinaReportBrief = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/report-brief-books?populate=*");
+  const res = await fetch(`${apiURL}/api/report-brief-books?populate=*`);
   const result = await res.json();
   useStoreChinaReportBrief.getState().setDataChinaReportBrief(result.data);
 };
@@ -573,7 +583,7 @@ const useStoreChinaEvent = create<StoreStateChinaEvent>((set) => ({
 }));
 
 const fetchDataChinaEvent = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/china-events?populate=*");
+  const res = await fetch(`${apiURL}/api/china-events?populate=*`);
   const result = await res.json();
   useStoreChinaEvent.getState().setDataChinaEvent(result.data);
 };
@@ -604,7 +614,7 @@ const useStoreChinaLibrary = create<StoreStateChinaLibrary>((set) => ({
 }));
 
 const fetchDataChinaLibrary = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/china-libraries");
+  const res = await fetch(`${apiURL}/api/china-libraries`);
   const result = await res.json();
   useStoreChinaLibrary.getState().setDataChinaLibrary(result.data);
 };
@@ -636,9 +646,7 @@ const useStoreIndexTransition = create<StoreStateIndexTransition>((set) => ({
 }));
 
 const fetchDataIndexTransition = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/index-category-transitions"
-  );
+  const res = await fetch(`${apiURL}/api/index-category-transitions`);
   const result = await res.json();
   useStoreIndexTransition.getState().setDataIndexTransition(result.data);
 };
@@ -668,7 +676,7 @@ const useStoreIndexCategory = create<StoreStateIndexCategory>((set) => ({
 }));
 
 const fetchDataIndexCategory = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/index-categories");
+  const res = await fetch(`${apiURL}/api/index-categories`);
   const result = await res.json();
   useStoreIndexCategory.getState().setDataIndexCategory(result.data);
 };
@@ -706,7 +714,7 @@ const useStoreIndexRadar = create<StoreStateIndexRadar>((set) => ({
 }));
 
 const fetchDataIndexRadar = async () => {
-  const res = await fetch("https://jmwrx18b-1337.asse.devtunnels.ms/api/index-radars?populate=*");
+  const res = await fetch(`${apiURL}/api/index-radars?populate=*`);
   const result = await res.json();
   useStoreIndexRadar.getState().setDataIndexRadar(result.data);
 };
@@ -739,9 +747,7 @@ const useStoreCleanEnergy = create<StoreStateCleanEnergy>((set) => ({
 }));
 
 const fetchDataCleanEnergy = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/clean-energies?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/clean-energies?populate=*`);
   const result = await res.json();
   useStoreCleanEnergy.getState().setDataCleanEnergy(result.data);
 };
@@ -774,9 +780,7 @@ const useStoreEconomicResilience = create<StoreStateEconomicResilience>((set) =>
 }));
 
 const fetchDataEconomicResilience = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/economic-resiliences?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/economic-resiliences?populate=*`);
   const result = await res.json();
   useStoreEconomicResilience.getState().setDataEconomicResilience(result.data);
 };
@@ -809,9 +813,7 @@ const useStoreGovermentCapacity = create<StoreStateGovermentCapacity>((set) => (
 }));
 
 const fetchDataGovermentCapacity = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/goverment-capacities?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/goverment-capacities?populate=*`);
   const result = await res.json();
   useStoreGovermentCapacity.getState().setDataGovermentCapacity(result.data);
 };
@@ -844,9 +846,7 @@ const useStoreClimateVulnerability = create<StoreStateClimateVulnerability>((set
 }));
 
 const fetchDataClimateVulnerability = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/climate-vulnerabilities?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/climate-vulnerabilities?populate=*`);
   const result = await res.json();
   useStoreClimateVulnerability.getState().setDataClimateVulnerability(result.data);
 };
@@ -878,9 +878,7 @@ const useStoreTopCities = create<StoreStateTopCities>((set) => ({
 }));
 
 const fetchDataTopCities = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/top-cities?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/top-cities?populate=*`);
   const result = await res.json();
   useStoreTopCities.getState().setDataTopCities(result.data);
 };
@@ -912,9 +910,7 @@ const useStoreBottomCities = create<StoreStateBottomCities>((set) => ({
 }));
 
 const fetchDataBottomCities = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/bottom-cities?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/bottom-cities?populate=*`);
   const result = await res.json();
   useStoreBottomCities.getState().setDataBottomCities(result.data);
 };
@@ -944,9 +940,7 @@ const useStoreDownloadEnergyTransition = create<StoreStateDownloadEnergyTransiti
 }));
 
 const fetchDataDownloadEnergyTransition = async () => {
-  const res = await fetch(
-    "https://jmwrx18b-1337.asse.devtunnels.ms/api/report-energy-transitions?populate=*"
-  );
+  const res = await fetch(`${apiURL}/api/report-energy-transitions?populate=*`);
   const result = await res.json();
   useStoreDownloadEnergyTransition.getState().setDataDownloadEnergyTransition(result.data);
 };

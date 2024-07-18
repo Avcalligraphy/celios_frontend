@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../navbar'
 import Image from 'next/image'
 import Button from '../Button.tsx';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -22,17 +23,16 @@ export default function Header() {
             data-aos="fade-up"
             className="font-bold cxl:text-[87px] clg:text-[67px] cmd:text-[57px] csm:text-[40px] text-[37px] csm:leading-[100%] leading-[120%] tracking-[-4%] text-white text-center max-w-[1480px]  "
           >
-            Powering the Future: <br /> Embracing the energy for a Suistanable
-            World
+            Embracing the Future: <br /> Supporting Climate and Fiscal Justice
           </h1>
         </div>
-        <div className="flex justify-center items-center mt-[45px]">
+        <Link href={'/our-desk'} className="flex justify-center items-center mt-[45px]">
           <Button
             data-aos="fade-up"
             text="Read More"
             bg="bg-[url('/icons/bgButton.png')]"
           />
-        </div>
+        </Link>
         {/* <img alt="" src="/icons/bgText2.png" className=' ml-[1230px] mt-[-130px] z-0 ' /> */}
         {/* <img alt="" src="/icons/bgText3.png" /> */}
       </div>

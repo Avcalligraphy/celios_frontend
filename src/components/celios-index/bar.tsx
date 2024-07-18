@@ -1,9 +1,26 @@
 "use client"; // if you use app dir, don't forget this line
 
-import { fetchDataIndexTransition, useStoreIndexTransition } from "@/lib/store";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { fetchDataIndexTransition, useStoreIndexTransition } from "@/lib/store";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function BarChart() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -27,44 +44,46 @@ export default function BarChart() {
     }
   }, [storeTransitions]);
 
-  const option = {
-    chart: {
-      id: "apexchart-example",
-      type: "bar" as "bar",
-      height: 350,
-      foreColor: "#FFFFFF",
-    },
-    plotOptions: {
+  const chartData = {
+    labels: categories,
+    datasets: [
+      {
+        label: "Indonesia Energy Transition",
+        data: data,
+        backgroundColor: "#4EE0B9",
+      },
+    ],
+  };
+
+  const options = {
+    indexAxis: "y" as const, // horizontal bar chart
+    elements: {
       bar: {
-        borderRadius: 4,
-        borderRadiusApplication: "end" as "end",
-        horizontal: true,
+        borderWidth: 2,
       },
     },
-    colors: ["#4EE0B9"],
-    dataLabels: {
-      enabled: false,
-    },
-    xaxis: {
-      categories: categories,
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: "#FFFFFF",
+        },
+      },
+      y: {
+        ticks: {
+          color: "#FFFFFF",
+        },
+      },
     },
   };
 
-  const series = [
-    {
-      data: data,
-    },
-  ];
-
   return (
-    <>
-      <ApexChart
-        type="bar"
-        options={option}
-        series={series}
-        height={350}
-        width={1500}
-      />
-    </>
+    <div className="relative w-full h-96">
+      {" "}
+      {/* relative parent container with defined height */}
+      <Bar data={chartData} options={options} />
+    </div>
   );
 }

@@ -30,6 +30,7 @@ import {
 import Loader from "../loader/loader";
 
 export default function Header() {
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [selectedCategory, setSelectedCategory] = useState("Aceh");
   const [radarData, setRadarData] = useState<any | null>(null);
   const [cleanEnergyData, setCleanEnergyData] = useState<any[]>([]);
@@ -226,7 +227,7 @@ export default function Header() {
               </div>
             </div>
             <div className="bg-gradient-to-r from-[#7DD3FC] to-[#001710] p-[2px] rounded-[32px] w-full mt-[33px]">
-              <div className="bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full">
+              <div className="bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[15px] rounded-[32px] w-full">
                 <div className="block w-full">
                   <BarChart />
                 </div>
@@ -390,13 +391,18 @@ export default function Header() {
           ? storeDownload.map((item) => (
               <a
                 key={item.id}
-                href={item.attributes.downloadReport.data.attributes.url}
+                href={
+                  apiURL + item.attributes.downloadReport.data.attributes.url
+                }
                 download
               >
-                <Button
+                {/* <Button
                   text="Download Report"
                   bg="bg-[url('/icons/bgButton.png')]"
-                />
+                /> */}
+                <button className="translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 csm:px-[65px] px-[30px] rounded-[13px] text-white py-[20px] font-semibold bg-[url('/icons/bgButton.png')] ">
+                  Download Report
+                </button>
               </a>
             ))
           : null}

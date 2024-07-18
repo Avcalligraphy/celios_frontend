@@ -12,6 +12,9 @@ import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchDataChinaArticle, fetchDataChinaBrief, fetchDataChinaEvent, fetchDataChinaMedia, fetchDataChinaReportBrief, useStoreChinaArticle, useStoreChinaBrief, useStoreChinaEvent, useStoreChinaMedia, useStoreChinaReportBrief } from "@/lib/store";
 import Loader from "@/components/loader/loader";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/swiper-bundle.css";
 
 export default function China() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -42,10 +45,11 @@ export default function China() {
   if (isLoading) {
     return <Loader />; // Tampilkan loading jika masih fetching data
   }
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   
   return (
     <>
-      <div className="bg-[url('/images/imageChina.png')]  w-full  min-h-[842px] ">
+      <div className="bg-[url('/images/china-indonesia.png')]  w-full  min-h-[842px] ">
         <div className="bg-[url('/images/background.png')] object-cover w-full min-h-[842px] relative z-10 ">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
@@ -78,7 +82,7 @@ export default function China() {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-between gap-[50px] csm:px-[70px] px-[25px] mt-[100px] ">
+      <div className="w-full cxl:flex block justify-between gap-[50px] csm:px-[70px] px-[25px] mt-[100px] ">
         <div>
           <div>
             <Image
@@ -106,7 +110,7 @@ export default function China() {
                     <li>
                       <a
                         target="_blank"
-                        className="underline"
+                        className=""
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -132,7 +136,7 @@ export default function China() {
           </div>
         </div>
         <div>
-          <div>
+          <div className="cxl:mt-0 mt-[80px]">
             <Image
               src="/icons/titleCOntent.png"
               alt="title-content"
@@ -158,7 +162,7 @@ export default function China() {
                     <li>
                       <a
                         target="_blank"
-                        className="underline"
+                        className=""
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -192,7 +196,7 @@ export default function China() {
           />
         </Link>
       </div>
-      <div className="csm:px-[70px] px-[25px] mb-[271px]">
+      <div className="csm:px-[70px] px-[5px] mb-[271px]">
         <div>
           <Image
             src="/icons/titleCOntent.png"
@@ -207,7 +211,7 @@ export default function China() {
         </div>
         <div
           data-aos="fade-right"
-          className="grid grid-cols-3 gap-7 mt-[60px] "
+          className="grid clxl:grid-cols-3 cxl:grid-cols-2 grid-cols-1 gap-7 mt-[60px] "
         >
           {storeDataBrief.map((item) => (
             <BoxBrief
@@ -234,29 +238,39 @@ export default function China() {
           </h1>
         </div>
       </div>
-      {storeDataReportBrief.map((item) => (
-        <div
-          key={item.id}
-          style={{
-            backgroundImage: `url(${item.attributes.image.data.attributes.url})`,
-          }}
-          className="flex flex-col justify-center items-center object-cover h-[644px] mt-[60px]  w-full"
-        >
-          <h1 className="text-center text-white font-bold text-[64px] max-w-[1071px] mb-[40px]  ">
-            {item.attributes.title}
-          </h1>
-          <p className="text-center text-white font-medium text-[32px] max-w-[1161px] ">
-            {item.attributes.description}
-          </p>
-          <a
-            download
-            href={item.attributes.file.data.attributes.url}
-            className="text-white font-semibold text-[20px] py-[20px] px-[26px] mt-[60px] border-[1px] border-white rounded-[13px] "
-          >
-            Click Here
-          </a>
-        </div>
-      ))}
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+      >
+        {storeDataReportBrief.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div
+              style={{
+                backgroundImage: `url(${
+                  apiURL + item.attributes.image.data.attributes.url
+                })`,
+              }}
+              className="flex flex-col justify-center items-center object-cover h-[644px] mt-[60px]  w-full"
+            >
+              <h1 className="text-center text-white font-bold csm:text-[64px] text-[44px] leading-[100%] max-w-[1571px] mb-[40px]  ">
+                {item.attributes.title}
+              </h1>
+              <p className="text-center text-white font-medium csm:text-[32px] text-[22px] max-w-[1161px] ">
+                {item.attributes.description}
+              </p>
+              <a
+                download
+                href={apiURL + item.attributes.file.data.attributes.url}
+                className="text-white font-semibold csm:text-[20px] text-[16px] csm:py-[20px] py-[15px] csm:px-[26px] px-[20px] mt-[60px] border-[1px] border-white rounded-[13px] "
+              >
+                Click Here
+              </a>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
       <div className="csm:px-[70px] px-[25px] mt-[60px]">
         <div>
           <Image
@@ -270,19 +284,36 @@ export default function China() {
             Events
           </h1>
         </div>
-        <div className="clg:flex block  gap-[72px]  ">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={90}
+          pagination={false}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 320,
+            },
+            894: {
+              slidesPerView: 2,
+              spaceBetween: 320,
+            },
+            1646: {
+              slidesPerView: 3,
+              spaceBetween: 320,
+            },
+          }}
+        >
           {storeDataEvent.map((item) => (
-            <div
-              key={item.id}
-              className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px]  clg:w-[658px] w-full "
-            >
-              <img
-                className="  cxl:h-[367px] csm:h-[267px] h-[167px] w-full object-cover rounded-[32px] "
-                src={item.attributes.image.data.attributes.url}
-              />
-            </div>
+            <SwiperSlide key={item.id}>
+              <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px] csm:w-[404px] w-[304px] ">
+                <img
+                  className="  cxl:h-[367px] csm:h-[267px] h-[167px] csm:w-[400px] w-[300px]  object-cover rounded-[32px] "
+                  src={apiURL + item.attributes.image.data.attributes.url}
+                />
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
         <div className="mt-[60px]">
           <Image
             src="/icons/titleCOntent.png"
@@ -295,7 +326,7 @@ export default function China() {
             We have worked and collaborated with:
           </h1>
         </div>
-        <div className="grid grid-cols-4 gap-[100px] mt-[40px] mb-[210px] ">
+        <div className="grid cxxl:grid-cols-4 cmd:grid-cols-3 csm:grid-cols-2 grid-cols-1  clg:gap-[100px] gap-[50px] mt-[40px] mb-[210px] ">
           <img src="/sponshor/1.png" className="h-[86px] w-auto " />
           <img src="/sponshor/2.png" className="h-[86px] w-auto " />
           <img src="/sponshor/3.png" className="h-[86px] w-auto " />

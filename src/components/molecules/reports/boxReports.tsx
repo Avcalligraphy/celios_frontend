@@ -11,6 +11,7 @@ interface BoxReportsProps{
   document: any
 }
 export default function BoxReports({title, image, date, link, document}: BoxReportsProps) {
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const encodedImage = image ? image?.replace(/ /g, "%20") : null;
   const truncateText = (text : string, limit: number) => {
     const words = text.split(" ");
@@ -34,7 +35,7 @@ export default function BoxReports({title, image, date, link, document}: BoxRepo
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
           <div
             style={{
-              backgroundImage: `url(${encodedImage})`,
+              backgroundImage: `url(${apiURL + image})`,
               objectFit: "cover",
             }}
             className=" clg:h-[367px] csm:h-[267px] h-[180px] object-cover rounded-[32px] "
@@ -60,17 +61,20 @@ export default function BoxReports({title, image, date, link, document}: BoxRepo
         <p className="font-semibold csm:text-[20px] text-[16px] text-[#B2B2B2] mt-[17px] ">
           {formatDate(date)}
         </p>
-        <div className="flex items-center justify-between csm:mt-[53px] mt-[30px] ">
+        <div className="cmd:flex block items-center justify-between csm:mt-[53px] mt-[30px] ">
           <Link
             href={{
               pathname: `/reports/${title}`,
               query: { link: link },
             }}
           >
-            <Button text="Read Report" />
+            <Button
+              bg="w-full bg-[#99C948] clxl:w-[290px] clxl:mb-0 mb-[20px] "
+              text="Read Report"
+            />
           </Link>
 
-          <a download href={document}>
+          <a download href={apiURL + document}>
             <Button
               text="Download Report"
               bg="w-full clxl:w-[290px] bg-[#454D38]"

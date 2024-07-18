@@ -14,7 +14,7 @@ export default function Header() {
         {storeDataAbout.map((item) => (
           <div
             key={item.id}
-            style={{ backgroundImage: `url(${encodedImage(item.attributes.image.data.attributes.url)})` }}
+            // style={{ backgroundImage: `url(${encodedImage(item.attributes.image.data.attributes.url)})` }}
             className=" object-cover w-full min-h-[842px] relative z-10  "
           >
             <div className="fixed top-0 left-0 right-0 z-50">
@@ -34,7 +34,7 @@ export default function Header() {
                   className="w-auto csm:h-[81px] h-[60px] "
                 />
                 <h1 className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%]  tracking-[-4%] text-white  ">
-                  What Is <br /> Celios
+                  Who We <br /> Are
                 </h1>
               </div>
               <h1
@@ -87,7 +87,7 @@ export default function Header() {
                 publik dalam mendorong percepatan inovasi-digitalisasi secara
                 inklusif.
               </h1>
-              <h1 className=" bg-gradient-to-t from-[#BDDFCF]  to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold text-[96px] leading-[100%] max-w-[347px] ">
+              <h1 className=" bg-gradient-to-t from-[#BDDFCF]  to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold text-[96px] leading-[100%] max-w-[367px] ">
                 Our Mission
               </h1>
             </div>

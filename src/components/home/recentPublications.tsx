@@ -7,6 +7,7 @@ import { useStoreNews, useStoreReport } from '@/lib/store';
 
 export default function RecentPublication() {
   const storeData = useStoreReport((state) => state.dataReport);
+  // console.log(storeData);
   const storeDataNews = useStoreNews((state) => state.dataNews);
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
@@ -34,11 +35,11 @@ export default function RecentPublication() {
       new Date(a.attributes.createdAt).getTime()
   );
   const latestThree = sortedData.slice(0, 3);
-  const latestThreeNews = sortedDataNews.slice(0, 3);
+  const latestThreeNews = sortedDataNews.slice(0, 6);
   return (
     <>
-      <div className="w-full clg:block justify-center flex  ">
-        <div className="clg:flex block clg:px-[48px] px-[0px] csm:gap-10 gap-0 csm:justify-normal justify-center ">
+      <div className="w-full clg:block justify-center flex ">
+        <div className="clg:flex block clg:px-[48px] px-[0px]  csm:gap-10 gap-0 csm:justify-normal justify-center ">
           <div>
             {/* <Image
             src="/icons/titleContent.png"
@@ -52,7 +53,7 @@ export default function RecentPublication() {
             </h1>
           </div>
           <div
-            data-aos="flip-up"
+
             className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 gap-[45px] "
           >
             {latestThree.map((item) => (
@@ -60,6 +61,8 @@ export default function RecentPublication() {
                 key={item.id}
                 title={truncateText(item.attributes.title, 7)}
                 date={formatDate(item.attributes.publishedAt)}
+                image={item.attributes.file.data.attributes.url}
+                link={item.id}
               />
             ))}
           </div>
@@ -82,8 +85,10 @@ export default function RecentPublication() {
               <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px] csm:mt-[-60px] mt-[-40px]   ">
                 Recent News
               </h1>
+              <h1 className="text-black mt-2 text-[20px] font-semibold ">
+                CELIOS Op-Ed and Commentaries
+              </h1>
               <div
-                data-aos="fade-left"
                 className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[80px] mt-[40px] "
               >
                 {latestThreeNews.map((item) => (

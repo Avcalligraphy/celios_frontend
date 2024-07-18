@@ -7,15 +7,17 @@ interface BoxNameProps{
   image:string
 }
 export default function BoxName(props: BoxNameProps) {
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const {name, position, image} = props
   const encodedImage = image ? image?.replace(/ /g, "%20") : null;
+  // console.log(image)
   return (
     <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
       <div className=" bg-[#00130D] py-[25px] px-[26px] rounded-[32px] csm:flex block gap-[39px] items-center  ">
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
           <div
             style={{
-              backgroundImage: `url(${encodedImage})`,
+              backgroundImage: `url(${apiURL + image})`,
               objectFit:'cover'
             }}
             className=" csm:h-[210px] h-[150px] csm:w-[226px] w-full  rounded-[32px] "

@@ -3,6 +3,8 @@ import Navbar from '../navbar'
 import BoxDesk from '../molecules/reports/boxDesk';
 import { useStoreReport } from '@/lib/store';
 
+const apiURL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Header({storeData}: {storeData:any}) {
   
   const sortedData = [...storeData].sort(
@@ -61,10 +63,10 @@ export default function Header({storeData}: {storeData:any}) {
               </h1>
             </div>
             <BoxDesk
-              image={item.attributes.file.data.attributes.url}
+              image={apiURL + item.attributes.file.data.attributes.url}
               title={item.attributes.title}
               link={item.id}
-              document={item.attributes.document.data.attributes.url}
+              document={apiURL + item.attributes.document.data.attributes.url}
             />
           </div>
         ))}

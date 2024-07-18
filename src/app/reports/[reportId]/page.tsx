@@ -41,13 +41,13 @@ export default function ReportBlog({
     
   return (
     <>
-      <div className=" bg-gradient-to-b from-[#031B1F] from-20% to-white to-90%  ">
-        <div className="w-full bg-[url('/images/background.png')] ">
+      <div className=" bg-[#031B1F] min-h-screen  ">
+        <div className="w-full bg-[url('/images/background.png')] pb-[271px] ">
           <Navbar />
-          <div className=" px-[142px] mt-[146px] ">
+          <div className=" clg:px-[142px] csm:px-[70px] px-[35px] mt-[146px] ">
             <div className="flex gap-[15px] ">
-              <i className="bx bxs-home text-[30px] text-[#CEE3BE] "></i>
-              <h1 className=" text-[#CEE3BE] text-[24px] font-semibold ">
+              <i className="bx bxs-home csm:text-[30px] text-[25px] text-[#CEE3BE] "></i>
+              <h1 className=" text-[#CEE3BE] csm:text-[24px] text-[20px] font-semibold ">
                 Home
                 {pathname
                   .replace(/\//g, " > ")
@@ -57,27 +57,29 @@ export default function ReportBlog({
               </h1>
             </div>
             <div className=" h-[3px] w-full bg-[#CEE3BE] mt-[11px] " />
-            <p className=" font-semibold text-[#B2B2B2] text-[24px] mt-[36px] ">
-              {storeReportId ? formatDate(storeReportId?.attributes.publishedAt) : null}
+            <p className=" font-semibold text-[#B2B2B2] csm:text-[24px] text-[20px] mt-[36px] ">
+              {storeReportId
+                ? formatDate(storeReportId?.attributes.publishedAt)
+                : null}
             </p>
-            <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold text-[48px] mb-8   ">
+            <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold csm:text-[48px] text-[40px] mb-8   ">
               {storeReportId?.attributes.title}
             </h1>
-            <div className="prose-xl">
-            {storeReportId && (
-              <BlocksRenderer
-                content={storeReportId.attributes.description || []}
-              />
-            )} 
-        </div>
+            <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium csm:text-[22px] text-[18px] text-white ">
+              {storeReportId && (
+                <BlocksRenderer
+                  content={storeReportId.attributes.description || []}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className="px-[142px] ">
+      {/* <div className="px-[142px] ">
         <div className=" mt-[73px] mb-[271px] ">
-          {/* <Button text="Download Report" bg="bg-[url('/icons/bgButton.png')]" /> */}
+          <Button text="Download Report" bg="bg-[url('/icons/bgButton.png')]" />
         </div>
-      </div>
+      </div> */}
       <Footer />
     </>
   );

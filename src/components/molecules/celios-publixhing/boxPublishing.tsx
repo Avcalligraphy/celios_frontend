@@ -16,6 +16,7 @@ interface BoxPublishingProps {
 }
 export default function BoxPublishing({title, penulis, penerbit, isbn, cover, halaman, berat, ukuran, linkTokped, linkShoppe, image} : BoxPublishingProps) {
   const encodedImage = image ? image?.replace(/ /g, "%20") : null;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   return (
     <div className=" cxl:flex block gap-[74px]  ">
       <div className="flex justify-center cxl:mb-0 mb-[30px] ">
@@ -27,7 +28,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
           className="rounded-[32px]"
         /> */}
         <img
-          src={image ? encodedImage : null}
+          src={image ? apiURL + image : null}
           className=" cmd:w-[512px] csm:w-[412px] w-[312px] h-auto rounded-[32px] "
         />
       </div>

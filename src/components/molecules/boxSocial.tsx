@@ -8,6 +8,8 @@ interface BoxSocialProps{
   image: string,
   icon: string
 }
+
+const apiURL = process.env.NEXT_PUBLIC_API_URL;
 export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSocialProps) {
   const encodedImage = image.replace(/ /g, "%20");
   return (
@@ -18,7 +20,7 @@ export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSoci
     >
       <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] csm:rounded-[32px] rounded-[22px] ">
         <div
-          style={{ backgroundImage: `url(${encodedImage})` }}
+          style={{ backgroundImage: `url(${apiURL + image})` }}
           className="cmd:w-[628px] cmd:h-[310px] csm:w-[528px] w-[248px] csm:h-[180px] h-[150px] object-cover csm:rounded-[32px] rounded-[22px]"
         >
           {/* <Image
@@ -45,7 +47,7 @@ export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSoci
           height={50}
         /> */}
         <img
-          src={icon}
+          src={apiURL + icon}
           className="csm:w-[50px] w-[35px] h-auto rounded-[100%] "
         />
         <p className=" csm:text-[24px] text-[20px] font-medium text-white leading-[120%] ">

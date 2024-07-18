@@ -47,36 +47,11 @@ export default function ContactPage(props: Partial<ContactPageProps>) {
               </div>
               <div className="flex justify-center items-center  csm:mt-[40px] mt-[20px] ">
                 <div className="grid csm:grid-cols-5 grid-cols-2 gap-[21px] ">
-                  <Image
-                    src="/icons/instagram.png"
-                    width={65}
-                    height={65}
-                    alt="instagram"
-                  />
-                  <Image
-                    src="/icons/gmail.png"
-                    width={65}
-                    height={65}
-                    alt="gmail"
-                  />
-                  <Image
-                    src="/icons/twitter.png"
-                    width={65}
-                    height={65}
-                    alt="twitter"
-                  />
-                  <Image
-                    src="/icons/youtube.png"
-                    width={76}
-                    height={58}
-                    alt="youtube"
-                  />
-                  <Image
-                    src="/icons/tiktok.png"
-                    width={60}
-                    height={63}
-                    alt="tiktok"
-                  />
+                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-instagram-alt text-[65px] text-white "></i>
+                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-gmail text-[65px] text-white "></i>
+                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-twitter text-[65px] text-white "></i>
+                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-youtube text-[65px] text-white "></i>
+                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-tiktok text-[65px] text-white "></i>
                 </div>
               </div>
             </div>

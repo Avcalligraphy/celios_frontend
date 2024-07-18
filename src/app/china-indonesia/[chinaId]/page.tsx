@@ -3,35 +3,45 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import {
   fetchDataChinaArticle,
-  fetchDataChinaBrief,
   fetchDataChinaBriefId,
   fetchDataChinaMedia,
   useStoreChinaArticle,
-  useStoreChinaBrief,
   useStoreChinaBriefId,
   useStoreChinaMedia,
 } from "@/lib/store";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Loader from "@/components/loader/loader";
 
 export default function ChinaItem({ params }: { params: { chinaId: string } }) {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchDataChinaArticle();
     fetchDataChinaMedia();
     fetchDataChinaBriefId(params.chinaId).then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
-    });;
+    });
   }, [params.chinaId]); // Tambahkan endpoint sebagai dependency
 
   const storeDataArticle = useStoreChinaArticle(
     (state) => state.dataChinaArticle
   );
   const storeDataMedia = useStoreChinaMedia((state) => state.dataChinaMedia);
-  const storeDataBrief = useStoreChinaBriefId((state) => state.dataChinaBriefId);
+  const storeDataBrief = useStoreChinaBriefId(
+    (state) => state.dataChinaBriefId
+  );
+
+  const filteredArticles = storeDataArticle.filter((item) =>
+    item.attributes.title.toLowerCase().includes(query.toLowerCase())
+  );
+
+  const filteredMedia = storeDataMedia.filter((item) =>
+    item.attributes.title.toLowerCase().includes(query.toLowerCase())
+  );
+
   if (isLoading) {
     return <Loader />; // Tampilkan loading jika masih fetching data
   }
@@ -59,10 +69,31 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                     ? "Media Commentaries by China-Indonesia Studies at CELIOS"
                     : `China-Indonesia Monthly Brief: ${storeDataBrief?.attributes.title}`}
                 </h1>
+                {params.chinaId === "articles" ||
+                params.chinaId === "medias" ? (
+                  <div className="flex justify-end flex-row gap-[45px] mt-9 items-center">
+                    <div className="container-inputContainer">
+                      <div className="container-input">
+                        <div className="search-box">
+                          <button className="btn-search">
+                            <i className="bx bx-search"></i>
+                          </button>
+                          <input
+                            type="text"
+                            className="input-search"
+                            placeholder="Type to Search..."
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
               </div>
               <div className="block mt-14">
                 {params.chinaId === "articles"
-                  ? storeDataArticle.map((item) => (
+                  ? filteredArticles.map((item) => (
                       <ul
                         className="list-disc text-[20px] font-medium text-[#BDDFCF]"
                         key={item.id}
@@ -70,7 +101,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                         <li>
                           <a
                             target="_blank"
-                            className="underline"
+                            className=" text-[20px] csm:text-[25px]"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}
@@ -79,7 +110,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                       </ul>
                     ))
                   : params.chinaId === "medias"
-                  ? storeDataMedia.map((item) => (
+                  ? filteredMedia.map((item) => (
                       <ul
                         className="list-disc text-[20px] font-medium text-[#BDDFCF]"
                         key={item.id}
@@ -87,7 +118,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                         <li>
                           <a
                             target="_blank"
-                            className="underline"
+                            className=" text-[20px] csm:text-[25px]"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}
@@ -96,7 +127,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                       </ul>
                     ))
                   : storeDataBrief && (
-                      <div className="prose-xl font-medium cmd:text-[32px] csm:text-[28px] text-[22px] text-white mt-[30px]">
+                      <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium cmd:text-[22px] csm:text-[22px] text-[18px] text-white mt-[30px]">
                         <BlocksRenderer
                           content={storeDataBrief.attributes.description || []}
                         />
