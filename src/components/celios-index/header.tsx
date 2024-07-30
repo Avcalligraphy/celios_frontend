@@ -283,7 +283,7 @@ export default function Header() {
           {cleanEnergyData ? (
             <div>
               <h1 className="text-[#50E2BB] text-[24px] mb-[18px] font-medium">
-                Clean Energy Initialives{" "}
+                Clean Energy Initiatives{" "}
                 <span className="font-bold">(ICEI)</span>
               </h1>
               {cleanEnergyData.map((item) => (
@@ -316,7 +316,7 @@ export default function Header() {
           {govermentCapacityData ? (
             <div>
               <h1 className="text-[#50E2BB] text-[24px] mb-[18px] font-medium">
-                Goverment Capacity <span className="font-bold">(GC)</span>
+                Government Capacity <span className="font-bold">(GC)</span>
               </h1>
               {govermentCapacityData
                 ? govermentCapacityData.map((item) => (

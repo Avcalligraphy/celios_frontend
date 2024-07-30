@@ -46,7 +46,7 @@ export default function Footer() {
                 <i className="bx bxl-instagram-alt text-[65px] text-white "></i>
 
                 <p className=" csm:text-[24px] text-[20px] font-medium text-white leading-[120%] ">
-                  @celios.id
+                  @celios_id
                 </p>
               </div>
               <div className="flex items-center gap-[15px] ">
@@ -65,7 +65,7 @@ export default function Footer() {
           </div>
           <div className="w-full h-[2px] mt-[31px] bg-white " />
           <p className="csm:text-[18px] text-[16px] mt-[30px] leading-[120%] text-white ">
-            Copyright © 2023 Celios. All Rights Reserved
+            Copyright © 2023 CELIOS. All Rights Reserved
           </p>
         </div>
       </div>

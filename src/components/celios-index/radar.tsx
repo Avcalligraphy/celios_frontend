@@ -43,9 +43,15 @@ export default function Radar(props: RadarProps) {
         suggestedMax: 100,
         ticks: {
           color: "#000",
+          font: {
+            size: 16, // change this value to adjust the size
+          },
         },
         pointLabels: {
           color: "#000",
+          font: {
+            size: 20, // change this value to adjust the size
+          },
         },
       },
     },
@@ -54,6 +60,12 @@ export default function Radar(props: RadarProps) {
       legend: {
         ...options.plugins?.legend,
         position: "top" as const,
+        labels: {
+          color: "#000", // change this to the desired color
+          font: {
+            size: 20, // change this value to adjust the size
+          },
+        },
       },
     },
   };

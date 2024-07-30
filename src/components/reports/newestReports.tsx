@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import BoxReports from "../molecules/reports/boxReports";
-import BoxMedia from "../molecules/reports/boxMedia";
 
 interface Report {
   id: number;
@@ -21,9 +20,10 @@ interface Report {
     document: {
       data: {
         attributes: {
+          name: string;
           url: string;
         };
-      };
+      }[];
     };
   };
 }
@@ -38,6 +38,7 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
   const [filteredData, setFilteredData] = useState<Report[]>(storeData);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
+  
 
   useEffect(() => {
     const lowerCaseQuery = query.toLowerCase();
@@ -59,6 +60,8 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
     startIndex,
     startIndex + itemsPerPage
   );
+
+  console.log("data paginate", paginatedData);
 
   return (
     <div className="w-full csm:px-[70px] px-[25px] mb-[230px] ">
@@ -103,7 +106,7 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
               image={item.attributes.file.data.attributes.url}
               date={item.attributes.publishedAt}
               link={item.id}
-              document={apiURL + item.attributes.document.data.attributes.url}
+              documents={item.attributes.document.data}
             />
           ))}
         </div>

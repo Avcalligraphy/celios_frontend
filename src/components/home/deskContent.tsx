@@ -2,6 +2,7 @@ import React from "react";
 import BoxContent from "../molecules/boxContent";
 import { useStore } from "@/lib/store";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
 export default function DeskContent() {
@@ -43,7 +44,12 @@ export default function DeskContent() {
         <Swiper
           slidesPerView={1}
           spaceBetween={90}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
           pagination={false}
+          modules={[Autoplay]}
           breakpoints={{
             640: {
               slidesPerView: 1,
@@ -59,21 +65,27 @@ export default function DeskContent() {
             },
           }}
         >
-          {sortedData.map((item) => (
-            <SwiperSlide key={item.id}>
-              <BoxContent
-                title={item.attributes.title}
-                desk={truncateText(item.attributes.description, 24)}
-                link={
-                  item.attributes.title === "China-Indonesia Relations"
-                    ? "/china-indonesia"
-                    : `our-desk/${item.attributes.title
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`
-                }
-              />
+          {sortedData && sortedData.length > 0 ? (
+            sortedData.map((item) => (
+              <SwiperSlide key={item.id}>
+                <BoxContent
+                  title={item.attributes.title}
+                  desk={truncateText(item.attributes.description, 24)}
+                  link={
+                    item.attributes.title === "China-Indonesia Relations"
+                      ? "/china-indonesia"
+                      : `our-desk/${item.attributes.title
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`
+                  }
+                />
+              </SwiperSlide>
+            ))
+          ) : (
+            <SwiperSlide>
+              <div>No data available</div>
             </SwiperSlide>
-          ))}
+          )}
         </Swiper>
       </div>
     </div>

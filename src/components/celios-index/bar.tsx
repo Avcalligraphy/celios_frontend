@@ -69,11 +69,27 @@ export default function BarChart() {
         beginAtZero: true,
         ticks: {
           color: "#FFFFFF",
+          font: {
+            size: 20, // change this value to adjust the size
+          },
         },
       },
       y: {
         ticks: {
           color: "#FFFFFF",
+          font: {
+            size: 20, // change this value to adjust the size
+          },
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: "#FFFFFF", // change this to the desired color
+          font: {
+            size: 20, // change this value to adjust the size
+          },
         },
       },
     },

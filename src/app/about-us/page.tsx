@@ -5,7 +5,7 @@ import Footer from '@/components/footer'
 import React, { useEffect } from 'react'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { fetchDataAbout, fetchDataOurTeam } from '@/lib/store'
+import { fetchDataAbout, fetchDataMission, fetchDataOurTeam, fetchDataVision } from '@/lib/store'
 import Loader from '@/components/loader/loader'
 
 export default function AboutUs() {
@@ -13,6 +13,8 @@ export default function AboutUs() {
   useEffect(() => {
     AOS.init();
     fetchDataAbout()
+    fetchDataMission()
+    fetchDataVision()
     fetchDataOurTeam().then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });

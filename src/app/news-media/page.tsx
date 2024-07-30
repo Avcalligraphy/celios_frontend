@@ -138,7 +138,7 @@ export default function NewsMedia() {
                       <a
                         target="_blank"
                         href={item.attributes.link}
-                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] "
+                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
                       >
                         {item.attributes.title}
                       </a>
@@ -173,7 +173,7 @@ export default function NewsMedia() {
                       <a
                         target="_blank"
                         href={item.attributes.link}
-                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] "
+                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
                       >
                         {item.attributes.title}
                       </a>

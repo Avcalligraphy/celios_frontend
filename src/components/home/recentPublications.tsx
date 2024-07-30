@@ -101,7 +101,7 @@ export default function RecentPublication() {
                 ))}
               </div>
               <Link
-                href="/news"
+                href="/news-media"
                 className="flex justify-end items-center gap-[18px] my-[56px] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 "
               >
                 <h1 className=" font-semibold text-black leading-[100%] tracking-[-2%] ">

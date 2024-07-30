@@ -34,7 +34,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
       </div>
       <div className=" bg-[#00130D] rounded-[32px] cmd:px-[66px] csm:px-[46px] px-[26px] csm:py-[46px] py-[26px] cxl:w-[950px] min-h-[800px] w-full ">
         <p className=" cxl:text-[24px] csm:text-[22px] text-[18px] font-semibold text-[#AAAAAA] ">
-          Celios Book
+          CELIOS Book
         </p>
         <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold cxxl:text-[48px] cxl:text-[36px] csm:text-[32px] text-[28px] tracking-[-2%] max-w-[792px] mt-[36px]   ">
           {title}
@@ -80,16 +80,24 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
                   alt="tokped"
                 />
               </a>
-              <img
-                src="/icons/instagram.png"
-                className="w-auto cxl:h-[90px] csm:h-[76px] h-[56px] "
-                alt="instagram"
-              />
-              <img
-                src="/icons/whatsapp.png"
-                className="w-auto cxl:h-[88px] csm:h-[76px] h-[56px] "
-                alt="whatsapp"
-              />
+              <a target="_blank" href="https://www.instagram.com/celios_id/">
+                <img
+                  src="/icons/instagram.png"
+                  className="w-auto cxl:h-[90px] csm:h-[76px] h-[56px] "
+                  alt="instagram"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://wa.me/6282329191591
+"
+              >
+                <img
+                  src="/icons/whatsapp.png"
+                  className="w-auto cxl:h-[88px] csm:h-[76px] h-[56px] "
+                  alt="whatsapp"
+                />
+              </a>
             </div>
           </div>
         </div>

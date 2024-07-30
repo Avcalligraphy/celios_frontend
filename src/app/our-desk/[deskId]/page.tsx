@@ -12,6 +12,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 export default function CeliosDesk({params}: {
     params: {deskId: string}
 }) {
+
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const name = searchParams.get("name");
@@ -124,7 +125,7 @@ export default function CeliosDesk({params}: {
                   image={item.attributes.file.data.attributes.url}
                   date={item.attributes.publishedAt}
                   link={item.id}
-                  document={item.attributes.document.data.attributes.url}
+                  documents={ item.attributes.document.data}
                 />
               );
             })}

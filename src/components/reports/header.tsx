@@ -1,17 +1,17 @@
-import React from 'react'
-import Navbar from '../navbar'
-import BoxDesk from '../molecules/reports/boxDesk';
-import { useStoreReport } from '@/lib/store';
+import React from "react";
+import Navbar from "../navbar";
+import BoxDesk from "../molecules/reports/boxDesk";
+import { useStoreReport } from "@/lib/store";
 
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
-export default function Header({storeData}: {storeData:any}) {
-  
+export default function Header({ storeData }: { storeData: any }) {
   const sortedData = [...storeData].sort(
     (a, b) =>
       new Date(b.attributes.createdAt).getTime() -
       new Date(a.attributes.createdAt).getTime()
   );
+  console.log("SortedData: ", sortedData);
   const latestThree = sortedData.slice(0, 1);
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
@@ -66,7 +66,7 @@ export default function Header({storeData}: {storeData:any}) {
               image={apiURL + item.attributes.file.data.attributes.url}
               title={item.attributes.title}
               link={item.id}
-              document={apiURL + item.attributes.document.data.attributes.url}
+              documents={item.attributes.document.data}
             />
           </div>
         ))}

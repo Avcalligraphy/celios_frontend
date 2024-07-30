@@ -255,7 +255,6 @@ const fetchDataMedia = async () => {
 // fetch about us header
 interface ItemAttributesAbout {
   description: string;
-  image: any;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -944,6 +943,64 @@ const fetchDataDownloadEnergyTransition = async () => {
   const result = await res.json();
   useStoreDownloadEnergyTransition.getState().setDataDownloadEnergyTransition(result.data);
 };
+// fetch mission header us about
+interface ItemAttributesMission {
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+
+interface ItemMission {
+  id: number;
+  attributes: ItemAttributesMission;
+}
+
+interface StoreStateMission {
+  dataMission: ItemMission[];
+  setDataMission: (newDataMission: ItemMission[]) => void;
+}
+
+const useStoreMission = create<StoreStateMission>((set) => ({
+  dataMission: [],
+  setDataMission: (newDataMission) => set({ dataMission: newDataMission }),
+}));
+
+const fetchDataMission = async () => {
+  const res = await fetch(`${apiURL}/api/missions`);
+  const result = await res.json();
+  useStoreMission.getState().setDataMission(result.data);
+};
+// fetch visios header us about
+interface ItemAttributesVision {
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+
+interface ItemVision {
+  id: number;
+  attributes: ItemAttributesVision;
+}
+
+interface StoreStateVision {
+  dataVision: ItemVision[];
+  setDataVision: (newDataVision: ItemVision[]) => void;
+}
+
+const useStoreVision = create<StoreStateVision>((set) => ({
+  dataVision: [],
+  setDataVision: (newDataVision) => set({ dataVision: newDataVision }),
+}));
+
+const fetchDataVision = async () => {
+  const res = await fetch(`${apiURL}/api/visions`);
+  const result = await res.json();
+  useStoreVision.getState().setDataVision(result.data);
+};
 export {
   useStore,
   fetchData,
@@ -1000,5 +1057,9 @@ export {
   useStoreBottomCities,
   fetchDataBottomCities,
   useStoreDownloadEnergyTransition,
-  fetchDataDownloadEnergyTransition
+  fetchDataDownloadEnergyTransition,
+  useStoreMission,
+  fetchDataMission,
+  useStoreVision,
+  fetchDataVision
 };
