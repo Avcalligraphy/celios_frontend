@@ -3,12 +3,13 @@ import React from 'react'
 import BoxRecent from '../molecules/boxRecent';
 import BoxNews from '../molecules/boxNews';
 import Link from 'next/link';
-import { useStoreNews, useStoreReport } from '@/lib/store';
+import { useStoreNews, useStoreOpEd, useStoreReport } from '@/lib/store';
 
 export default function RecentPublication() {
   const storeData = useStoreReport((state) => state.dataReport);
   // console.log(storeData);
-  const storeDataNews = useStoreNews((state) => state.dataNews);
+  // const storeDataNews = useStoreNews((state) => state.dataNews);
+    const storeDataOpEd = useStoreOpEd((state) => state.dataOpEd);
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -29,7 +30,7 @@ export default function RecentPublication() {
       new Date(b.attributes.createdAt).getTime() -
       new Date(a.attributes.createdAt).getTime()
   );
-  const sortedDataNews = [...storeDataNews].sort(
+  const sortedDataNews = [...storeDataOpEd].sort(
     (a, b) =>
       new Date(b.attributes.createdAt).getTime() -
       new Date(a.attributes.createdAt).getTime()
@@ -95,7 +96,6 @@ export default function RecentPublication() {
                   <BoxNews
                     key={item.id}
                     title={truncateText(item.attributes.title, 7)}
-                    titleIcon={item.attributes.titleIcon}
                     link={item.attributes.link}
                   />
                 ))}

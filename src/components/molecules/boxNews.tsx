@@ -3,11 +3,11 @@ import React from 'react'
 
 interface BoxNewsProps{
   title: string,
-  titleIcon: string,
+  // titleIcon: string,
   link: string,
 
 }
-export default function BoxNews({title, titleIcon, link} : BoxNewsProps) {
+export default function BoxNews({title, link} : BoxNewsProps) {
   return (
     <a
       target="_blank"
@@ -17,9 +17,9 @@ export default function BoxNews({title, titleIcon, link} : BoxNewsProps) {
       <div className="flex justify-between">
         <div className="flex items-center gap-[12px] mb-[8px] ">
           <div className="csm:h-[10px] h-[8px] csm:w-[10px] w-[8px] rounded-full bg-white" />
-          <p className="csm:text-[24px] text-[18px] leading-[100%] tracking-[-2%] text-[#40F4B2] font-semibold ">
+          {/* <p className="csm:text-[24px] text-[18px] leading-[100%] tracking-[-2%] text-[#40F4B2] font-semibold ">
             {titleIcon}
-          </p>
+          </p> */}
         </div>
         <div className=" bg-[#164E63] shadow-lg shadow-black p-[8px] rounded-[8px]  ">
           <Image src="/icons/arrow.png" width={15} height={15} alt="arrow" />

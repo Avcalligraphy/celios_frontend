@@ -35,11 +35,11 @@ export default function AboutCelios() {
             className="csm:w-[269px] w-[200px] h-auto"
           /> */}
           <p className=" csm:text-[24px] text-[18px] cmd:max-w-[903px] max-w-[703px] leading-[150%] mt-[56px] ">
-            <span className="font-bold">Lembaga riset</span> yang bergerak
-            dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik
-            dalam mendorong percepatan inovasi-digitalisasi secara inklusif.
+            <span className="font-bold">CELIOS</span> is a research institution
+            based on independence, quality, and an interdisciplinary approach to
+            fighting against the climate crisis and inequality.
           </p>
-          <Link href='/about-us'>
+          <Link href="/about-us">
             <Button
               text="Learn More"
               bg="bg-[url('/icons/bgButton.png')] mt-[60px] "

@@ -20,7 +20,7 @@ const MenuListUser = [
     link: "/celios-index",
   },
   {
-    name: "Celios Publishing House",
+    name: "CELIOS Publishing House",
     link: "/celios-publishing",
   },
   {

@@ -47,11 +47,30 @@ export default function ContactPage(props: Partial<ContactPageProps>) {
               </div>
               <div className="flex justify-center items-center  csm:mt-[40px] mt-[20px] ">
                 <div className="grid csm:grid-cols-5 grid-cols-2 gap-[21px] ">
-                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-instagram-alt text-[65px] text-white "></i>
-                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-gmail text-[65px] text-white "></i>
-                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-twitter text-[65px] text-white "></i>
-                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-youtube text-[65px] text-white "></i>
-                  <i className=" translate-y-0 hover:translate-y-1 bx bxl-tiktok text-[65px] text-white "></i>
+                  <a
+                    href="https://www.instagram.com/celios_id/"
+                    target="_blank"
+                  >
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-instagram-alt text-[65px] text-white "></i>
+                  </a>
+                  <a href="mailto:admin@celios.co.id" target="_blank">
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-gmail text-[65px] text-white "></i>
+                  </a>
+                  <a href="https://x.com/celios_id" target="_blank">
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-twitter text-[65px] text-white "></i>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UCSB7Kk-s7iKojJiL75SWOhA"
+                    target="_blank"
+                  >
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-youtube text-[65px] text-white "></i>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@celios_thinktank?lang=en"
+                    target="_blank"
+                  >
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-tiktok text-[65px] text-white "></i>
+                  </a>
                 </div>
               </div>
             </div>

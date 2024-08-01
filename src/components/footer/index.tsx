@@ -15,10 +15,10 @@ export default function Footer() {
                 className="csm:w-[75px] h-auto w-[55px] "
               />
               <h1 className=" csm:text-[24px] text-[20px] leading-[120%] text-white max-w-[723px] mt-[15px] ">
-                <span className="font-bold">Lembaga riset</span> yang bergerak
-                dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan
-                publik dalam mendorong percepatan inovasi-digitalisasi secara
-                inklusif.
+                <span className="font-bold">CELIOS</span> is a
+                research institution based on independence, quality, and an
+                interdisciplinary approach to fighting against the climate
+                crisis and inequality.
               </h1>
               <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] mt-[27px] ">
                 Email :{" "}

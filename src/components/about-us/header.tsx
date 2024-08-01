@@ -73,28 +73,80 @@ export default function Header() {
               <h1 className=" bg-gradient-to-t from-[#BDDFCF]  to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold csm:text-[96px] text-[76px] leading-[100%] max-w-[347px] ">
                 Our Mission
               </h1>
-              {storeDataMission.map((item) => (
-                <h1
-                  key={item.id}
-                  className=" csm:text-[30px] text-[24px] cxl:mt-0 mt-[20px] tracking-[2%] font-medium text-white max-w-[873px] "
-                >
-                  {item.attributes.description}
-                </h1>
-              ))}
+              <h1 className=" csm:text-[30px] text-[24px] cxl:mt-0 mt-[20px] tracking-[2%] font-medium text-white max-w-[873px] ">
+                <ol className="list-decimal list-outside pl-[30px] ">
+                  <li>
+                    Engaging in an international network for high-quality
+                    research collaboration on energy transition, sustainable
+                    finance, and restorative economy
+                  </li>
+                  <li>
+                    Amplify the voices of the Indigenous community, workers, and
+                    local communities affected by the mining industry
+                  </li>
+                  <li>
+                    Increase awareness of Community Based Renewable Energy
+                    through research and local collaboration
+                  </li>
+                  <li>
+                    Engage with local government with inclusive and continuous
+                    technical assistance for economic diversification especially
+                    in mining and industrial park area
+                  </li>
+                  <li>
+                    Help strengthen civic space with economic and public policy
+                    research{" "}
+                  </li>
+                  <li>
+                    Provide strategic litigation to ensure a just energy
+                    transition against the false solution
+                  </li>
+                  <li>
+                    Securing a more inclusive future of the digital economy in
+                    Indonesia
+                  </li>
+                </ol>
+              </h1>
             </div>
           </div>
         </div>
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full mt-[52px] cxl:block hidden ">
           <div className=" bg-[#00130D] py-[75px] px-[65px] rounded-[32px] w-full  ">
             <div className=" flex justify-between items-center gap-[50px]">
-              {storeDataMission.map((item) => (
-                <h1
-                  key={item.id}
-                  className=" csm:text-[30px] text-[24px] cxl:mt-0 mt-[20px] tracking-[2%] font-medium text-white max-w-[873px] "
-                >
-                  {item.attributes.description}
-                </h1>
-              ))}
+              <h1 className=" csm:text-[30px] text-[24px] cxl:mt-0 mt-[20px] tracking-[2%] font-medium text-white max-w-[873px] ">
+                <ol className="list-decimal list-outside pl-[30px] ">
+                  <li>
+                    Engaging in an international network for high-quality
+                    research collaboration on energy transition, sustainable
+                    finance, and restorative economy
+                  </li>
+                  <li>
+                    Amplify the voices of the Indigenous community, workers, and
+                    local communities affected by the mining industry
+                  </li>
+                  <li>
+                    Increase awareness of Community Based Renewable Energy
+                    through research and local collaboration
+                  </li>
+                  <li>
+                    Engage with local government with inclusive and continuous
+                    technical assistance for economic diversification especially
+                    in mining and industrial park area
+                  </li>
+                  <li>
+                    Help strengthen civic space with economic and public policy
+                    research{" "}
+                  </li>
+                  <li>
+                    Provide strategic litigation to ensure a just energy
+                    transition against the false solution
+                  </li>
+                  <li>
+                    Securing a more inclusive future of the digital economy in
+                    Indonesia
+                  </li>
+                </ol>
+              </h1>
               <h1 className=" bg-gradient-to-t from-[#BDDFCF]  to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold text-[96px] leading-[100%] max-w-[367px] ">
                 Our Mission
               </h1>
