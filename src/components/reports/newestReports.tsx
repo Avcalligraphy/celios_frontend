@@ -37,7 +37,7 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState<Report[]>(storeData);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 10;
   
 
   useEffect(() => {

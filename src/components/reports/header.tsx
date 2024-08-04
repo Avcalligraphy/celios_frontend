@@ -5,14 +5,18 @@ import { useStoreReport } from "@/lib/store";
 
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
-export default function Header({ storeData }: { storeData: any }) {
+export default function Header({ storeData }: { storeData: any[] }) {
+  // Sorting data by createdAt date in descending order
   const sortedData = [...storeData].sort(
     (a, b) =>
       new Date(b.attributes.createdAt).getTime() -
       new Date(a.attributes.createdAt).getTime()
   );
-  console.log("SortedData: ", sortedData);
-  const latestThree = sortedData.slice(0, 1);
+
+  // Get the latest one item
+  const latestOne = sortedData.slice(0, 1);
+
+  // Function to format date
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
       day: "2-digit",
@@ -21,6 +25,8 @@ export default function Header({ storeData }: { storeData: any }) {
     };
     return new Date(dateString).toLocaleDateString("id-ID", options);
   };
+
+  // Function to truncate text to a certain word limit
   const truncateText = (text: string, limit: number) => {
     const words = text.split(" ");
     if (words.length > limit) {
@@ -28,38 +34,32 @@ export default function Header({ storeData }: { storeData: any }) {
     }
     return text;
   };
+
   return (
-    <div className=" bg-gradient-to-b from-[#031B1F] from-20% to-white to-90% csm:mb-[324px] mb-[160px] ">
-      <div className="w-full bg-[url('/images/background.png')] relative z-10 ">
+    <div className="bg-gradient-to-b from-[#031B1F] from-20% to-white to-90% csm:mb-[324px] mb-[160px]">
+      <div className="w-full bg-[url('/images/background.png')] relative z-10">
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
         </div>
-        {latestThree.map((item) => (
+        {latestOne.map((item) => (
           <div
             key={item.id}
-            className="csm:px-[70px] px-[25px] clxl:flex block justify-between gap-[50px]  csm:pt-[220px] pt-[180px] "
+            className="csm:px-[70px] px-[25px] clxl:flex block justify-between gap-[50px] csm:pt-[220px] pt-[180px]"
           >
             <div
               data-aos="fade-down-right"
-              className=" clxl:mb-0 csm:mb-[50px] mb-[30px] "
+              className="clxl:mb-0 csm:mb-[50px] mb-[30px]"
             >
               <div>
-                <p className="font-semibold csm:text-[24px] text-[18px] text-[#B2B2B2]  ">
+                <p className="font-semibold csm:text-[24px] text-[18px] text-[#B2B2B2]">
                   {formatDate(item.attributes.publishedAt)}
                 </p>
-                <h1 className="bg-gradient-to-r from-[#BDDFCF]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold csm:text-[90px] text-[40px] leading-[100%] tracking-[-4%] clxl:max-w-[905px] max-w-fit ">
+                <h1 className="bg-gradient-to-r from-[#BDDFCF] to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold csm:text-[90px] text-[40px] leading-[100%] tracking-[-4%] clxl:max-w-[905px] max-w-fit">
                   {truncateText(item.attributes.title, 6)}
                 </h1>
               </div>
-              <h1 className="font-semibold csm:text-[24px] text-[18px] clxl:max-w-[817px] max-w-fit text-black text-justify csm:mt-[60px] mt-[30px] ">
-                Jakarta, 25 Januari 2024 – Hasil studi yang dilakukan Yayasan
-                Indonesia CERAH dan Center of Economic and Law Studies (CELIOS)
-                menemukan bahwa penutupan lebih cepat PLTU batu bara yang secara
-                bersamaan digantikan dengan pembangkit listrik berbasis energi
-                terbarukan lebih menguntungkan secara ekonomi. Studi pemodelan
-                dengan skenario tersebut pada PLTU Cirebon-1, PLTU Pelabuhan
-                Ratu, dan PLTU Suralaya, hasilkan produk domestik bruto (PDB)
-                hingga Rp 82,6 triliun.
+              <h1 className="font-semibold csm:text-[24px] text-[18px] clxl:max-w-[817px] max-w-fit text-black text-justify csm:mt-[60px] mt-[30px]">
+                {item.attributes.description[0].children[0].text}
               </h1>
             </div>
             <BoxDesk
