@@ -260,13 +260,26 @@ export default function China() {
               <p className="text-center text-white font-medium csm:text-[32px] text-[22px] max-w-[1161px] ">
                 {item.attributes.description}
               </p>
-              <a
-                download
-                href={apiURL + item.attributes.file.data.attributes.url}
-                className="text-white font-semibold csm:text-[20px] text-[16px] csm:py-[20px] py-[15px] csm:px-[26px] px-[20px] mt-[60px] border-[1px] border-white rounded-[13px] "
-              >
-                Click Here
-              </a>
+              <div className="flex justify-center items-center gap-6 ">
+                {item.attributes.file.data.attributes.url ? (
+                  <a
+                    download
+                    href={apiURL + item.attributes.file.data.attributes.url}
+                    className="text-white font-semibold csm:text-[20px] translate-y-0 hover:translate-y-2 text-[16px] csm:py-[20px] py-[15px] csm:px-[26px] px-[20px] mt-[60px] border-[1px] border-white rounded-[13px] "
+                  >
+                    Click Here
+                  </a>
+                ) : null}
+                {item.attributes.link ? (
+                  <a
+                    target="_blank"
+                    href={item.attributes.link}
+                    className="text-white font-semibold translate-y-0 hover:translate-y-2 csm:text-[20px] text-[16px] csm:py-[20px] py-[15px] csm:px-[26px] px-[20px] mt-[60px] border-[1px] border-white rounded-[13px] "
+                  >
+                    Link
+                  </a>
+                ) : null}
+              </div>
             </div>
           </SwiperSlide>
         ))}

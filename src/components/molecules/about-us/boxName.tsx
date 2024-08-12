@@ -14,13 +14,13 @@ export default function BoxName(props: BoxNameProps) {
   return (
     <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
       <div className=" bg-[#00130D] py-[25px] px-[26px] rounded-[32px] csm:flex block gap-[39px] items-center  ">
-        <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
+        <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] w-fit p-[2px] rounded-[32px] ">
           <div
             style={{
               backgroundImage: `url(${apiURL + image})`,
-              objectFit:'cover'
+              objectFit:'contain'
             }}
-            className=" csm:h-[210px] h-[150px] csm:w-[226px] w-full  rounded-[32px] "
+            className=" h-[210px] w-[226px]  rounded-[32px] "
           >
             {/* <Image
               src="/images/shadowSocial.png"
@@ -31,7 +31,7 @@ export default function BoxName(props: BoxNameProps) {
             /> */}
             <img
               src="/images/shadowSocial.png"
-              className="w-full csm:h-[210px] h-[150px] rounded-[32px] "
+              className="w-full h-[210px] rounded-[32px] "
             />
           </div>
         </div>

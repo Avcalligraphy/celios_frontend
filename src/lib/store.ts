@@ -528,6 +528,7 @@ interface ItemAttributesChinaReportBrief {
   description: string
   image: any
   file: any
+  link:string
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

@@ -106,7 +106,7 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
               image={item.attributes.file.data.attributes.url}
               date={item.attributes.publishedAt}
               link={item.id}
-              documents={item.attributes.document.data}
+              documents={item.attributes.document?.data || null}
             />
           ))}
         </div>

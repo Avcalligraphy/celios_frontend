@@ -81,7 +81,7 @@ export default function BoxReports({title, image, date, link, documents}: BoxRep
             />
           </Link>
 
-          {documents.length > 1 ? (
+          {documents && documents.length > 0 ? (
             <div className="relative w-full clxl:w-[290px]">
               <select
                 className="appearance-none w-full bg-[#454D38] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white py-[20px] sm:text-[18px] text-[16px] pr-[40px]"
@@ -120,14 +120,7 @@ export default function BoxReports({title, image, date, link, documents}: BoxRep
                 </svg>
               </div>
             </div>
-          ) : (
-            <a download href={documents[0]?.attributes.url}>
-              <Button
-                text="Download Report"
-                bg="w-full clxl:w-[290px] bg-[#99C948]"
-              />
-            </a>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
