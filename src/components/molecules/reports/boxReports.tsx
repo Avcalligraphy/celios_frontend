@@ -37,8 +37,8 @@ export default function BoxReports({title, image, date, link, documents}: BoxRep
 
 
   return (
-    <div className="bg-gradient-to-t from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px]">
-      <div className=" bg-[#00130D] py-[27px] px-[27px] rounded-[32px] pb-[44px] clg:w-[712px] w-full min-h-[798px] ">
+    <div className="bg-gradient-to-t from-[#7DD3FC] to-[#FFFFFF] p-[2px] flex justify-around flex-col rounded-[32px] h-fit">
+      <div className=" bg-[#00130D] py-[27px] px-[27px] rounded-[32px] pb-[44px] clg:w-[712px] flex justify-around flex-col w-full h-[798px]  ">
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
           <div
             style={{
@@ -66,7 +66,7 @@ export default function BoxReports({title, image, date, link, documents}: BoxRep
           )}
         </p>
         <p className="font-semibold csm:text-[20px] text-[16px] text-[#B2B2B2] mt-[17px] ">
-          {formatDate(date)}
+          {date}
         </p>
         <div className="cmd:flex block items-center justify-between csm:mt-[53px] mt-[30px] ">
           <Link

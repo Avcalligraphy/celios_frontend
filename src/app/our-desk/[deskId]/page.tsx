@@ -123,7 +123,7 @@ export default function CeliosDesk({params}: {
                   key={item.id}
                   title={item.attributes.title}
                   image={item.attributes.file.data.attributes.url}
-                  date={item.attributes.publishedAt}
+                  date={item.attributes.date || null}
                   link={item.id}
                   documents={item.attributes.document?.data || null}
                 />

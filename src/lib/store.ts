@@ -37,6 +37,7 @@ const fetchData = async () => {
 interface ItemAttributesReport {
   title: string;
   description: any;
+  date:any;
   file: any;
   document: any;
   our_desks: any;
@@ -75,6 +76,7 @@ interface ItemAttributesReportId {
   // Tambahkan atribut lain sesuai kebutuhan
   title: string;
   description: any[];
+  date: any;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
