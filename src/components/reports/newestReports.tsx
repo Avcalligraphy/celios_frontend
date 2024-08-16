@@ -41,14 +41,24 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
   const itemsPerPage = 10;
   
 
-  useEffect(() => {
-    const lowerCaseQuery = query.toLowerCase();
-    const filtered = storeData.filter((item) =>
-      item.attributes.title.toLowerCase().includes(lowerCaseQuery)
-    );
-    setFilteredData(filtered);
-    setCurrentPage(1); // Reset to first page on search
-  }, [query, storeData]);
+ useEffect(() => {
+   const lowerCaseQuery = query.toLowerCase();
+
+   // Filter data berdasarkan query
+   const filtered = storeData.filter((item) =>
+     item.attributes.title.toLowerCase().includes(lowerCaseQuery)
+   );
+
+   // Urutkan data berdasarkan date secara descending
+   const sorted = filtered.sort((a, b) => {
+     const dateA = new Date(a.attributes.date).getTime();
+     const dateB = new Date(b.attributes.date).getTime();
+     return dateB - dateA;
+   });
+
+   setFilteredData(sorted);
+   setCurrentPage(1); // Reset ke halaman pertama setelah melakukan pencarian
+ }, [query, storeData]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -62,7 +72,8 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
     startIndex + itemsPerPage
   );
 
-  console.log("data paginate", paginatedData);
+  console.log(paginatedData)
+
 
   return (
     <div className="w-full csm:px-[70px] px-[25px] mb-[230px] ">

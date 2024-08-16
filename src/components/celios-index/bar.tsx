@@ -30,25 +30,30 @@ export default function BarChart() {
     (state) => state.dataIndexTransition
   );
 
-  useEffect(() => {
-    if (storeTransitions.length > 0) {
-      const mappedCategories = storeTransitions.map(
-        (item: any) => item.attributes.title
-      );
-      const mappedData = storeTransitions.map((item: any) =>
-        parseInt(item.attributes.value, 10)
-      );
+useEffect(() => {
+  if (storeTransitions.length > 0) {
+    // Sort storeTransitions by title alphabetically
+    const sortedTransitions = storeTransitions.sort((a: any, b: any) =>
+      a.attributes.title.localeCompare(b.attributes.title)
+    );
 
-      setCategories(mappedCategories);
-      setData(mappedData);
-    }
-  }, [storeTransitions]);
+    const mappedCategories = sortedTransitions.map(
+      (item: any) => item.attributes.title
+    );
+    const mappedData = sortedTransitions.map((item: any) =>
+      parseInt(item.attributes.value, 10)
+    );
+
+    setCategories(mappedCategories);
+    setData(mappedData);
+  }
+}, [storeTransitions]);
 
   const chartData = {
     labels: categories,
     datasets: [
       {
-        label: "Indonesia Energy Transition",
+        label: "Index",
         data: data,
         backgroundColor: "#4EE0B9",
       },
@@ -96,7 +101,7 @@ export default function BarChart() {
   };
 
   return (
-    <div className="relative w-full h-96">
+    <div className="relative w-full h-[1584px]">
       {" "}
       {/* relative parent container with defined height */}
       <Bar data={chartData} options={options} />

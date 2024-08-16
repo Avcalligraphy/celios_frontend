@@ -27,8 +27,8 @@ export default function RecentPublication() {
   };
   const sortedData = [...storeData].sort(
     (a, b) =>
-      new Date(b.attributes.createdAt).getTime() -
-      new Date(a.attributes.createdAt).getTime()
+      new Date(b.attributes.date).getTime() -
+      new Date(a.attributes.date).getTime()
   );
   const sortedDataNews = [...storeDataOpEd].sort(
     (a, b) =>
@@ -61,7 +61,7 @@ export default function RecentPublication() {
               <BoxRecent
                 key={item.id}
                 title={truncateText(item.attributes.title, 7)}
-                date={formatDate(item.attributes.publishedAt)}
+                date={item.attributes.date || null}
                 image={item.attributes.file.data.attributes.url}
                 link={item.id}
               />

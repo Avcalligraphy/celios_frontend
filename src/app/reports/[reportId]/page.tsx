@@ -58,9 +58,7 @@ export default function ReportBlog({
             </div>
             <div className=" h-[3px] w-full bg-[#CEE3BE] mt-[11px] " />
             <p className=" font-semibold text-[#B2B2B2] csm:text-[24px] text-[20px] mt-[36px] ">
-              {storeReportId
-                ? formatDate(storeReportId?.attributes.publishedAt)
-                : null}
+              {storeReportId ? storeReportId?.attributes.date : null}
             </p>
             <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold csm:text-[48px] text-[40px] mb-8   ">
               {storeReportId?.attributes.title}

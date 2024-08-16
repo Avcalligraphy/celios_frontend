@@ -63,7 +63,9 @@ const useStoreReport = create<StoreStateReport>((set) => ({
 }));
 
 const fetchDataReport = async () => {
-  const res = await fetch(`${apiURL}/api/blog-reports?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/blog-reports?populate=*&pagination[pageSize]=1000`
+  );
   const result = await res.json();
   useStoreReport.getState().setDataReport(result.data);
 };
@@ -648,7 +650,9 @@ const useStoreIndexTransition = create<StoreStateIndexTransition>((set) => ({
 }));
 
 const fetchDataIndexTransition = async () => {
-  const res = await fetch(`${apiURL}/api/index-category-transitions`);
+  const res = await fetch(
+    `${apiURL}/api/index-category-transitions?pagination[pageSize]=1000`
+  );
   const result = await res.json();
   useStoreIndexTransition.getState().setDataIndexTransition(result.data);
 };
@@ -678,7 +682,9 @@ const useStoreIndexCategory = create<StoreStateIndexCategory>((set) => ({
 }));
 
 const fetchDataIndexCategory = async () => {
-  const res = await fetch(`${apiURL}/api/index-categories`);
+  const res = await fetch(
+    `${apiURL}/api/index-categories?pagination[pageSize]=1000`
+  );
   const result = await res.json();
   useStoreIndexCategory.getState().setDataIndexCategory(result.data);
 };

@@ -9,9 +9,11 @@ export default function Header({ storeData }: { storeData: any[] }) {
   // Sorting data by createdAt date in descending order
   const sortedData = [...storeData].sort(
     (a, b) =>
-      new Date(b.attributes.createdAt).getTime() -
-      new Date(a.attributes.createdAt).getTime()
+      new Date(b.attributes.date).getTime() -
+      new Date(a.attributes.date).getTime()
   );
+
+  // console.log("Sorted Data", storeData);
 
   // Get the latest one item
   const latestOne = sortedData.slice(0, 1);
@@ -52,7 +54,7 @@ export default function Header({ storeData }: { storeData: any[] }) {
             >
               <div>
                 <p className="font-semibold csm:text-[24px] text-[18px] text-[#B2B2B2]">
-                  {formatDate(item.attributes.publishedAt)}
+                  {item.attributes.date || null}
                 </p>
                 <h1 className="bg-gradient-to-r from-[#BDDFCF] to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold csm:text-[90px] text-[40px] leading-[100%] tracking-[-4%] clxl:max-w-[905px] max-w-fit">
                   {truncateText(item.attributes.title, 6)}

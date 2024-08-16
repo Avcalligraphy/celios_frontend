@@ -57,6 +57,12 @@ export default function Header() {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
   }, []);
+  const handleDownload = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const url = event.target.value;
+    if (url) {
+      window.location.href = apiURL + url;
+    }
+  };
 
   const storeCategory = useStoreIndexCategory(
     (state) => state.dataIndexCategory
@@ -273,12 +279,42 @@ export default function Header() {
                   <Radar data={dataTriangle} options={option} />
                 </div>
               </div>
+              <div className="flex flex-col mt-7 ">
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">CEI:</span> Clean
+                  Energy Initiative (Inisiatif Energi Bersih)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">GC:</span>{" "}
+                  Government Capacity (Kapasitas Pemerintahan)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">ER:</span> Economic
+                  Resilience (Ketahanan Ekonomi)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">ETRI:</span> Energy
+                  Transition Readiness Index (Indeks Kesiapan Transisi Energi)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">PCC:</span> Per
+                  Capita Consumption (Konsumsi Per Kapita)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">WLI:</span>{" "}
+                  Women-Led Initiative (Initiatif yang Dipimpin Perempuan)
+                </h1>
+                <h1 className= "csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">CEV:</span>{" "}
+                  Climate-Energy Vulnerability (Kerentanan Iklim dan Energi)
+                </h1>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-center mt-[83px] cxl:px-[143px] cmd:px-[100px] csm:px-[60px] px-[30px]">
+      {/* <div className="flex justify-center mt-[83px] cxl:px-[143px] cmd:px-[100px] csm:px-[60px] px-[30px]">
         <div className="grid cxl:grid-cols-3 csm:grid-cols-2 grid-cols-1 clxl:gap-[150px] cxxl:gap-[100px] cxl:gap-[60px] gap-[40px]">
           {cleanEnergyData ? (
             <div>
@@ -384,29 +420,59 @@ export default function Header() {
             </div>
           ) : null}
         </div>
-      </div>
+      </div> */}
 
       <div className="csm:px-[143px] px-[30px] mt-[73px] mb-[271px]">
-        {storeDownload
-          ? storeDownload.map((item) => (
-              <a
+        {storeDownload?.map(
+          (item) =>
+            item.attributes.downloadReport?.data?.length > 0 && (
+              <div
                 key={item.id}
-                href={
-                  apiURL + item.attributes.downloadReport.data.attributes.url
-                }
-                download
+                className="relative w-full clxl:w-[290px] mt-[20px]"
               >
-                {/* <Button
-                  text="Download Report"
-                  bg="bg-[url('/icons/bgButton.png')]"
-                /> */}
-                <button className="translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 csm:px-[65px] px-[30px] rounded-[13px] text-white py-[20px] font-semibold bg-[url('/icons/bgButton.png')] ">
-                  Download Report
-                </button>
-              </a>
-            ))
-          : null}
+                <select
+                  className="appearance-none w-full bg-[url('/icons/bgButton.png')] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white py-[20px] sm:text-[18px] text-[16px] pr-[40px]"
+                  onChange={handleDownload}
+                >
+                  <option
+                    className="font-semibold text-black bg-white sm:text-[18px] text-[16px]"
+                    value=""
+                  >
+                    Select a document
+                  </option>
+                  {item.attributes.downloadReport.data.map(
+                    (doc: any, index: number) => (
+                      <option
+                        className="font-semibold bg-white text-black sm:text-[18px] text-[16px]"
+                        key={index}
+                        value={doc.attributes.url}
+                      >
+                        {doc.attributes.name}
+                      </option>
+                    )
+                  )}
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            )
+        )}
       </div>
     </>
   );
 }
+

@@ -40,7 +40,7 @@ export default function BoxDesk({
         />
       </div>
       <div className="clg:flex block items-center justify-between mt-[32px] gap-[50px]">
-        {documents.length > 1 ? (
+        {documents?.length > 1 ? (
           <div className="relative w-full clxl:w-[290px]">
             <select
               className="appearance-none w-full bg-[#99C948] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white py-[20px] sm:text-[18px] text-[16px] pr-[40px]"
@@ -80,7 +80,14 @@ export default function BoxDesk({
             </div>
           </div>
         ) : (
-          <a download href={documents[0]?.attributes.url}>
+          <a
+            download
+            href={
+              documents && documents.length > 0
+                ? documents[0].attributes.url
+                : null
+            }
+          >
             <Button
               text="Download Report"
               bg="w-full clxl:w-[290px] bg-[#99C948]"
