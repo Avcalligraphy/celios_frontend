@@ -40,7 +40,8 @@ export default function OurTeam() {
     "Head of Research Group",
     "Director",
     "Researcher",
-    "Staff",
+    "Social Media",
+    "Finance Manager",
   ];
 
   const groupByCategory = (

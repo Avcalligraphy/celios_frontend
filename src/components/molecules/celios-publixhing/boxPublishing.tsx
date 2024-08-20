@@ -80,7 +80,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
                   alt="tokped"
                 />
               </a>
-              <a target="_blank" href="https://www.instagram.com/celios_id/">
+              {/* <a target="_blank" href="https://www.instagram.com/celios_id/">
                 <img
                   src="/icons/instagram.png"
                   className="w-auto cxl:h-[90px] csm:h-[76px] h-[56px] "
@@ -97,7 +97,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
                   className="w-auto cxl:h-[88px] csm:h-[76px] h-[56px] "
                   alt="whatsapp"
                 />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
