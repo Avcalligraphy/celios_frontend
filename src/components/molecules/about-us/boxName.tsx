@@ -20,7 +20,7 @@ export default function BoxName(props: BoxNameProps) {
               backgroundImage: `url(${apiURL + image})`,
               objectFit:'contain'
             }}
-            className=" h-[210px] w-[226px]  rounded-[32px] "
+            className=" h-[225px] w-[225px]  rounded-[32px] "
           >
             {/* <Image
               src="/images/shadowSocial.png"

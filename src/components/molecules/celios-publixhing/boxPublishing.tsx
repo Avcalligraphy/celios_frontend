@@ -65,7 +65,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
             <h1 className=" text-[#CFE3BE] cxl:text-[32px] csm:text-[30px] text-[26px] font-semibold  ">
               👜 Link Pembelian
             </h1>
-            <div className=" grid cmd:grid-cols-4 csm:grid-cols-3 grid-cols-2 gap-[30px]  mt-[27px] ">
+            <div className=" grid cmd:grid-cols-4 csm:grid-cols-3 grid-cols-2 gap-[10px]  mt-[27px] ">
               <a target="_blank" href={linkShoppe}>
                 <img
                   src="/icons/shoppe.png"

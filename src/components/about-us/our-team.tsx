@@ -41,7 +41,7 @@ export default function OurTeam() {
     "Director",
     "Researcher",
     "Social Media",
-    "Finance Manager",
+    "Finance",
   ];
 
   const groupByCategory = (

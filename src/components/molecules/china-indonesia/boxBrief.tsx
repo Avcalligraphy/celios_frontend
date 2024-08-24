@@ -42,7 +42,7 @@ export default function BoxBrief({ id, title, date, description }: BoxBriefProps
             key={index}
             className="font-medium csm:text-[20px] text-[16px] csm:max-w-[378px] max-w-[250px] text-[#BDDFCF] text-justify csm:leading-[100%] leading-[120%] mt-[26px]"
           >
-            {truncateText(child.text, 16)}
+            {truncateText(child.text, 6)}
           </p>
         ))}
       <Link

@@ -68,7 +68,7 @@ export default function Header({ storeData }: { storeData: any[] }) {
               image={apiURL + item.attributes.file.data.attributes.url}
               title={item.attributes.title}
               link={item.id}
-              documents={item.attributes.document.data}
+              documents={item.attributes.document?.data || null}
             />
           </div>
         ))}

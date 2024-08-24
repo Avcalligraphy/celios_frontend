@@ -40,7 +40,7 @@ export default function Footer() {
                 className=" csm:w-[327px] w-[307px] h-auto "
               />
               <h1 className=" font-bold text-white csm:text-[24px] text-[20px] leading-[150%] my-[13px] ">
-                Ikuti Kami
+                Follow Us
               </h1>
               <div className="flex items-center gap-[35px] mb-[15px] ">
                 <i className="bx bxl-instagram-alt text-[65px] text-white "></i>
