@@ -21,14 +21,14 @@ export default function BoxDesk(props: BoxDeskProps) {
         /> */}
         <img
           src="/icons/bgTextDesk.png"
-          className="w-auto csm:h-[81px] h-[40px] "
+          className="w-auto cmd:h-[61px] h-[40px] "
         />
-        <h1 className=" csm:mt-[-85px] mt-[-45px] font-bold cmd:text-[84px] csm:text-[64px] text-[36px] text-[#021D1C] leading-[100%] tracking-[-4%] max-w-[451px] ">
+        <h1 className=" cmd:mt-[-60px] csm:mt-[-40px] mt-[-45px] font-bold cmd:text-[60px] navMobile:text-[64px] cxl:text-[54px] text-[36px] text-[#021D1C] leading-[100%] tracking-[-4%] max-w-[451px] ">
           {title}
         </h1>
       </div>
       <div>
-        <h1 className=" cmd:text-[30px] csm:text-[26px] text-[20px] tracking-[2%] font-medium text-black max-w-[873px] cxl:mt-0 mt-[20px] ">
+        <h1 className=" navMobile:text-[24px] cxl:text-[20px] csm:text-[20px] text-[18px] tracking-[2%] font-medium text-black max-w-[873px] cxl:mt-0 mt-[20px] ">
           {description}
         </h1>
         <Link

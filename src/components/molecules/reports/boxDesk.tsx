@@ -28,29 +28,29 @@ export default function BoxDesk({
   return (
     <div
       data-aos="fade-down"
-      className="bg-[#00130D] py-[23px] csm:px-[46px] px-[20px] rounded-[32px] pb-[44px]"
+      className="bg-[#00130D] flex justify-around flex-col py-[23px] navMobile:px-[46px] cxl:px-[23px] px-[23px] rounded-[32px] pb-[44px]"
     >
       <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px]">
         <div
           style={{
             backgroundImage: `url(${encodedImage})`,
-            objectFit: "cover",
+            backgroundSize: "cover",
           }}
-          className="clg:h-[367px] csm:h-[267px] h-[180px] object-cover rounded-[32px]"
+          className="cxxl:h-[367px]  clg:h-[207px] csm:h-[267px] cssm:h-[207px] csssm:h-[160px] h-[140px] bg-cover rounded-[32px]"
         />
       </div>
-      <div className="clg:flex block items-center justify-between mt-[32px] gap-[50px]">
+      <div className="clxl:flex block items-center justify-between mt-[32px] gap-[50px]">
         {documents && documents.length > 0 ? (
           <div className="relative w-full clxl:w-[290px]">
             <select
-              className="appearance-none w-full bg-[#99C948] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white py-[20px] sm:text-[18px] text-[16px] pr-[40px]"
+              className="appearance-none w-full bg-[#99C948] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white navMobile:py-[20px] cxl:py-[18px] py-[16px] csm:text-[16px] text-[13px] pr-[40px]"
               onChange={handleDownload}
             >
               <option
                 className="font-semibold text-black bg-white sm:text-[18px] text-[16px]"
                 value=""
               >
-                Select a document
+                Read Full Report
               </option>
               {documents.map((doc, index) => (
                 <option
@@ -83,13 +83,12 @@ export default function BoxDesk({
         <Link
           href={{
             pathname: `/reports/${title}`,
-            query: { link: link },
+            query: { link: link, id: "feature" },
           }}
         >
-          <Button
-            text="Read More"
-            bg="w-full clxl:w-[290px] bg-[#454D38] clg:mt-0 mt-[20px]"
-          />
+          <button className="w-full text-left clxl:w-[290px] bg-[#454D38] clxl:mt-0 mt-[20px] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1  px-[30px] rounded-[13px] text-white navMobile:py-[20px] cxl:py-[18px] py-[16px]  font-semibold csm:text-[16px] text-[13px] ">
+            Read Summary
+          </button>
         </Link>
       </div>
     </div>

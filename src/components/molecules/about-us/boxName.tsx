@@ -13,14 +13,14 @@ export default function BoxName(props: BoxNameProps) {
   // console.log(image)
   return (
     <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] ">
-      <div className=" bg-[#00130D] py-[25px] px-[26px] rounded-[32px] csm:flex block gap-[39px] items-center  ">
+      <div className=" bg-[#00130D] py-[25px] px-[26px] rounded-[32px] csm:flex-row flex flex-col   gap-[39px] items-center  ">
         <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] w-fit p-[2px] rounded-[32px] ">
           <div
             style={{
               backgroundImage: `url(${apiURL + image})`,
-              objectFit:'contain'
+              backgroundSize: "cover",
             }}
-            className=" h-[225px] w-[225px]  rounded-[32px] "
+            className=" h-[180px] w-[180px]  rounded-[32px] "
           >
             {/* <Image
               src="/images/shadowSocial.png"
@@ -29,17 +29,17 @@ export default function BoxName(props: BoxNameProps) {
               height={210}
               className=" rounded-[32px] "
             /> */}
-            <img
+            {/* <img
               src="/images/shadowSocial.png"
               className="w-full h-[210px] rounded-[32px] "
-            />
+            /> */}
           </div>
         </div>
-        <div className=" csm:mt-0 mt-[20px] ">
-          <h1 className=" max-w-[282px] text-white csm:text-[32px] text-[24px] tracking-[-6%]  ">
+        <div className=" csm:mt-0 mt-0">
+          <h1 className=" max-w-[282px] text-white csm:text-left text-center cxl:text-[24px] csm:text-[24px] text-[20px] tracking-[-6%]  ">
             {name}
           </h1>
-          <p className=" text-[#B2B2B2] font-medium csm:text-[20px] text-[18px] csm:mt-[20px] mt-[15px]  ">
+          <p className=" text-[#B2B2B2] font-medium csm:text-[16px] text-[14px] csm:mt-[20px] mt-[15px]  csm:text-left text-center  ">
             {position}
           </p>
         </div>

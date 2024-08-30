@@ -28,7 +28,9 @@ const useStore = create<StoreState>((set) => ({
 }));
 
 const fetchData = async () => {
-  const res = await fetch(`${apiURL}/api/our-desks`);
+  const res = await fetch(
+    `${apiURL}/api/our-desks?pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStore.getState().setData(result.data);
 };
@@ -64,7 +66,7 @@ const useStoreReport = create<StoreStateReport>((set) => ({
 
 const fetchDataReport = async () => {
   const res = await fetch(
-    `${apiURL}/api/blog-reports?populate=*&pagination[pageSize]=1000`
+    `${apiURL}/api/blog-reports?populate=*&pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreReport.getState().setDataReport(result.data);
@@ -72,6 +74,39 @@ const fetchDataReport = async () => {
 
 
 
+// fetch feature report
+interface ItemAttributesFeatureReport {
+  title: string;
+  description: any;
+  date:any;
+  file: any;
+  document: any;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+
+interface ItemFeatureReport {
+  id: number;
+  attributes: ItemAttributesFeatureReport;
+}
+
+interface StoreStateFeatureReport {
+  dataFeatureReport: ItemFeatureReport[];
+  setDataFeatureReport: (newDataFeatureReport: ItemFeatureReport[]) => void;
+}
+
+const useStoreFeatureReport = create<StoreStateFeatureReport>((set) => ({
+  dataFeatureReport: [],
+  setDataFeatureReport: (newDataFeatureReport) => set({ dataFeatureReport: newDataFeatureReport }),
+}));
+
+const fetchDataFeatureReport = async () => {
+  const res = await fetch(`${apiURL}/api/feature-reports?populate=*`);
+  const result = await res.json();
+  useStoreFeatureReport.getState().setDataFeatureReport(result.data);
+};
 // fetch blog report id
 
 interface ItemAttributesReportId {
@@ -133,7 +168,9 @@ const useStoreNews = create<StoreStateNews>((set) => ({
 }));
 
 const fetchDataNews = async () => {
-  const res = await fetch(`${apiURL}/api/recent-news?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/recent-news?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreNews.getState().setDataNews(result.data);
 };
@@ -181,7 +218,7 @@ const useStoreSocial = create<StoreStateSocial>((set) => ({
 
 const fetchDataSocial = async () => {
   const res = await fetch(
-    `${apiURL}/api/social-medias?populate=*`
+    `${apiURL}/api/social-medias?populate=*&pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreSocial.getState().setDataSocial(result.data);
@@ -214,9 +251,7 @@ const useStoreOpEd = create<StoreStateOpEd>((set) => ({
 }));
 
 const fetchDataOpEd = async () => {
-  const res = await fetch(
-    `${apiURL}/api/op-eds`
-  );
+  const res = await fetch(`${apiURL}/api/op-eds?pagination[pageSize]=1000000`);
   const result = await res.json();
   useStoreOpEd.getState().setDataOpEd(result.data);
 };
@@ -249,7 +284,7 @@ const useStoreMedia = create<StoreStateMedia>((set) => ({
 
 const fetchDataMedia = async () => {
   const res = await fetch(
-    `${apiURL}/api/media-comentars`
+    `${apiURL}/api/media-comentars?pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreMedia.getState().setDataMedia(result.data);
@@ -282,7 +317,7 @@ const useStoreAbout = create<StoreStateAbout>((set) => ({
 
 const fetchDataAbout = async () => {
   const res = await fetch(
-    `${apiURL}/api/about-uses?populate=*`
+    `${apiURL}/api/about-uses?populate=*&pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreAbout.getState().setDataAbout(result.data);
@@ -318,7 +353,7 @@ const useStoreOurTeam = create<StoreStateOurTeam>((set) => ({
 
 const fetchDataOurTeam = async () => {
   const res = await fetch(
-    `${apiURL}/api/our-teams?populate=*`
+    `${apiURL}/api/our-teams?populate=*&pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreOurTeam.getState().setDataOurTeam(result.data);
@@ -360,7 +395,9 @@ const useStorePubllish = create<StoreStatePublish>((set) => ({
 }));
 
 const fetchDataPublish = async () => {
-  const res = await fetch(`${apiURL}/api/publish-houses?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/publish-houses?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStorePubllish.getState().setDataPublish(result.data);
 };
@@ -393,7 +430,9 @@ const useStoreTraining = create<StoreStateTraining>((set) => ({
 }));
 
 const fetchDataTraining = async () => {
-  const res = await fetch(`${apiURL}/api/trainings?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/trainings?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreTraining.getState().setDataTraining(result.data);
 };
@@ -423,7 +462,9 @@ const useStoreChinaArticle = create<StoreStateChinaArticle>((set) => ({
 }));
 
 const fetchDataChinaArticle = async () => {
-  const res = await fetch(`${apiURL}/api/china-articles`);
+  const res = await fetch(
+    `${apiURL}/api/china-articles?pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaArticle.getState().setDataChinaArticle(result.data);
 };
@@ -454,7 +495,9 @@ const useStoreChinaMedia = create<StoreStateChinaMedia>((set) => ({
 }));
 
 const fetchDataChinaMedia = async () => {
-  const res = await fetch(`${apiURL}/api/china-medias`);
+  const res = await fetch(
+    `${apiURL}/api/china-medias?pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaMedia.getState().setDataChinaMedia(result.data);
 };
@@ -463,6 +506,7 @@ const fetchDataChinaMedia = async () => {
 // fetch china monthly brief
 interface ItemAttributesChinaBrief {
   title: string;
+  date: any;
   description: any[];
   createdAt: string;
   updatedAt: string;
@@ -486,7 +530,9 @@ const useStoreChinaBrief = create<StoreStateChinaBrief>((set) => ({
 }));
 
 const fetchDataChinaBrief = async () => {
-  const res = await fetch(`${apiURL}/api/china-monthly-briefs`);
+  const res = await fetch(
+    `${apiURL}/api/china-monthly-briefs?pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaBrief.getState().setDataChinaBrief(result.data);
 };
@@ -556,7 +602,9 @@ const useStoreChinaReportBrief = create<StoreStateReportChinaBrief>((set) => ({
 }));
 
 const fetchDataChinaReportBrief = async () => {
-  const res = await fetch(`${apiURL}/api/report-brief-books?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/report-brief-books?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaReportBrief.getState().setDataChinaReportBrief(result.data);
 };
@@ -587,7 +635,9 @@ const useStoreChinaEvent = create<StoreStateChinaEvent>((set) => ({
 }));
 
 const fetchDataChinaEvent = async () => {
-  const res = await fetch(`${apiURL}/api/china-events?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/china-events?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaEvent.getState().setDataChinaEvent(result.data);
 };
@@ -618,7 +668,9 @@ const useStoreChinaLibrary = create<StoreStateChinaLibrary>((set) => ({
 }));
 
 const fetchDataChinaLibrary = async () => {
-  const res = await fetch(`${apiURL}/api/china-libraries`);
+  const res = await fetch(
+    `${apiURL}/api/china-libraries?pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreChinaLibrary.getState().setDataChinaLibrary(result.data);
 };
@@ -651,7 +703,7 @@ const useStoreIndexTransition = create<StoreStateIndexTransition>((set) => ({
 
 const fetchDataIndexTransition = async () => {
   const res = await fetch(
-    `${apiURL}/api/index-category-transitions?pagination[pageSize]=1000`
+    `${apiURL}/api/index-category-transitions?pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreIndexTransition.getState().setDataIndexTransition(result.data);
@@ -683,7 +735,7 @@ const useStoreIndexCategory = create<StoreStateIndexCategory>((set) => ({
 
 const fetchDataIndexCategory = async () => {
   const res = await fetch(
-    `${apiURL}/api/index-categories?pagination[pageSize]=1000`
+    `${apiURL}/api/index-categories?pagination[pageSize]=1000000`
   );
   const result = await res.json();
   useStoreIndexCategory.getState().setDataIndexCategory(result.data);
@@ -722,208 +774,12 @@ const useStoreIndexRadar = create<StoreStateIndexRadar>((set) => ({
 }));
 
 const fetchDataIndexRadar = async () => {
-  const res = await fetch(`${apiURL}/api/index-radars?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/index-radars?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreIndexRadar.getState().setDataIndexRadar(result.data);
 };
-
-
-// fetch data clean Energy 
-interface ItemAttributesCleanEnergy {
-  indicator: string;
-  skor: string;
-  retataNasional: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemCleanEnergy {
-  id: number;
-  attributes: ItemAttributesCleanEnergy;
-}
-
-interface StoreStateCleanEnergy {
-  dataCleanEnergy: ItemCleanEnergy[];
-  setDataCleanEnergy: (newDataCleanEnergy: ItemCleanEnergy[]) => void;
-}
-
-const useStoreCleanEnergy = create<StoreStateCleanEnergy>((set) => ({
-  dataCleanEnergy: [],
-  setDataCleanEnergy: (newDataCleanEnergy) => set({ dataCleanEnergy: newDataCleanEnergy }),
-}));
-
-const fetchDataCleanEnergy = async () => {
-  const res = await fetch(`${apiURL}/api/clean-energies?populate=*`);
-  const result = await res.json();
-  useStoreCleanEnergy.getState().setDataCleanEnergy(result.data);
-};
-
-
-// fetch data economic resilience 
-interface ItemAttributesEconomicResilience {
-  indicator: string;
-  skor: string;
-  retataNasional: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemEconomicResilience {
-  id: number;
-  attributes: ItemAttributesEconomicResilience;
-}
-
-interface StoreStateEconomicResilience {
-  dataEconomicResilience: ItemEconomicResilience[];
-  setDataEconomicResilience: (newDataEconomicResilience: ItemEconomicResilience[]) => void;
-}
-
-const useStoreEconomicResilience = create<StoreStateEconomicResilience>((set) => ({
-  dataEconomicResilience: [],
-  setDataEconomicResilience: (newDataEconomicResilience) => set({ dataEconomicResilience: newDataEconomicResilience }),
-}));
-
-const fetchDataEconomicResilience = async () => {
-  const res = await fetch(`${apiURL}/api/economic-resiliences?populate=*`);
-  const result = await res.json();
-  useStoreEconomicResilience.getState().setDataEconomicResilience(result.data);
-};
-
-
-// fetch data goverment capacity 
-interface ItemAttributesGovermentCapacity {
-  indicator: string;
-  skor: string;
-  retataNasional: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemGovermentCapacity {
-  id: number;
-  attributes: ItemAttributesGovermentCapacity;
-}
-
-interface StoreStateGovermentCapacity {
-  dataGovermentCapacity: ItemGovermentCapacity[];
-  setDataGovermentCapacity: (newDataGovermentCapacity: ItemGovermentCapacity[]) => void;
-}
-
-const useStoreGovermentCapacity = create<StoreStateGovermentCapacity>((set) => ({
-  dataGovermentCapacity: [],
-  setDataGovermentCapacity: (newDataGovermentCapacity) => set({ dataGovermentCapacity: newDataGovermentCapacity }),
-}));
-
-const fetchDataGovermentCapacity = async () => {
-  const res = await fetch(`${apiURL}/api/goverment-capacities?populate=*`);
-  const result = await res.json();
-  useStoreGovermentCapacity.getState().setDataGovermentCapacity(result.data);
-};
-
-
-
-// fetch data climate vulnerability
-interface ItemAttributesClimateVulnerability {
-  indicator: string;
-  value: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemClimateVulnerability {
-  id: number;
-  attributes: ItemAttributesClimateVulnerability;
-}
-
-interface StoreStateClimateVulnerability {
-  dataClimateVulnerability: ItemClimateVulnerability[];
-  setDataClimateVulnerability: (newDataClimateVulnerability: ItemClimateVulnerability[]) => void;
-}
-
-const useStoreClimateVulnerability = create<StoreStateClimateVulnerability>((set) => ({
-  dataClimateVulnerability: [],
-  setDataClimateVulnerability: (newDataClimateVulnerability) => set({ dataClimateVulnerability: newDataClimateVulnerability }),
-}));
-
-const fetchDataClimateVulnerability = async () => {
-  const res = await fetch(`${apiURL}/api/climate-vulnerabilities?populate=*`);
-  const result = await res.json();
-  useStoreClimateVulnerability.getState().setDataClimateVulnerability(result.data);
-};
-
-
-// fetch data top city
-interface ItemAttributesTopCities {
-  city: string;
-  value: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemTopCities {
-  id: number;
-  attributes: ItemAttributesTopCities;
-}
-
-interface StoreStateTopCities {
-  dataTopCities: ItemTopCities[];
-  setDataTopCities: (newDataTopCities: ItemTopCities[]) => void;
-}
-
-const useStoreTopCities = create<StoreStateTopCities>((set) => ({
-  dataTopCities: [],
-  setDataTopCities: (newDataTopCities) => set({ dataTopCities: newDataTopCities }),
-}));
-
-const fetchDataTopCities = async () => {
-  const res = await fetch(`${apiURL}/api/top-cities?populate=*`);
-  const result = await res.json();
-  useStoreTopCities.getState().setDataTopCities(result.data);
-};
-
-
-// fetch data bottom city
-interface ItemAttributesBottomCities {
-  city: string;
-  value: string;
-  index_categories: any;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-interface ItemBottomCities {
-  id: number;
-  attributes: ItemAttributesBottomCities;
-}
-
-interface StoreStateBottomCities {
-  dataBottomCities: ItemBottomCities[];
-  setDataBottomCities: (newDataBottomCities: ItemBottomCities[]) => void;
-}
-
-const useStoreBottomCities = create<StoreStateBottomCities>((set) => ({
-  dataBottomCities: [],
-  setDataBottomCities: (newDataBottomCities) => set({ dataBottomCities: newDataBottomCities }),
-}));
-
-const fetchDataBottomCities = async () => {
-  const res = await fetch(`${apiURL}/api/bottom-cities?populate=*`);
-  const result = await res.json();
-  useStoreBottomCities.getState().setDataBottomCities(result.data);
-};
-
-
 // fetch data downloadReport energy transition
 interface ItemAttributesDownloadEnergyTransition {
   downloadReport: any;
@@ -948,7 +804,9 @@ const useStoreDownloadEnergyTransition = create<StoreStateDownloadEnergyTransiti
 }));
 
 const fetchDataDownloadEnergyTransition = async () => {
-  const res = await fetch(`${apiURL}/api/report-energy-transitions?populate=*`);
+  const res = await fetch(
+    `${apiURL}/api/report-energy-transitions?populate=*&pagination[pageSize]=1000000`
+  );
   const result = await res.json();
   useStoreDownloadEnergyTransition.getState().setDataDownloadEnergyTransition(result.data);
 };
@@ -1053,22 +911,12 @@ export {
   fetchDataIndexCategory,
   useStoreIndexRadar,
   fetchDataIndexRadar,
-  useStoreCleanEnergy,
-  fetchDataCleanEnergy,
-  useStoreEconomicResilience,
-  fetchDataEconomicResilience,
-  useStoreGovermentCapacity,
-  fetchDataGovermentCapacity,
-  useStoreClimateVulnerability,
-  fetchDataClimateVulnerability,
-  useStoreTopCities,
-  fetchDataTopCities,
-  useStoreBottomCities,
-  fetchDataBottomCities,
   useStoreDownloadEnergyTransition,
   fetchDataDownloadEnergyTransition,
   useStoreMission,
   fetchDataMission,
   useStoreVision,
-  fetchDataVision
+  fetchDataVision,
+  fetchDataFeatureReport,
+  useStoreFeatureReport
 };

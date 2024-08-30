@@ -86,19 +86,18 @@ export default function NewsMedia() {
             <Navbar />
           </div>
           <div className="csm:px-[70px] px-[25px] csm:pt-[220px] pt-[180px]">
-            <div className="flex items-center justify-between mb-[27px]">
+            <div className="csm:flex-row flex flex-col justify-between mb-[27px]">
               <div>
-                <Image
+                <img
                   src="/icons/bgTextSocial.png"
-                  width={174.48}
-                  height={20.36}
                   alt="bg-text-social"
+                  className="h-auto cmd:w-[160px] w-[140px] "
                 />
-                <h1 className="text-white cmd:text-[54px] csm:text-[44px] text-[34px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-60px] csm:mt-[-50px] mt-[-40px]">
+                <h1 className="text-white cmd:text-[40px] csm:text-[30px] text-[26px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-50px] csm:mt-[-40px] mt-[-40px]">
                   Op-Ed
                 </h1>
               </div>
-              <div className="container-inputContainer">
+              <div className="container-inputContainer flex justify-end ">
                 <div className="container-input">
                   <div className="search-box">
                     <button className="btn-search">
@@ -132,13 +131,13 @@ export default function NewsMedia() {
               className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full"
             >
               <div className="bg-[#00130D] csm:py-[75px] py-[37px] csm:px-[65px] px-[32px] rounded-[32px] w-full">
-                <div className="block">
+                <div className="flex flex-col cmd:gap-2 gap-1 ">
                   {filteredOpEd.map((item) => (
                     <div key={item.id}>
                       <a
                         target="_blank"
                         href={item.attributes.link}
-                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
+                        className="text-[16px] cmd:text-[20px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
                       >
                         {item.attributes.title}
                       </a>
@@ -149,13 +148,12 @@ export default function NewsMedia() {
             </div>
             <div className="flex items-center justify-between mb-[27px] mt-[120px]">
               <div>
-                <Image
+                <img
                   src="/icons/bgTextSocial.png"
-                  width={174.48}
-                  height={20.36}
                   alt="bg-text-social"
+                  className="h-auto cmd:w-[160px] w-[140px] "
                 />
-                <h1 className="text-white cmd:text-[54px] csm:text-[44px] text-[34px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-60px] csm:mt-[-50px] mt-[-40px]">
+                <h1 className="text-black cmd:text-[40px] csm:text-[30px] text-[26px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-50px] csm:mt-[-40px] mt-[-40px]">
                   Media Commentaries
                 </h1>
               </div>
@@ -167,13 +165,13 @@ export default function NewsMedia() {
               className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] w-full"
             >
               <div className="bg-[#00130D] csm:py-[64px] py-[44px] csm:px-[65px] px-[32px] rounded-[32px] w-full">
-                <div className="block">
+                <div className="flex flex-col cmd:gap-2 gap-1 ">
                   {filteredMedia.map((item) => (
                     <div key={item.id}>
                       <a
                         target="_blank"
                         href={item.attributes.link}
-                        className="text-[18px] csm:text-[25px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
+                        className="text-[16px] cmd:text-[20px] font-medium text-[#BDDFCF] hover:text-[#7CB937] "
                       >
                         {item.attributes.title}
                       </a>

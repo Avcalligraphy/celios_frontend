@@ -37,7 +37,7 @@ export default function Header() {
         </div>
         <div
           data-aos="fade-up-right"
-          className="flex flex-col gap-[88px] csm:px-[93px] px-[25px] csm:pt-[197px] pt-[150px]"
+          className="flex flex-col gap-[88px] navMobile:px-[163px] cxl:px-[100px] px-[25px] csm:pt-[197px] pt-[150px]"
         >
           {sortedData.map((item) => {
             // console.log(item.attributes.title);

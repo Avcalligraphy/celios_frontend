@@ -5,7 +5,7 @@ import Link from 'next/link.js';
 
 export default function AboutCelios() {
   return (
-    <div className=" flex justify-center  csm:mb-[363px] mb-[263px] csm:mx-[0px] mx-[15px] ">
+    <div className=" flex justify-center  csm:mb-[303px] mb-[263px] csm:mx-[0px] mx-[15px] ">
       <div data-aos="flip-left">
         <div>
           {/* <Image
@@ -16,14 +16,14 @@ export default function AboutCelios() {
           className=""
         /> */}
           <img
-            src="/icons/titleCOntent.png"
-            className=" w-auto csm:h-[33px] h-[28px] "
+            src="/icons/titleContent.png"
+            className=" w-auto cmd:h-[33px] csm:h-[20px] h-[18px] "
           />
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-50px]  ">
+          <h1 className=" font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-55px] csm:mt-[-45px] mt-[-38px]  ">
             About CELIOS
           </h1>
         </div>
-        <div className=" bg-[url('/icons/frameAboutCelios.png')]  cxxl:w-[1195px] clg:w-[895px] cmd:w-[695px] csm:w-[495px] w-[325px] object-cover rounded-[32px] mt-[33px] py-[71px] pl-[80px] ">
+        <div className=" bg-[url('/icons/frameAboutCelios.png')] bg-cover  cxxl:w-[1195px] clg:w-[895px] cmd:w-[695px] csm:w-[495px] w-[325px] object-cover rounded-[32px] mt-[33px] py-[71px] csm:pl-[80px] pl-[40px] ">
           {/* <Image
             src="/icons/logoHorizon.png"
             alt="log-horizon"
@@ -34,7 +34,7 @@ export default function AboutCelios() {
             src="/icons/logoHorizon.png"
             className="csm:w-[269px] w-[200px] h-auto"
           /> */}
-          <p className=" csm:text-[24px] text-[18px] cmd:max-w-[903px] max-w-[703px] leading-[150%] mt-[56px] ">
+          <p className=" cmd:text-[24px] csm:text-[18px] text-[16px] cmd:max-w-[903px] max-w-[703px] leading-[150%] cmd:mt-[56px] mt-[36px] ">
             <span className="font-bold">CELIOS</span> is a research institution
             based on independence, quality, and an interdisciplinary approach to
             fighting against the climate crisis and inequality.

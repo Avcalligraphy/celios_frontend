@@ -21,8 +21,8 @@ export default function OurDesk() {
   return (
     <>
       <Header />
-      <div className="bg-gradient-to-t from-[#041C20] to-[#ffff] w-full h-[552px]">
-        <div className=" bg-[url('/images/background.png')] w-full h-[552px] " />
+      <div className="bg-gradient-to-t from-[#041C20] to-[#ffff] w-full h-[100px]">
+        <div className=" bg-[url('/images/background.png')] w-full h-[100px] " />
       </div>
       <Footer />
     </>

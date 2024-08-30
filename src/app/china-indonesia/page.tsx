@@ -10,10 +10,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { fetchDataChinaArticle, fetchDataChinaBrief, fetchDataChinaEvent, fetchDataChinaMedia, fetchDataChinaReportBrief, useStoreChinaArticle, useStoreChinaBrief, useStoreChinaEvent, useStoreChinaMedia, useStoreChinaReportBrief } from "@/lib/store";
+import { fetchDataChinaArticle, fetchDataChinaBrief, fetchDataChinaEvent, fetchDataChinaMedia, fetchDataChinaReportBrief, fetchDataReport, useStoreChinaArticle, useStoreChinaBrief, useStoreChinaEvent, useStoreChinaMedia, useStoreChinaReportBrief, useStoreReport } from "@/lib/store";
 import Loader from "@/components/loader/loader";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
 export default function China() {
@@ -24,15 +24,16 @@ export default function China() {
     fetchDataChinaMedia()
     fetchDataChinaBrief()
     fetchDataChinaReportBrief()
+    fetchDataReport()
     fetchDataChinaEvent().then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
   }, []);
-  const storeDataArticle = useStoreChinaArticle((state) => state.dataChinaArticle)
+  const storeDataArticle = useStoreChinaArticle((state) => state.dataChinaArticle).slice(0, 5);
   const storeDataBrief = useStoreChinaBrief((state) => state.dataChinaBrief)
   const storeDataMedia = useStoreChinaMedia(
     (state) => state.dataChinaMedia
-  );
+  ).slice(0, 5);
   const storeDataEvent = useStoreChinaEvent((state) => state.dataChinaEvent);
   const storeDataReportBrief = useStoreChinaReportBrief((state) => state.dataChinaReportBrief)
   const searchParams = useSearchParams();
@@ -40,6 +41,17 @@ export default function China() {
   const encodedImage = (image: string) => {
     image ? image?.replace(/ /g, "%20") : null;
   };
+  const storeDataReport = useStoreReport((state) => state.dataReport);
+  const filteredData = storeDataReport.filter((item) =>
+    item.attributes.our_desks.data.some(
+      (desk: any) => desk.attributes.title === "China-Indonesia Relations"
+    )
+  );
+  const sorted = storeDataBrief.sort((a, b) => {
+    const dateA = new Date(a.attributes.date).getTime();
+    const dateB = new Date(b.attributes.date).getTime();
+    return dateB - dateA;
+  });
 
 
   if (isLoading) {
@@ -49,8 +61,8 @@ export default function China() {
   
   return (
     <>
-      <div className="bg-[url('/images/china-indonesia.png')]  w-full  min-h-[842px] ">
-        <div className="bg-[url('/images/background.png')] object-cover w-full min-h-[842px] relative z-10 ">
+      <div className="bg-[url('/images/china-indonesia.png')] bg-cover  w-full  csm:min-h-[842px] min-h-[602px] ">
+        <div className="bg-[url('/images/background.png')] bg-cover w-full csm:min-h-[842px] min-h-[602px] relative z-10 ">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
           </div>
@@ -68,31 +80,59 @@ export default function China() {
               /> */}
               <img
                 src="/icons/bgText.png"
-                className="w-auto csm:h-[81px] h-[60px] "
+                className="w-auto cxl:h-[71px] cmd:h-[60px] h-[50px] "
               />
-              <h1 className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%] tracking-[-4%] text-white max-w-[804px] mb-[25px] ">
+              <h1 className="font-bold navMobile:text-[67px] cxl:text-[60px] cmd:text-[57px] csm:text-[40px] text-[37px] cmd:mt-[-70px] mt-[-46px] leading-[100%] tracking-[-4%] text-white max-w-[804px] mb-[25px] ">
                 China Indonesia Relations
               </h1>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
-              <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[1200px] ">
+              <h1 className=" navMobile:text-[24px]  csm:text-[20px] text-[16px] tracking-[2%] font-semibold text-white max-w-[1200px] cxxl:mt-0 mt-5 ">
                 {name}
               </h1>
             </Suspense>
           </div>
         </div>
       </div>
+      <div className="w-full csm:px-[70px] px-[25px] mt-[100px] ">
+        <div>
+          <img
+            src="/icons/titleContent.png"
+            alt="title-content"
+            className="csm:w-[200px] w-[160px] h-auto"
+          />
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
+            Newest Reports
+          </h1>
+        </div>
+        <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
+          <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
+            {filteredData.map((item) => {
+              // console.log(item.attributes.description);
+              return (
+                <BoxReports
+                  key={item.id}
+                  title={item.attributes.title}
+                  image={item.attributes.file.data.attributes.url}
+                  date={item.attributes.date || null}
+                  desc={item.attributes.description[0].children[0].text}
+                  link={item.id}
+                  documents={item.attributes.document?.data || null}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
       <div className="w-full cxl:flex block justify-between gap-[50px] csm:px-[70px] px-[25px] mt-[100px] ">
         <div>
           <div>
-            <Image
-              src="/icons/titleCOntent.png"
+            <img
+              src="/icons/titleContent.png"
               alt="title-content"
-              width={240}
-              height={33}
+              className="csm:w-[200px] w-[160px] h-auto"
             />
-
-            <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+            <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
               Articles
             </h1>
           </div>
@@ -104,13 +144,13 @@ export default function China() {
               <div className="block">
                 {storeDataArticle.map((item) => (
                   <ul
-                    className="list-disc text-[20px] font-medium text-[#BDDFCF] "
+                    className="list-disc cmd:text-[20px] text-[16px] font-medium text-[#BDDFCF] "
                     key={item.id}
                   >
                     <li>
                       <a
                         target="_blank"
-                        className=""
+                        className="hover:text-[#7CB937]"
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -137,14 +177,12 @@ export default function China() {
         </div>
         <div>
           <div className="cxl:mt-0 mt-[80px]">
-            <Image
-              src="/icons/titleCOntent.png"
+            <img
+              src="/icons/titleContent.png"
               alt="title-content"
-              width={240}
-              height={33}
+              className="csm:w-[200px] w-[160px] h-auto"
             />
-
-            <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+            <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
               Media Comentaries
             </h1>
           </div>
@@ -156,13 +194,13 @@ export default function China() {
               <div className="block">
                 {storeDataMedia.map((item) => (
                   <ul
-                    className="list-disc text-[20px] font-medium text-[#BDDFCF] "
+                    className="list-disc cmd:text-[20px] text-[16px] font-medium text-[#BDDFCF] "
                     key={item.id}
                   >
                     <li>
                       <a
                         target="_blank"
-                        className=""
+                        className="hover:text-[#7CB937]"
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -198,14 +236,12 @@ export default function China() {
       </div>
       <div className="csm:px-[70px] px-[5px] mb-[271px]">
         <div>
-          <Image
-            src="/icons/titleCOntent.png"
+          <img
+            src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
             China-Indonesia Monthly Brief
           </h1>
         </div>
@@ -213,12 +249,12 @@ export default function China() {
           data-aos="fade-right"
           className="grid clxl:grid-cols-3 cxl:grid-cols-2 grid-cols-1 gap-7 mt-[60px] "
         >
-          {storeDataBrief.map((item) => (
+          {sorted.map((item) => (
             <BoxBrief
               key={item.id}
               id={item.id}
               title={item.attributes.title}
-              date={item.attributes.publishedAt}
+              date={item.attributes.date || null}
               description={item.attributes.description}
             />
           ))}
@@ -226,15 +262,13 @@ export default function China() {
       </div>
       <div className="csm:px-[70px] px-[25px]">
         <div>
-          <Image
-            src="/icons/titleCOntent.png"
+          <img
+            src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
-            Reports, Brief, and Books
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
+            Report, Brief, and Books
           </h1>
         </div>
       </div>
@@ -242,7 +276,11 @@ export default function China() {
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
       >
         {storeDataReportBrief.map((item) => (
           <SwiperSlide key={item.id}>
@@ -251,13 +289,14 @@ export default function China() {
                 backgroundImage: `url(${
                   apiURL + item.attributes.image.data.attributes.url
                 })`,
+                backgroundSize: "cover",
               }}
-              className="flex flex-col justify-center items-center object-cover h-[644px] mt-[60px]  w-full"
+              className="flex flex-col justify-center items-center object-cover clg:h-[644px] csm:h-[544px] h-[444px] mt-[60px]  w-full"
             >
-              <h1 className="text-center text-white font-bold csm:text-[64px] text-[44px] leading-[100%] max-w-[1571px] mb-[40px]  ">
+              <h1 className="text-center text-white font-bold clg:text-[40px] csm:text-[34px] text-[28px] leading-[100%] max-w-[1571px] mb-[40px]  ">
                 {item.attributes.title}
               </h1>
-              <p className="text-center text-white font-medium csm:text-[32px] text-[22px] max-w-[1161px] ">
+              <p className="text-center text-white font-medium clg:text-[26px] csm:text-[20px] text-[16px] max-w-[1161px] ">
                 {item.attributes.description}
               </p>
               <div className="flex justify-center items-center gap-6 ">
@@ -286,14 +325,12 @@ export default function China() {
       </Swiper>
       <div className="csm:px-[70px] px-[25px] mt-[60px]">
         <div>
-          <Image
-            src="/icons/titleCOntent.png"
+          <img
+            src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
             Events
           </h1>
         </div>
@@ -328,22 +365,20 @@ export default function China() {
           ))}
         </Swiper>
         <div className="mt-[60px]">
-          <Image
-            src="/icons/titleCOntent.png"
+          <img
+            src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
             We have worked and collaborated with:
           </h1>
         </div>
         <div className="grid cxxl:grid-cols-4 cmd:grid-cols-3 csm:grid-cols-2 grid-cols-1  clg:gap-[100px] gap-[50px] mt-[40px] mb-[210px] ">
-          <img src="/sponshor/1.png" className="h-[86px] w-auto " />
-          <img src="/sponshor/2.png" className="h-[86px] w-auto " />
-          <img src="/sponshor/3.png" className="h-[86px] w-auto " />
-          <img src="/sponshor/4.png" className="h-[86px] w-auto " />
+          <img src="/sponshor/1.png" className="h-[76px] w-auto " />
+          <img src="/sponshor/2.png" className="h-[76px] w-auto " />
+          <img src="/sponshor/3.png" className="h-[76px] w-auto " />
+          <img src="/sponshor/4.png" className="h-[76px] w-auto " />
         </div>
       </div>
       <Footer />

@@ -77,19 +77,18 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
 
   return (
     <div className="w-full csm:px-[70px] px-[25px] mb-[230px] ">
-      <div className="flex justify-between items-center">
+      <div className="csm:flex block justify-between items-center">
         <div>
-          <Image
+          <img
             src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-          <h1 className="font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
             Newest Reports
           </h1>
         </div>
-        <div className=" flex-row gap-[45px] items-center">
+        <div className="justify-end flex flex-row gap-[45px] items-center">
           <div className="container-inputContainer border-black">
             <div className="container-input border-black">
               <div className="search-box border-black">
@@ -118,6 +117,7 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
               image={item.attributes.file.data.attributes.url}
               date={item.attributes.date || null}
               link={item.id}
+              desc={item.attributes.description[0].children[0].text}
               documents={item.attributes.document?.data || null}
             />
           ))}

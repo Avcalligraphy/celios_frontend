@@ -101,7 +101,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                         <li>
                           <a
                             target="_blank"
-                            className=" text-[20px] csm:text-[25px]"
+                            className=" hover:text-[#7CB937]"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}
@@ -118,7 +118,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                         <li>
                           <a
                             target="_blank"
-                            className=" text-[20px] csm:text-[25px]"
+                            className=" hover:text-[#7CB937]"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}
@@ -127,7 +127,7 @@ export default function ChinaItem({ params }: { params: { chinaId: string } }) {
                       </ul>
                     ))
                   : storeDataBrief && (
-                      <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium cmd:text-[22px] csm:text-[22px] text-[18px] text-white mt-[30px]">
+                      <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] list-disc cmd:text-[20px] text-[16px] font-medium csm:text-[22px]  text-white mt-[30px]">
                         <BlocksRenderer
                           content={storeDataBrief.attributes.description || []}
                         />

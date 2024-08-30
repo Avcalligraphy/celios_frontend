@@ -3,7 +3,7 @@ import React from 'react'
 import BoxRecent from '../molecules/boxRecent';
 import BoxNews from '../molecules/boxNews';
 import Link from 'next/link';
-import { useStoreNews, useStoreOpEd, useStoreReport } from '@/lib/store';
+import { useStoreOpEd, useStoreReport } from '@/lib/store';
 
 export default function RecentPublication() {
   const storeData = useStoreReport((state) => state.dataReport);
@@ -49,14 +49,11 @@ export default function RecentPublication() {
             height={33}
             className="ml-[140px]"
           /> */}
-            <h1 className="font-bold csm:text-[54px] text-[34px] tracking-[-4%] csm:leading-[140%] leading-[120%] clg:max-w-[481px] max-w-[330px]  clg:text-center text-left mb-[45px]  ">
+            <h1 className="font-bold cmd:text-[40px] csm:text-[34px] text-[34px] tracking-[-4%] csm:leading-[140%] leading-[120%] clg:max-w-[380px] max-w-[330px]  clg:text-center text-left mb-[45px]  ">
               Recent Publications
             </h1>
           </div>
-          <div
-
-            className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 gap-[45px] "
-          >
+          <div className="grid clxl:grid-cols-3 navMobile:grid-cols-2 cxl:grid-cols-2 grid-cols-1 gap-[45px] ">
             {latestThree.map((item) => (
               <BoxRecent
                 key={item.id}
@@ -83,19 +80,17 @@ export default function RecentPublication() {
                 src="/icons/bgTextSocial.png"
                 className=" h-[20.36px] w-auto "
               />
-              <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] csm:text-[54px] text-[34px] csm:mt-[-60px] mt-[-40px]   ">
+              <h1 className="text-black  font-bold tracking-[-2%] leading-[100%] cmd::text-[40px] csm:text-[34px] text-[34px] cmd:mt-[-42px] csm:mt-[-40px] mt-[-40px]   ">
                 Recent News
               </h1>
-              <h1 className="text-black mt-2 text-[20px] font-semibold ">
+              <h1 className="text-black mt-2 cmd:text-[18px] text-[16px] font-semibold ">
                 CELIOS Op-Ed and Commentaries
               </h1>
-              <div
-                className="grid clxl:grid-cols-3 navMobile:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[80px] mt-[40px] "
-              >
+              <div className="grid clxl:grid-cols-3 navMobile:grid-cols-2 clg:grid-cols-2 grid-cols-1 csm:gap-[57px] gap-[37px] csm:mt-[60px] mt-[40px] ">
                 {latestThreeNews.map((item) => (
                   <BoxNews
                     key={item.id}
-                    title={truncateText(item.attributes.title, 7)}
+                    title={truncateText(item.attributes.title, 4)}
                     link={item.attributes.link}
                   />
                 ))}
@@ -104,13 +99,12 @@ export default function RecentPublication() {
                 href="/news-media"
                 className="flex justify-end items-center gap-[18px] my-[56px] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 "
               >
-                <h1 className=" font-semibold text-black leading-[100%] tracking-[-2%] ">
+                <h1 className=" text-[20px] font-semibold  text-white leading-[100%] tracking-[-2%] ">
                   See More
                 </h1>
-                <Image
+                <img
                   src="/icons/arrowButton.png"
-                  height={40}
-                  width={40}
+                  className="cmd:w-[35px] csm:w-[30px] w-[30px] h-auto "
                   alt="arrow-buttons"
                 />
               </Link>

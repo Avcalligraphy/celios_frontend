@@ -46,21 +46,21 @@ export default function Header({ storeData }: { storeData: any[] }) {
         {latestOne.map((item) => (
           <div
             key={item.id}
-            className="csm:px-[70px] px-[25px] clxl:flex block justify-between gap-[50px] csm:pt-[220px] pt-[180px]"
+            className="csm:px-[70px] px-[25px] flex cxl:flex-row flex-col justify-between gap-[50px] csm:pt-[220px] pt-[180px]"
           >
             <div
               data-aos="fade-down-right"
               className="clxl:mb-0 csm:mb-[50px] mb-[30px]"
             >
               <div>
-                <p className="font-semibold csm:text-[24px] text-[18px] text-[#B2B2B2]">
+                <p className="font-semibold csm:text-[20px] text-[18px] text-[#B2B2B2]">
                   {item.attributes.date || null}
                 </p>
-                <h1 className="bg-gradient-to-r from-[#BDDFCF] to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold csm:text-[90px] text-[40px] leading-[100%] tracking-[-4%] clxl:max-w-[905px] max-w-fit">
+                <h1 className="bg-gradient-to-r from-[#BDDFCF] to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold navMobile:text-[67px] cxl:text-[60px] cmd:text-[57px] csm:text-[40px] text-[37px] leading-[100%] tracking-[-4%] clxl:max-w-[905px] cxl:max-w-[705px] max-w-fit">
                   {truncateText(item.attributes.title, 6)}
                 </h1>
               </div>
-              <h1 className="font-semibold csm:text-[24px] text-[18px] clxl:max-w-[817px] max-w-fit text-black text-justify csm:mt-[60px] mt-[30px]">
+              <h1 className="font-semibold navMobile:text-[20px] cxl:text-[18px] text-[16px] clxl:max-w-[817px] cxl:max-w-[705px] max-w-fit cxl:text-black text-white text-justify csm:mt-[60px] mt-[30px]">
                 {item.attributes.description[0].children[0].text}
               </h1>
             </div>

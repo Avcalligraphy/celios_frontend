@@ -39,13 +39,13 @@ export default function DeskContent() {
     <div className="flex justify-center">
       <div
         data-aos="fade-up-right"
-        className="mt-[-90px] mb-[362px] gap-[36px] w-full cxxl:px-[180px] cxl:px-[120px] clg:px-[80px] px-[20px]  "
+        className="mt-[-70px] mb-[302px] gap-[36px] w-full cxxl:px-[260px] cxl:px-[120px] clg:px-[80px] px-[20px]  "
       >
         <Swiper
           slidesPerView={1}
           spaceBetween={90}
           autoplay={{
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           pagination={false}
@@ -60,8 +60,8 @@ export default function DeskContent() {
               spaceBetween: 320,
             },
             1646: {
-              slidesPerView: 3,
-              spaceBetween: 320,
+              slidesPerView: 2,
+              spaceBetween: 10,
             },
           }}
         >

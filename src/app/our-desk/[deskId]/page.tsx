@@ -71,10 +71,11 @@ export default function CeliosDesk({params}: {
       <div
         style={{
           backgroundImage: `url(${encodeURI(getImageName(params.deskId))})`,
+          backgroundSize: "cover",
         }}
-        className=" w-full  min-h-[842px] "
+        className=" w-full csm:min-h-[842px] min-h-[602px] "
       >
-        <div className="bg-[url('/images/background.png')] object-cover w-full min-h-[842px] relative z-10 ">
+        <div className="bg-[url('/images/background.png')] bg-cover w-full min-h-[842px] relative z-10 ">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
           </div>
@@ -89,9 +90,9 @@ export default function CeliosDesk({params}: {
               /> */}
               <img
                 src="/icons/bgText.png"
-                className="w-auto csm:h-[81px] h-[60px] "
+                className="w-auto cxl:h-[71px] cmd:h-[60px] h-[50px] "
               />
-              <h1 className="font-bold csm:text-[87px] text-[67px] csm:mt-[-90px] mt-[-56px] leading-[100%] tracking-[-4%] text-white max-w-[404px] ">
+              <h1 className="font-bold navMobile:text-[67px] cxl:text-[60px] cmd:text-[57px] csm:text-[40px] text-[37px] cmd:mt-[-70px] mt-[-46px] leading-[100%]  tracking-[-4%] text-white max-w-[300px]   ">
                 {params.deskId
                   .split("-")
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -100,7 +101,7 @@ export default function CeliosDesk({params}: {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-              <h1 className=" text-[30px] tracking-[2%] font-semibold text-white max-w-[870px] ">
+              <h1 className=" navMobile:text-[24px]  csm:text-[20px] text-[16px] tracking-[2%] font-semibold text-white max-w-[870px] cxxl:mt-0 mt-5 ">
                 {name}
               </h1>
             </Suspense>
@@ -109,14 +110,12 @@ export default function CeliosDesk({params}: {
       </div>
       <div className="w-full csm:px-[70px] px-[25px] mt-[100px] ">
         <div>
-          <Image
-            src="/icons/titleCOntent.png"
+          <img
+            src="/icons/titleContent.png"
             alt="title-content"
-            width={240}
-            height={33}
+            className="csm:w-[200px] w-[160px] h-auto"
           />
-
-          <h1 className=" font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%] csm:mt-[-70px] mt-[-35px] ">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
             Newest Reports
           </h1>
         </div>
@@ -130,6 +129,7 @@ export default function CeliosDesk({params}: {
                   title={item.attributes.title}
                   image={item.attributes.file.data.attributes.url}
                   date={item.attributes.date || null}
+                  desc={item.attributes.description[0].children[0].text}
                   link={item.id}
                   documents={item.attributes.document?.data || null}
                 />

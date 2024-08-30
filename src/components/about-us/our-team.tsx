@@ -83,13 +83,13 @@ export default function OurTeam() {
 
   return (
     <>
-      <div className="mt-[277px] csm:px-[70px] px-[20px] ">
+      <div className="csm:mt-[277px] mt-[100px] csm:px-[70px] px-[20px] ">
         <div>
-          <h1 className="font-bold csm:text-[54px] text-[34px] leading-[140%] tracking-[-2%]">
+          <h1 className="font-bold cmd:text-[40px] csm:text-[34px] text-[26px] leading-[140%] tracking-[-2%]">
             Our Teams
           </h1>
           <div className="flex justify-center">
-            <div className="csm:mt-[149px] mt-[74px] grid grid-cols-1 gap-[40px]">
+            <div className="csm:mt-[149px] mt-[54px] grid grid-cols-1 gap-[40px]">
               {sortedCategories.map((category) => (
                 <OurTeamBoxName title={category} key={category} count={1}>
                   {groupedData[category].map((item: TeamMember) => (
@@ -106,8 +106,8 @@ export default function OurTeam() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-t from-[#041C20] to-[#ffff] w-full h-[552px]">
-        <div className="bg-[url('/images/background.png')] w-full h-[552px]"></div>
+      <div className="bg-gradient-to-t from-[#041C20] to-[#ffff] w-full h-[252px]">
+        <div className="bg-[url('/images/background.png')] w-full h-[252px]"></div>
       </div>
     </>
   );

@@ -29,18 +29,18 @@ export default function BoxBrief({ id, title, date, description }: BoxBriefProps
   };
 
   return (
-    <div className="bg-[url('/icons/bgBoxContent.png')] csm:w-[536px] w-[346px] h-[342px] flex flex-col py-[30px] px-[32px] rounded-[32px] object-cover">
+    <div className="bg-[url('/icons/bgBoxContent.png')] csm:w-[536px] w-[346px] h-[342px] flex justify-around flex-col py-[30px] px-[32px] rounded-[32px] bg-cover">
       <h1 className="bg-gradient-to-r from-[#BDDFCF] to-[#50E2BB] inline-block text-transparent bg-clip-text font-bold csm:text-[24px] text-[18px] my-[12px] leading-[100%] underline">
         China-Indonesia Monthly Brief: {title}
       </h1>
       <p className="font-medium text-[16px] text-[#C4C4C4] mt-[13px]">
-        {formatDate(date)}
+        {date}
       </p>
       {firstItem &&
         firstItem.children.map((child: any, index: number) => (
           <p
             key={index}
-            className="font-medium csm:text-[20px] text-[16px] csm:max-w-[378px] max-w-[250px] text-[#BDDFCF] text-justify csm:leading-[100%] leading-[120%] mt-[26px]"
+            className="font-medium csm:text-[20px] text-[16px] max-w-fit text-[#BDDFCF] csm:leading-[100%] leading-[120%] mt-[26px]"
           >
             {truncateText(child.text, 6)}
           </p>

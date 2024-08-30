@@ -37,25 +37,25 @@ export default function Navbar() {
   return (
     <>
       <div
-        className="navMobile:flex hidden justify-between items-center px-[76px] py-[28px]"
+        className="navMobile:flex hidden justify-between items-center px-[76px] py-[22px]"
         style={{ background: topbarBackground, backdropFilter: topBlur }}
       >
         <Link href="/">
-          <Image src="/icons/logo.png" width={75} height={116} alt="logo" />
+          <Image src="/icons/logo.png" width={67} height={108} alt="logo" />
         </Link>
-        <div className="grid grid-cols-7 gap-[5px]">
+        <div className="flex flex-row clxl:gap-[100px] cllxl:gap-[80px] gap-[80px] ">
           {MenuListUser.map((item, index) => (
             <div
               key={index}
               className={
                 item.link === pathname
-                  ? `bg-[url('/icons/bgButtonNavbar.png')] px-[20px] py-[12px] rounded-[8px]  flex justify-center items-center`
+                  ? `bg-[url('/icons/bgButtonNavbar.png')] w-fit px-[40px] py-[12px] rounded-[8px]  flex justify-center items-center`
                   : "flex justify-center items-center"
               }
             >
               <Link
                 href={item.link}
-                className="font-medium text-white hover:text-[#99C948] text-[22px]"
+                className="font-medium text-white hover:text-[#99C948] text-[18px]"
               >
                 {item.name}
               </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
         style={{ background: topbarBackground, backdropFilter: topBlur }}
       >
         <div
-          className="flex flex-col max-w-screen-xl px-4 pt-[38px] mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 2xl:px-[76px] "
+          className="flex flex-col max-w-screen-xl px-4 pt-[38px] mx-auto md:items-center md:justify-between  "
           style={{
             background: open ? `rgba(0, 0, 0, 0.8)` : `transparent`,
             backdropFilter: open ? "blur(20px)" : "none",
@@ -79,7 +79,7 @@ export default function Navbar() {
               <img
                 src="/icons/logo.png"
                 alt="logo"
-                className="cmd:w-[75px] h-auto w-[55px] "
+                className="cmd:w-[60px] h-auto w-[55px] "
               />
             </Link>
             <button

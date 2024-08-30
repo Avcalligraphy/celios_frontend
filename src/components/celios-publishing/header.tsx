@@ -9,7 +9,7 @@ export default function Header() {
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState(storeDataPublish);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     const lowerCaseQuery = query.toLowerCase();
@@ -38,7 +38,7 @@ export default function Header() {
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
         </div>
-        <div className="cmd:px-[96px] csm:px-[66px] px-[26px] pt-[280px]">
+        <div className="cmd:px-[96px] csm:px-[66px] px-[26px]  pt-[180px] ">
           <div className="flex items-center justify-end mb-[27px]">
             <div className="container-inputContainer">
               <div className="container-input">
@@ -61,7 +61,7 @@ export default function Header() {
             data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine"
-            className="flex flex-col gap-[116px] pt-[100px] justify-center items-center"
+            className="flex flex-col gap-[116px] csm:pt-[100px] pt-[60px] justify-center items-center"
           >
             {paginatedData.map((item) => (
               <BoxPublishing

@@ -3,11 +3,16 @@
 import Button from "@/components/Button.tsx";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { fetchDataReportId, useStoreReportId } from "@/lib/store";
+import {
+  fetchDataFeatureReport,
+  fetchDataReportId,
+  useStoreFeatureReport,
+  useStoreReportId,
+} from "@/lib/store";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
-import {BlocksRenderer} from "@strapi/blocks-react-renderer";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Loader from "@/components/loader/loader";
 
 export default function ReportBlog({
@@ -15,69 +20,126 @@ export default function ReportBlog({
 }: {
   params: { reportId: string };
 }) {
-    const pathname = usePathname();
-    const [isLoading, setIsLoading] = React.useState(true);
-    const searchParams = useSearchParams();
-    const link = searchParams.get("link");
-    useEffect(() => {
-      fetchDataReportId(link).then(() => {
-        setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
+  const pathname = usePathname();
+  const [isLoading, setIsLoading] = React.useState(true);
+  const searchParams = useSearchParams();
+  const link = searchParams.get("link");
+  const id = searchParams.get("id");
+
+  // Store data
+  const storeDataFeatureReport = useStoreFeatureReport(
+    (state) => state.dataFeatureReport
+  );
+  const storeReportId = useStoreReportId((state) => state.dataReportId);
+
+  // Fetch data based on the ID
+  useEffect(() => {
+    if (id === "feature") {
+      fetchDataFeatureReport().then(() => {
+        setIsLoading(false); // Set isLoading to false after fetching feature report data
       });
-    }, [link])
-
-    const storeReportId = useStoreReportId((state) => state.dataReportId)
-    const formatDate = (dateString: string): string => {
-      const options: Intl.DateTimeFormatOptions = {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      };
-      return new Date(dateString).toLocaleDateString("id-ID", options);
-    };
-
-    if (isLoading) {
-      return <Loader />; // Tampilkan loading jika masih fetching data
+    } else {
+      fetchDataReportId(link).then(() => {
+        setIsLoading(false); // Set isLoading to false after fetching report data
+      });
     }
-    
+  }, [id, link]);
+
+  // Function to format date
+  const formatDate = (dateString: string): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
+  };
+
+  // Show loader while data is being fetched
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // Determine which data to display
+  const dataToDisplay =
+    id === "feature" ? storeDataFeatureReport : storeReportId;
+  console.log("report", storeReportId);
+
   return (
     <>
-      <div className=" bg-[#031B1F] min-h-screen  ">
-        <div className="w-full bg-[url('/images/background.png')] pb-[271px] ">
-          <Navbar />
-          <div className=" clg:px-[142px] csm:px-[70px] px-[35px] mt-[146px] ">
-            <div className="flex gap-[15px] ">
-              <i className="bx bxs-home csm:text-[30px] text-[25px] text-[#CEE3BE] "></i>
-              <h1 className=" text-[#CEE3BE] csm:text-[24px] text-[20px] font-semibold ">
-                Home
-                {pathname
-                  .replace(/\//g, " > ")
-                  .replace(/%3F/g, "?")
-                  .replace(/%20/g, " ")
-                  .toLowerCase()}
-              </h1>
+      {id === "feature" ? (
+        <div className=" bg-[#031B1F] min-h-screen  ">
+          <div className="w-full bg-[url('/images/background.png')]  pb-[271px] relative z-10  ">
+            <div className="fixed top-0 left-0 right-0 z-50">
+              <Navbar />
             </div>
-            <div className=" h-[3px] w-full bg-[#CEE3BE] mt-[11px] " />
-            <p className=" font-semibold text-[#B2B2B2] csm:text-[24px] text-[20px] mt-[36px] ">
-              {storeReportId ? storeReportId?.attributes.date : null}
-            </p>
-            <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold csm:text-[48px] text-[40px] mb-8   ">
-              {storeReportId?.attributes.title}
-            </h1>
-            <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium csm:text-[22px] text-[18px] text-white ">
-              {storeReportId && (
-                <BlocksRenderer
-                  content={storeReportId.attributes.description || []}
-                />
-              )}
+            <div className=" clg:px-[142px] csm:px-[70px] px-[35px] pt-[206px] ">
+              <div className="flex gap-[15px] ">
+                <i className="bx bxs-home csm:text-[30px] text-[25px] text-[#CEE3BE] "></i>
+                <h1 className=" text-[#CEE3BE] csm:text-[20px] text-[16px] font-semibold ">
+                  Home
+                  {pathname
+                    .replace(/\//g, " > ")
+                    .replace(/%3F/g, "?")
+                    .replace(/%20/g, " ")
+                    .toLowerCase()}
+                </h1>
+              </div>
+              <div className=" h-[3px] w-full bg-[#CEE3BE] mt-[11px] " />
+              {storeDataFeatureReport.map((item) => (
+                <>
+                  <p className=" font-semibold text-[#B2B2B2] csm:text-[18px] text-[16px] mt-[36px] ">
+                    {item.attributes.date || null}
+                  </p>
+                  <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold csm:text-[38px] text-[30px] mb-8   ">
+                    {item.attributes.title}
+                  </h1>
+                  <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium csm:text-[20px] text-[16px] text-white ">
+                    <BlocksRenderer
+                      content={item.attributes.description || []}
+                    />
+                  </div>
+                </>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-      {/* <div className="px-[142px] ">
-        <div className=" mt-[73px] mb-[271px] ">
-          <Button text="Download Report" bg="bg-[url('/icons/bgButton.png')]" />
+      ) : (
+        <div className=" bg-[#031B1F] min-h-screen  ">
+          <div className="w-full bg-[url('/images/background.png')] bg-cover pb-[271px] relative z-10  ">
+            <div className="fixed top-0 left-0 right-0 z-50">
+              <Navbar />
+            </div>
+            <div className=" clg:px-[142px] csm:px-[70px] px-[35px] pt-[206px] ">
+              <div className="flex gap-[15px] ">
+                <i className="bx bxs-home csm:text-[30px] text-[25px] text-[#CEE3BE] "></i>
+                <h1 className=" text-[#CEE3BE] csm:text-[20px] text-[16px] font-semibold ">
+                  Home
+                  {pathname
+                    .replace(/\//g, " > ")
+                    .replace(/%3F/g, "?")
+                    .replace(/%20/g, " ")
+                    .toLowerCase()}
+                </h1>
+              </div>
+              <div className=" h-[3px] w-full bg-[#CEE3BE] mt-[11px] " />
+              <p className=" font-semibold text-[#B2B2B2] csm:text-[18px] text-[16px] mt-[36px] ">
+                {storeReportId ? storeReportId?.attributes.date : null}
+              </p>
+              <h1 className=" bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold csm:text-[38px] text-[30px] mb-8   ">
+                {storeReportId?.attributes.title}
+              </h1>
+              <div className="prose-xl cxxl:px-[150px] clg:px-[100px] cmd:px-[80px] px-[10px] font-medium csm:text-[20px] text-[16px] text-white ">
+                {storeReportId && (
+                  <BlocksRenderer
+                    content={storeReportId.attributes.description || []}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div> */}
+      )}
       <Footer />
     </>
   );

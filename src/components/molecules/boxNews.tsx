@@ -12,7 +12,7 @@ export default function BoxNews({title, link} : BoxNewsProps) {
     <a
       target="_blank"
       href={link}
-      className="translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 bg-gradient-to-r from-[#164E63] to-[#022529] csm:w-[495px] w-[295px]  px-[32px] py-[23px] rounded-[18px] "
+      className="translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 bg-gradient-to-r from-[#164E63] to-[#022529] cmd::w-[405px] csm:w-[385px] w-[295px] px-[32px] py-[23px] rounded-[18px] "
     >
       <div className="flex justify-between">
         <div className="flex items-center gap-[12px] mb-[8px] ">
@@ -22,10 +22,10 @@ export default function BoxNews({title, link} : BoxNewsProps) {
           </p> */}
         </div>
         <div className=" bg-[#164E63] shadow-lg shadow-black p-[8px] rounded-[8px]  ">
-          <Image src="/icons/arrow.png" width={15} height={15} alt="arrow" />
+          <Image src="/icons/arrow.png" width={12} height={12} alt="arrow" />
         </div>
       </div>
-      <h1 className=" font-semibold text-white csm:text-[40px] text-[32px] leading-[100%] tracking-[-2%] truncate csm:max-w-[264px] max-w-[164px] ">
+      <h1 className=" font-semibold text-white cmd:text-[24px] csm:text-[24px] text-[24px] leading-[100%] tracking-[-2%] csm:max-w-[264px] max-w-[164px] ">
         {title}
       </h1>
     </a>

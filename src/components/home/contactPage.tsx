@@ -40,36 +40,36 @@ export default function ContactPage(props: Partial<ContactPageProps>) {
                     height={20.36}
                     alt="bg-text-social"
                   /> */}
-                  <h1 className="text-white csm:text-[54px] text-[34px] font-bold tracking-[-2%] leading-[100%] mt-[-60px]   ">
+                  <h1 className="text-white cmd:text-[36px] csm:text-[34px] text-[34px] font-bold tracking-[-2%] leading-[100%] mt-[-60px]   ">
                     Find Us in
                   </h1>
                 </div>
               </div>
-              <div className="flex justify-center items-center  csm:mt-[40px] mt-[20px] ">
-                <div className="grid csm:grid-cols-5 grid-cols-2 gap-[21px] ">
+              <div className="flex justify-center items-center  cmd:mt-[20px] csm:mt-[12px] mt-[20px] ">
+                <div className="grid csm:grid-cols-5 grid-cols-4 gap-[21px] ">
                   <a
                     href="https://www.instagram.com/celios_id/"
                     target="_blank"
                   >
-                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-instagram-alt text-[65px] text-white "></i>
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-instagram-alt cmd:text-[45px] text-[45px] text-white "></i>
                   </a>
                   <a href="mailto:admin@celios.co.id" target="_blank">
-                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-gmail text-[65px] text-white "></i>
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-gmail cmd:text-[45px] text-[45px] text-white "></i>
                   </a>
                   <a href="https://x.com/celios_id" target="_blank">
-                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-twitter text-[65px] text-white "></i>
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-twitter cmd:text-[45px] text-[45px] text-white "></i>
                   </a>
                   <a
                     href="https://www.youtube.com/channel/UCSB7Kk-s7iKojJiL75SWOhA"
                     target="_blank"
                   >
-                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-youtube text-[65px] text-white "></i>
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-youtube cmd:text-[45px] text-[45px] text-white "></i>
                   </a>
                   <a
                     href="https://www.tiktok.com/@celios_thinktank?lang=en"
                     target="_blank"
                   >
-                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-tiktok text-[65px] text-white "></i>
+                    <i className=" translate-y-0 hover:translate-y-1 bx bxl-tiktok cmd:text-[45px] text-[45px] text-white "></i>
                   </a>
                 </div>
               </div>

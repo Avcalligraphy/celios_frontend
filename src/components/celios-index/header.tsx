@@ -7,25 +7,13 @@ import ContentIndicator from "../molecules/index-celios/contentIndicator";
 import Button from "../Button.tsx";
 import BarChart from "./bar";
 import {
-  fetchDataBottomCities,
-  fetchDataCleanEnergy,
-  fetchDataClimateVulnerability,
   fetchDataDownloadEnergyTransition,
-  fetchDataEconomicResilience,
-  fetchDataGovermentCapacity,
   fetchDataIndexCategory,
   fetchDataIndexRadar,
   fetchDataIndexTransition,
-  fetchDataTopCities,
-  useStoreBottomCities,
-  useStoreCleanEnergy,
-  useStoreClimateVulnerability,
   useStoreDownloadEnergyTransition,
-  useStoreEconomicResilience,
-  useStoreGovermentCapacity,
   useStoreIndexCategory,
   useStoreIndexRadar,
-  useStoreTopCities,
 } from "@/lib/store";
 import Loader from "../loader/loader";
 
@@ -33,26 +21,12 @@ export default function Header() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [selectedCategory, setSelectedCategory] = useState("Aceh");
   const [radarData, setRadarData] = useState<any | null>(null);
-  const [cleanEnergyData, setCleanEnergyData] = useState<any[]>([]);
-  const [topCitiesData, setTopCitiesData] = useState<any[]>([]);
-  const [bottomCitiesData, setBottomCitiesData] = useState<any[]>([]);
-  const [climateVulnerabilityData, setClimateVulnerabilityData] = useState<any[]>([]);
-  const [economicResilienceData, setEconomicResilienceData] = useState<any[]>([]);
-  const [govermentCapacityData, setGovermentCapacityData] = useState<any[]>(
-    []
-  );
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     fetchDataIndexTransition();
     fetchDataIndexCategory();
     fetchDataIndexRadar();
-    fetchDataCleanEnergy();
-    fetchDataEconomicResilience()
-    fetchDataGovermentCapacity()
-    fetchDataClimateVulnerability()
-    fetchDataTopCities()
-    fetchDataBottomCities()
     fetchDataDownloadEnergyTransition().then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
@@ -68,14 +42,6 @@ export default function Header() {
     (state) => state.dataIndexCategory
   );
   const storeRadar = useStoreIndexRadar((state) => state.dataIndexRadar);
-  const storeCleanEnergy = useStoreCleanEnergy(
-    (state) => state.dataCleanEnergy
-  );
-  const storeEconomicResilience = useStoreEconomicResilience((state) => state.dataEconomicResilience)
-  const storeGovermentCapacity = useStoreGovermentCapacity((state) => state.dataGovermentCapacity)
-  const storeClimateVulnerability = useStoreClimateVulnerability((state) => state.dataClimateVulnerability)
-  const storeTopCities = useStoreTopCities((state) => state.dataTopCities)
-  const storeBottomCities = useStoreBottomCities((state) => state.dataBottomCities)
   const storeDownload = useStoreDownloadEnergyTransition((state) => state.dataDownloadEnergyTransition)
 
   useEffect(() => {
@@ -104,50 +70,8 @@ export default function Header() {
         });
       }
 
-      const filteredCleanEnergyData = storeCleanEnergy.filter((item) =>
-        item.attributes.index_categories.data.some(
-          (category:any) => category.attributes.title === selectedCategory
-        )
-      );
-
-      const filteredEconomicResilience = storeEconomicResilience.filter((item) =>
-        item.attributes.index_categories.data.some(
-          (category: any) => category.attributes.title === selectedCategory
-        )
-      );
-      const filteredGovermentCapacity = storeGovermentCapacity.filter(
-        (item) =>
-          item.attributes.index_categories.data.some(
-            (category: any) => category.attributes.title === selectedCategory
-          )
-      );
-
-      const filteredClimateVulnerability = storeClimateVulnerability.filter((item) =>
-        item.attributes.index_categories.data.some(
-          (category: any) => category.attributes.title === selectedCategory
-        )
-      );
-
-      const filteredTopCities = storeTopCities.filter(
-        (item) =>
-          item.attributes.index_categories.data.some(
-            (category: any) => category.attributes.title === selectedCategory
-          )
-      );
-      const filteredBottomCities = storeBottomCities.filter((item) =>
-        item.attributes.index_categories.data.some(
-          (category: any) => category.attributes.title === selectedCategory
-        )
-      );
-
-      setCleanEnergyData(filteredCleanEnergyData);
-      setEconomicResilienceData(filteredEconomicResilience)
-      setGovermentCapacityData(filteredGovermentCapacity)
-      setClimateVulnerabilityData(filteredClimateVulnerability)
-      setTopCitiesData(filteredTopCities)
-      setBottomCitiesData(filteredBottomCities);
     }
-  }, [selectedCategory, storeRadar, storeCleanEnergy, storeEconomicResilience, storeGovermentCapacity, storeClimateVulnerability, storeTopCities, storeBottomCities]);
+  }, [selectedCategory, storeRadar]);
 
   const data = {
     labels: ["CEI", "ER", "ETRI", "GC"],
@@ -207,12 +131,12 @@ export default function Header() {
             <Navbar />
           </div>
           <div className="clg:px-[88px] cmd:px-[68px] csm:px-[48px] px-[25px]">
-            <div className="cxxl:flex block justify-between pt-[196px] gap-[50px]">
+            <div className="cxxl:flex-row flex flex-col justify-between pt-[196px] gap-[50px]">
               <h1 className="bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold cmd:text-[48px] csm:text-[40px] text-[36px] leading-[100%] tracking-[-4%]">
                 Energy Transition Readiness Index
               </h1>
-              <div className="cxxl:mt-0 mt-[20px]">
-                <form className="max-w-sm mx-auto">
+              <div className="cxxl:mt-0 mt-[20px] flex justify-end  ">
+                <form className="max-w-sm ">
                   <select
                     id="countries"
                     className="bg-transparent border border-[#DDDDDD] cmd:py-[15px] py-[13px] px-[39px] csm:w-[288px] w-[240px] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-[#001710] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -280,31 +204,32 @@ export default function Header() {
                 </div>
               </div>
               <div className="flex flex-col mt-7 ">
-                <h1 className= "csm:text-[24px] text-[18px]">
+                <h1 className="csm:text-[24px] text-[18px]">
                   <span className="  font-semibold text-black">CEI:</span> Clean
                   Energy Initiative (Inisiatif Energi Bersih)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
+                <h1 className="csm:text-[24px] text-[18px]">
                   <span className="  font-semibold text-black">GC:</span>{" "}
                   Government Capacity (Kapasitas Pemerintahan)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
-                  <span className="  font-semibold text-black">ER:</span> Economic
-                  Resilience (Ketahanan Ekonomi)
+                <h1 className="csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">ER:</span>{" "}
+                  Economic Resilience (Ketahanan Ekonomi)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
-                  <span className="  font-semibold text-black">ETRI:</span> Energy
-                  Transition Readiness Index (Indeks Kesiapan Transisi Energi)
+                <h1 className="csm:text-[24px] text-[18px]">
+                  <span className="  font-semibold text-black">ETRI:</span>{" "}
+                  Energy Transition Readiness Index (Indeks Kesiapan Transisi
+                  Energi)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
+                <h1 className="csm:text-[24px] text-[18px]">
                   <span className="  font-semibold text-black">PCC:</span> Per
                   Capita Consumption (Konsumsi Per Kapita)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
+                <h1 className="csm:text-[24px] text-[18px]">
                   <span className="  font-semibold text-black">WLI:</span>{" "}
                   Women-Led Initiative (Initiatif yang Dipimpin Perempuan)
                 </h1>
-                <h1 className= "csm:text-[24px] text-[18px]">
+                <h1 className="csm:text-[24px] text-[18px]">
                   <span className="  font-semibold text-black">CEV:</span>{" "}
                   Climate-Energy Vulnerability (Kerentanan Iklim dan Energi)
                 </h1>
@@ -428,7 +353,7 @@ export default function Header() {
             item.attributes.downloadReport?.data?.length > 0 && (
               <div
                 key={item.id}
-                className="relative w-full clxl:w-[290px] mt-[20px]"
+                className="relative cssm:w-[384px] w-full clxl:w-[290px] mt-[20px]"
               >
                 <select
                   className="appearance-none w-full bg-[url('/icons/bgButton.png')] translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 px-[30px] rounded-[13px] text-white py-[20px] sm:text-[18px] text-[16px] pr-[40px]"
