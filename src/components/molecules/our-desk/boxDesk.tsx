@@ -11,7 +11,7 @@ interface BoxDeskProps{
 export default function BoxDesk(props: BoxDeskProps) {
     const {title, link, description} = props
   return (
-    <div className=" bg-[url('/images/imageDesk.png')] object-cover rounded-[32px] w-full  cxl:flex block justify-between items-center gap-[50px] cmd:py-[120px] csm:py-[80px] py-[60px] csm:px-[66px] px-[40px] ">
+    <div className=" bg-[url('/images/imageDesk.png')] bg-cover rounded-[32px] w-full  cxl:flex block justify-between items-center gap-[50px] cmd:py-[120px] csm:py-[80px] py-[60px] csm:px-[66px] px-[40px] ">
       <div>
         {/* <Image
           src="/icons/bgTextDesk.png"

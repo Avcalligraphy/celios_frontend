@@ -29,11 +29,12 @@ export default function China() {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
   }, []);
-  const storeDataArticle = useStoreChinaArticle((state) => state.dataChinaArticle).slice(0, 5);
+  const storeDataArticle = useStoreChinaArticle((state) => state.dataChinaArticle).slice(0, 10);
   const storeDataBrief = useStoreChinaBrief((state) => state.dataChinaBrief)
   const storeDataMedia = useStoreChinaMedia(
     (state) => state.dataChinaMedia
-  ).slice(0, 5);
+  ).slice(0, 10);
+
   const storeDataEvent = useStoreChinaEvent((state) => state.dataChinaEvent);
   const storeDataReportBrief = useStoreChinaReportBrief((state) => state.dataChinaReportBrief)
   const searchParams = useSearchParams();
@@ -133,7 +134,7 @@ export default function China() {
               className="csm:w-[200px] w-[160px] h-auto"
             />
             <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-              Articles
+              Op-Ed
             </h1>
           </div>
           <div
@@ -268,7 +269,7 @@ export default function China() {
             className="csm:w-[200px] w-[160px] h-auto"
           />
           <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-            Report, Brief, and Books
+            Journals, Books, Interviews, and Podcasts
           </h1>
         </div>
       </div>
@@ -277,7 +278,7 @@ export default function China() {
           dynamicBullets: true,
         }}
         autoplay={{
-          delay: 2000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
