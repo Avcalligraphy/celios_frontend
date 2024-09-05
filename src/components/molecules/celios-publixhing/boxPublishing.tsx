@@ -36,7 +36,7 @@ export default function BoxPublishing({title, penulis, penerbit, isbn, cover, ha
         <p className=" cxl:text-[20px] csm:text-[18px] text-[16px] font-semibold text-[#AAAAAA] ">
           CELIOS Book
         </p>
-        <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold cxxl:text-[40px] cxl:text-[36px] csm:text-[32px] text-[28px] tracking-[-2%] max-w-[792px] mt-[36px]   ">
+        <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-bold cxxl:text-[26px] cxl:text-[26px] csm:text-[22px] text-[26px] tracking-[-2%] max-w-[792px] mt-[36px]   ">
           {title}
         </h1>
         <div className=" mt-[29px] ">

@@ -25,7 +25,7 @@ export default function BoxNews({title, link} : BoxNewsProps) {
           <Image src="/icons/arrow.png" width={12} height={12} alt="arrow" />
         </div>
       </div>
-      <h1 className=" font-semibold text-white cmd:text-[24px] csm:text-[24px] text-[24px] leading-[100%] tracking-[-2%] csm:max-w-[264px] max-w-[164px] ">
+      <h1 className=" font-semibold text-white cmd:text-[24px] csm:text-[20px] text-[20px] leading-[100%] tracking-[-2%] w-fit pr-[20px] ">
         {title}
       </h1>
     </a>

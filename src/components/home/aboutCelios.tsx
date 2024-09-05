@@ -5,7 +5,7 @@ import Link from 'next/link.js';
 
 export default function AboutCelios() {
   return (
-    <div className=" flex justify-center  csm:mb-[303px] mb-[263px] csm:mx-[0px] mx-[15px] ">
+    <div className=" flex justify-center  csm:mb-[263px] mb-[263px] csm:mx-[0px] mx-[15px] ">
       <div data-aos="flip-left">
         <div>
           {/* <Image

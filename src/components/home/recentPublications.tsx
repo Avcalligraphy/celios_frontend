@@ -67,7 +67,7 @@ export default function RecentPublication() {
         </div>
       </div>
       <div className="bg-gradient-to-t from-[#031B1F] to-[#ffff] w-full min-h-[1152px]">
-        <div className=" bg-[url('/images/background.png')] w-full min-h-[1152px] pt-[360px] ">
+        <div className=" bg-[url('/images/background.png')] w-full min-h-[1152px] pt-[280px] ">
           <div className="flex justify-center  ">
             <div>
               {/* <Image

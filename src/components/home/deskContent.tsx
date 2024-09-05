@@ -39,7 +39,7 @@ export default function DeskContent() {
     <div className="flex justify-center">
       <div
         data-aos="fade-up-right"
-        className="mt-[-70px] mb-[302px] gap-[36px] w-full cxxl:px-[260px] cxl:px-[120px] clg:px-[80px] px-[20px]  "
+        className="mt-[-70px] mb-[263px] gap-[36px] w-full cxxl:px-[260px] cxl:px-[120px] clg:px-[80px] px-[20px]  "
       >
         <Swiper
           slidesPerView={1}

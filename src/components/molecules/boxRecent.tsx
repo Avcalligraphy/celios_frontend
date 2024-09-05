@@ -30,7 +30,7 @@ export default function BoxRecent({ title, date, image, link }: BoxRecentProps) 
               className="w-full csm:h-[200px] h-[150px] bg-cover csm:rounded-[32px] rounded-[22px]  "
             />
           </div>
-          <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold csm:text-[26px] text-[24px] leading-[100%] mt-[20px]  max-w-fit   ">
+          <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold csm:text-[26px] text-[20px] leading-[100%] mt-[20px]  max-w-fit   ">
             {title}
           </h1>
           <p className="csm:text-[16px] text-[16px] font-medium leading-[100%] mt-[18px] text-[#CECECE] ">

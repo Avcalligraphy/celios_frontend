@@ -16,7 +16,7 @@ export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSoci
     <a
       href={link}
       target="_blank"
-      className=" translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 bg-[url('/icons/boxSocial.png')] cmd:w-[680px]  cmd:h-[538px] csm:w-[480px] csm:h-[408px] cssm:w-[430px] cssm:h-[378px] w-[320px] h-[338px] p-[23px] bg-cover csm:rounded-[32px] rounded-[22px] "
+      className=" translate-y-0 translate-x-0 hover:translate-y-1 hover:translate-x-1 bg-[url('/icons/boxSocial.png')] cmd:w-[680px]  cmd:h-[538px] csm:w-[480px] csm:h-[408px] cssm:w-[430px] cssm:h-[378px] w-[320px] h-[368px] p-[23px] bg-cover csm:rounded-[32px] rounded-[22px] "
     >
       <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] csm:rounded-[32px] rounded-[22px] ">
         <div
@@ -36,7 +36,7 @@ export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSoci
           />
         </div>
       </div>
-      <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold cmd:text-[30px] csm:text-[26px] text-[24px] leading-[100%] csm:max-w-[408px] max-w-[208px] truncate mt-[28px] ml-[9px]  ">
+      <h1 className=" bg-gradient-to-r from-[#CFE3BE]  to-[#FFFFFF] inline-block text-transparent bg-clip-text font-semibold cmd:text-[24px] csm:text-[20px] text-[20px] leading-[100%] w-fit mt-[28px] ml-[9px]  ">
         {title}
       </h1>
       <div className="flex items-center mt-[15px] ml-[9px] gap-[11px] ">
@@ -50,7 +50,7 @@ export default function BoxSocial({title, titleIcon, link, image, icon}: BoxSoci
           src={apiURL + icon}
           className="csm:w-[45px] w-[30px] h-auto rounded-[100%] "
         />
-        <p className=" csm:text-[20px] text-[20px] font-medium text-white leading-[120%] ">
+        <p className=" csm:text-[20px] text-[14px] font-medium text-white leading-[120%] ">
           {titleIcon}
         </p>
       </div>
