@@ -7,11 +7,7 @@ import Footer from "@/components/footer";
 import React from "react";
 import { fetchDataPublish } from "@/lib/store";
 import Loader from "@/components/loader/loader";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Celios Publishing House",
-};
 
 export default function CeliosPublishing() {
   const [isLoading, setIsLoading] = React.useState(true);
