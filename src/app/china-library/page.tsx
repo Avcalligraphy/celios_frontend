@@ -46,7 +46,12 @@ export default function ChinaLibrary() {
               trade, investment, and the rare discussion of cultural aspects.
               For now, only English and Bahasa materials are included in this
               bibliography. Nonetheless, Chinese language materials will be
-              added here soon.
+              added here soon. <br /> <br /> If you find that other important
+              works are missing, please contact{" "}
+              <span className=" text-[#7CB937] ">
+                <a href="mailto:yeta@celios.co.id">yeta@celios.co.id</a>
+              </span>{" "}
+              and we will include them here.
             </h1>
           </div>
         </div>

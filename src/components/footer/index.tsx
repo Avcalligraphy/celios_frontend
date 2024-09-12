@@ -15,14 +15,18 @@ export default function Footer() {
                 className="csm:w-[55px] h-auto w-[55px] "
               />
               <h1 className=" csm:text-[18px] text-[20px] leading-[120%] text-white max-w-[583px] mt-[15px] ">
-                <span className="font-bold">CELIOS</span> is a
-                research institution based on independence, quality, and an
+                <span className="font-bold">CELIOS</span> is a research
+                institution based on independence, quality, and an
                 interdisciplinary approach to fighting against the climate
                 crisis and inequality.
               </h1>
               <h1 className=" font-bold text-white csm:text-[18px] text-[20px] leading-[150%] mt-[27px] ">
                 Email :{" "}
-                <span className="text-[#A7D147]">admin@celios.co.id</span>
+                <span className="text-[#A7D147]">
+                  <a href="mailto:admin@celios.co.id">
+                    admin@celios.co.id
+                  </a>
+                </span>
               </h1>
             </div>
             <div>

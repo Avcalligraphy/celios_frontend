@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
+import Loader from "@/components/loader/loader";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,7 +38,9 @@ export default function RootLayout({
         />
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Suspense fallback={<Loader />}>{children}</Suspense>
+      </body>
     </html>
   );
 }

@@ -133,7 +133,7 @@ export default function Header() {
           <div className="clg:px-[88px] cmd:px-[68px] csm:px-[48px] px-[25px]">
             <div className="cxxl:flex-row flex flex-col justify-between pt-[196px] gap-[50px]">
               <h1 className="bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold cmd:text-[48px] csm:text-[40px] text-[36px] leading-[100%] tracking-[-4%]">
-                Energy Transition Readiness Index
+                Report Energy Transition
               </h1>
               <div className="cxxl:mt-0 mt-[20px] flex justify-end  ">
                 <form className="max-w-sm ">
@@ -363,7 +363,7 @@ export default function Header() {
                     className="font-semibold text-black bg-white sm:text-[18px] text-[16px]"
                     value=""
                   >
-                    Select a document
+                    Read Full Report
                   </option>
                   {item.attributes.downloadReport.data.map(
                     (doc: any, index: number) => (

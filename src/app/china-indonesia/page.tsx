@@ -134,7 +134,7 @@ export default function China() {
               className="csm:w-[200px] w-[160px] h-auto"
             />
             <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-              Op-Ed
+              China OpEd
             </h1>
           </div>
           <div
@@ -184,7 +184,7 @@ export default function China() {
               className="csm:w-[200px] w-[160px] h-auto"
             />
             <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-              Media Comentaries
+              China Media
             </h1>
           </div>
           <div
@@ -269,7 +269,7 @@ export default function China() {
             className="csm:w-[200px] w-[160px] h-auto"
           />
           <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-            Journals, Books, Interviews, and Podcasts
+            China Journals etc
           </h1>
         </div>
       </div>
