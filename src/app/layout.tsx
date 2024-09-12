@@ -5,30 +5,36 @@ import "./globals.css";
 import { Suspense } from "react";
 import Loader from "@/components/loader/loader";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CELIOS",
-  description: "Consultant Politic",
+  title: {
+    default: "CELIOS  - Center of Economic and Laws",
+    template: "%s - Center of Economic and Laws",
+  },
+  description:
+    "CELIOS merupakan lembaga riset di Indonesia yang bergerak dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik dalam mendorong percepatan inovasi-digitalisasi secara inklusif.",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
         <link
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"
-        ></link>
+        />
         <script
           src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
           defer
-        ></script>
+        />
         {/* <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://cdn.jsdelivr.net/npm/react-apexcharts"></script> */}
         {/* <!-- AOS Animation --> */}

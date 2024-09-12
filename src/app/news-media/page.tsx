@@ -12,6 +12,9 @@ import {
   useStoreOpEd,
 } from "@/lib/store";
 import Loader from "@/components/loader/loader";
+import { Metadata } from "next";
+
+
 
 interface ItemAttributesOpEd {
   title: string;

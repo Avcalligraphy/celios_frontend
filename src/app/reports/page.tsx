@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { fetchDataFeatureReport, fetchDataReport, useStoreFeatureReport, useStoreReport } from '@/lib/store';
 import Loader from '@/components/loader/loader';
+import { Metadata } from "next";
 
 export default function Reports() {
   const [isLoading, setIsLoading] = React.useState(true);

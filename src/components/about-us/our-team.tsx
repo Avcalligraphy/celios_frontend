@@ -38,8 +38,8 @@ export default function OurTeam() {
 
   const predefinedOrder = [
     "Head of Research Group",
-    "Director",
-    "Researcher",
+    "Directors",
+    "Researchers",
     "Social Media",
     "Finance",
   ];

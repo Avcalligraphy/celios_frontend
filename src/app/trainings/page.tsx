@@ -11,6 +11,9 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Loader from "@/components/loader/loader";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import { Metadata } from "next";
+
+
 
 export default function Trainings() {
   const [isLoading, setIsLoading] = React.useState(true);
