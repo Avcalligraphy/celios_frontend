@@ -82,7 +82,7 @@ export default function BoxDesk({
         ) : null}
         <Link
           href={{
-            pathname: `/reports/${title}`,
+            pathname: `/reports/${link}`,
             query: { link: link, id: "feature" },
           }}
         >

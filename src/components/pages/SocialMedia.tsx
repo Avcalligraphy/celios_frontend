@@ -1,31 +1,27 @@
-'use client'
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
+"use client";
 import Footer from "@/components/footer";
+import Loader from "@/components/loader/loader";
 import BoxSocial from "@/components/molecules/boxSocial";
 import Navbar from "@/components/navbar";
+import { fetchDataSocial, useStoreSocial } from "@/lib/store";
 import Image from "next/image";
-import React from "react";
-import { fetchDataNews, useStoreNews } from "@/lib/store";
-import BoxNews from "@/components/molecules/boxNews";
-import Loader from "@/components/loader/loader";
+import React, { useEffect, useState } from "react";
 
-export default function News() {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [query, setQuery] = React.useState("");
-  const [currentPage, setCurrentPage] = React.useState(1);
+export default function SocialMedia() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
   useEffect(() => {
-    AOS.init();
-    fetchDataNews().then(() => {
+    fetchDataSocial().then(() => {
       setIsLoading(false); // Setelah selesai fetch data, set isLoading jadi false
     });
   }, []);
-  const storeDataNews = useStoreNews((state) => state.dataNews);
 
-  const filteredData = storeDataNews.filter((item) =>
+  const storeData = useStoreSocial((state) => state.dataSocial);
+
+  const filteredData = storeData.filter((item) =>
     item.attributes.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -34,18 +30,20 @@ export default function News() {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
   if (isLoading) {
     return <Loader />; // Tampilkan loading jika masih fetching data
   }
+
   return (
     <>
-      <div className=" bg-[url('/images/backgroundContentFooter.png')] ">
-        <div className=" bg-[url('/images/backgroundFooter1.png')] ">
-          <div className=" bg-[url('/images/backgroundFooter2.png')] relative z-10 ">
+      <div className="bg-[url('/images/backgroundContentFooter.png')]">
+        <div className="bg-[url('/images/backgroundFooter1.png')]">
+          <div className="bg-[url('/images/backgroundFooter2.png')] relative z-10">
             <div className="fixed top-0 left-0 right-0 z-50">
               <Navbar />
             </div>
-            <div className=" clg:px-[157px] cmd:px-[100px] csm:px-[60px] px-[30px] pb-[275px] ">
+            <div className="clg:px-[157px] cmd:px-[100px] csm:px-[60px] px-[30px] pb-[275px]">
               <div className="csm:pt-[250px] pt-[200px]">
                 <Image
                   src="/icons/bgTextSocial.png"
@@ -53,11 +51,11 @@ export default function News() {
                   height={20.36}
                   alt="bg-text-social"
                 />
-                <h1 className="text-white cmd:text-[54px] csm:text-[44px] text-[34px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-60px] csm:mt-[-50px] mt-[-40px]   ">
-                  Recent News
+                <h1 className="text-white cmd:text-[54px] csm:text-[44px] text-[34px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-60px] csm:mt-[-50px] mt-[-40px]">
+                  Social Media
                 </h1>
               </div>
-              <div className="cxxl:flex block justify-end mt-[52px] items-center ">
+              <div className="flex justify-end mt-[52px] items-center">
                 <div className="flex justify-end flex-row gap-[45px] items-center">
                   <div className="container-inputContainer">
                     <div className="container-input">
@@ -77,11 +75,7 @@ export default function News() {
                   </div>
                 </div>
               </div>
-              <div
-                data-aos="fade-up"
-                data-aos-duration="3000"
-                className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px]  csm:mt-[116px] mt-[55px] "
-              >
+              <div className="grid cxxl:grid-cols-2 grid-cols-1 csm:gap-[75px] gap-[50px] csm:mt-[116px] mt-[55px]">
                 {currentItems.map((item) => (
                   <BoxSocial
                     key={item.id}

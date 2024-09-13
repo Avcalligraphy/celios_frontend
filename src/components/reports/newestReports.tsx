@@ -72,7 +72,8 @@ export default function NewestReports({ storeData }: NewestReportsProps) {
     startIndex + itemsPerPage
   );
 
-  console.log(paginatedData)
+  console.log(paginatedData);
+
 
 
   return (

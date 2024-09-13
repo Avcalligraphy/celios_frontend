@@ -69,7 +69,7 @@ export default function BoxReports({title, image, date, link, documents, desc}: 
         <div className="clxl:flex block items-center justify-between csm:mt-[53px] mt-[30px] ">
           <Link
             href={{
-              pathname: `/reports/${title}`,
+              pathname: `/reports/${link}`,
               query: { link: link },
             }}
           >
