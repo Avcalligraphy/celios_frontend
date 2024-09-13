@@ -32,7 +32,6 @@ interface TeamMember {
   id: number;
   attributes: TeamMemberAttributes;
 }
-
 export default function OurTeam() {
   const storeDataTeam = useStoreOurTeam((state) => state.dataOurTeam);
 
@@ -42,6 +41,17 @@ export default function OurTeam() {
     "Researchers",
     "Social Media",
     "Finance",
+  ];
+
+  const directorsOrder = ["Media Wahyudi Askar", "Muhammad Zulfikar Rakhmat"];
+
+  const researchersOrder = [
+    "Muhamad Saleh",
+    "Fiorentina Refani",
+    "Atina Rizqiana",
+    "Yeta Purnama",
+    "Achmad Hanif Imaduddin",
+    "Rumaisha Putri"
   ];
 
   const groupByCategory = (
@@ -80,6 +90,38 @@ export default function OurTeam() {
       return indexA - indexB; // Compare based on predefinedOrder
     }
   });
+
+  // Sorting function based on predefined names order
+  const sortByNameOrder = (members: TeamMember[], order: string[]) => {
+    return members.sort((a, b) => {
+      const indexA = order.indexOf(a.attributes.name);
+      const indexB = order.indexOf(b.attributes.name);
+      if (indexA === -1 && indexB === -1) {
+        return 0;
+      } else if (indexA === -1) {
+        return 1;
+      } else if (indexB === -1) {
+        return -1;
+      } else {
+        return indexA - indexB;
+      }
+    });
+  };
+
+  // Apply sorting by division
+  if (groupedData["Directors"]) {
+    groupedData["Directors"] = sortByNameOrder(
+      groupedData["Directors"],
+      directorsOrder
+    );
+  }
+
+  if (groupedData["Researchers"]) {
+    groupedData["Researchers"] = sortByNameOrder(
+      groupedData["Researchers"],
+      researchersOrder
+    );
+  }
 
   return (
     <>

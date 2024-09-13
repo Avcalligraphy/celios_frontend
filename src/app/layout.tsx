@@ -8,14 +8,20 @@ import Loader from "@/components/loader/loader";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://celios.co.id"),
   title: {
-    default: "CELIOS  - Center of Economic and Laws",
-    template: "%s - Center of Economic and Laws",
+    default: "CELIOS  - Center of Economic and Law Studies",
+    template: "%s - Center of Economic and Law Studies",
   },
   description:
     "CELIOS merupakan lembaga riset di Indonesia yang bergerak dibidang makro ekonomi, keuangan, ekonomi hijau dan kebijakan publik dalam mendorong percepatan inovasi-digitalisasi secara inklusif.",
   twitter: {
     card: "summary_large_image",
+  },
+  openGraph: {
+    title: "CELIOS",
+    description: "Center of Economic and Law Studies",
+    images: "/opengraph-image.png",
   },
 };
 

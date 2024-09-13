@@ -50,7 +50,7 @@ export default function ChinaLibrary() {
               bibliography. Nonetheless, Chinese language materials will be
               added here soon. <br /> <br /> If you find that other important
               works are missing, please contact{" "}
-              <span className=" text-[#7CB937] ">
+              <span className=" text-[#7CB937] font-bold ">
                 <a href="mailto:yeta@celios.co.id">yeta@celios.co.id</a>
               </span>{" "}
               and we will include them here.

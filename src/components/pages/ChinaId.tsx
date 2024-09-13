@@ -104,7 +104,7 @@ export default function ChinaId({params}:ChinaIdProps) {
                         <li>
                           <a
                             target="_blank"
-                            className=" hover:text-[#7CB937]"
+                            className=" hover:text-[#7CB937] leading-9"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}
@@ -121,7 +121,7 @@ export default function ChinaId({params}:ChinaIdProps) {
                         <li>
                           <a
                             target="_blank"
-                            className=" hover:text-[#7CB937]"
+                            className=" hover:text-[#7CB937] leading-9"
                             href={item.attributes.link}
                           >
                             {item.attributes.title}

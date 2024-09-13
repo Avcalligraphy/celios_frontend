@@ -133,7 +133,7 @@ export default function Header() {
           <div className="clg:px-[88px] cmd:px-[68px] csm:px-[48px] px-[25px]">
             <div className="cxxl:flex-row flex flex-col justify-between pt-[196px] gap-[50px]">
               <h1 className="bg-gradient-to-r from-[#4EE1B5] via-[#BCDECD] to-[#CFE3BE] inline-block text-transparent bg-clip-text font-bold cmd:text-[48px] csm:text-[40px] text-[36px] leading-[100%] tracking-[-4%]">
-                Report Energy Transition
+                Energy Transition Readiness Index
               </h1>
               <div className="cxxl:mt-0 mt-[20px] flex justify-end  ">
                 <form className="max-w-sm ">

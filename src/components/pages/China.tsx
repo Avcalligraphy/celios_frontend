@@ -103,7 +103,7 @@ export default function China() {
             className="csm:w-[200px] w-[160px] h-auto"
           />
           <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-            Newest Reports
+            Latest Reports
           </h1>
         </div>
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
@@ -145,13 +145,13 @@ export default function China() {
               <div className="block">
                 {storeDataArticle.map((item) => (
                   <ul
-                    className="list-disc cmd:text-[20px] text-[16px] font-medium text-[#BDDFCF] "
+                    className="list-disc  cmd:text-[20px] text-[16px] font-medium text-[#BDDFCF] "
                     key={item.id}
                   >
                     <li>
                       <a
                         target="_blank"
-                        className="hover:text-[#7CB937]"
+                        className="hover:text-[#7CB937] leading-9"
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -201,7 +201,7 @@ export default function China() {
                     <li>
                       <a
                         target="_blank"
-                        className="hover:text-[#7CB937]"
+                        className="hover:text-[#7CB937] leading-9 "
                         href={item.attributes.link}
                       >
                         {item.attributes.title}
@@ -269,7 +269,7 @@ export default function China() {
             className="csm:w-[200px] w-[160px] h-auto"
           />
           <h1 className="font-bold cmd:text-[40px] csm:text-[30px] text-[26px] leading-[140%] tracking-[-2%] cmd:mt-[-60px] csm:mt-[-52px] mt-[-40px] ">
-            China Journals etc
+            Journals, Books, Interviews, and Podcasts
           </h1>
         </div>
       </div>
@@ -376,10 +376,10 @@ export default function China() {
           </h1>
         </div>
         <div className="grid cxxl:grid-cols-4 cmd:grid-cols-3 csm:grid-cols-2 grid-cols-1  clg:gap-[100px] gap-[50px] mt-[40px] mb-[210px] ">
-          <img src="/sponshor/1.png" className="h-[76px] w-auto " />
-          <img src="/sponshor/2.png" className="h-[76px] w-auto " />
-          <img src="/sponshor/3.png" className="h-[76px] w-auto " />
-          <img src="/sponshor/4.png" className="h-[76px] w-auto " />
+          <img src="/sponshor/1.png" className="csm:h-[76px] h-[46px] w-auto " />
+          <img src="/sponshor/2.png" className="csm:h-[76px] h-[46px] w-auto " />
+          <img src="/sponshor/3.png" className="csm:h-[76px] h-[46px] w-auto " />
+          <img src="/sponshor/4.png" className="csm:h-[76px] h-[46px] w-auto " />
         </div>
       </div>
       <Footer />
