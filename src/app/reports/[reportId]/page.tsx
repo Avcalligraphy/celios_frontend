@@ -59,8 +59,9 @@ export async function generateMetadata({
       : data?.attributes?.title || "Default Title";
   const description =
     id === "feature"
-      ? data[0]?.attributes?.description
-      : data?.attributes?.description || "Default Description";
+      ? data[0]?.attributes?.description[0].children[0].text
+      : data?.attributes.description[0].children[0].text ||
+        "Default Description";
 
   const imageURL =
     apiURL + data?.attributes?.file?.data?.attributes?.url ||

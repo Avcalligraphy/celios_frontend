@@ -53,6 +53,11 @@ export default function China() {
     const dateB = new Date(b.attributes.date).getTime();
     return dateB - dateA;
   });
+  const sortedReport = filteredData.sort((a, b) => {
+    const dateA = new Date(a.attributes.date).getTime();
+    const dateB = new Date(b.attributes.date).getTime();
+    return dateB - dateA;
+  });
 
 
   if (isLoading) {
@@ -108,7 +113,7 @@ export default function China() {
         </div>
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
-            {filteredData.map((item) => {
+            {sortedReport.map((item) => {
               // console.log(item.attributes.description);
               return (
                 <BoxReports
@@ -376,10 +381,22 @@ export default function China() {
           </h1>
         </div>
         <div className="grid cxxl:grid-cols-4 cmd:grid-cols-3 csm:grid-cols-2 grid-cols-1  clg:gap-[100px] gap-[50px] mt-[40px] mb-[210px] ">
-          <img src="/sponshor/1.png" className="csm:h-[76px] h-[46px] w-auto " />
-          <img src="/sponshor/2.png" className="csm:h-[76px] h-[46px] w-auto " />
-          <img src="/sponshor/3.png" className="csm:h-[76px] h-[46px] w-auto " />
-          <img src="/sponshor/4.png" className="csm:h-[76px] h-[46px] w-auto " />
+          <img
+            src="/sponshor/1.png"
+            className="csm:h-[76px] h-[46px] w-auto "
+          />
+          <img
+            src="/sponshor/2.png"
+            className="csm:h-[76px] h-[46px] w-auto "
+          />
+          <img
+            src="/sponshor/3.png"
+            className="csm:h-[76px] h-[46px] w-auto "
+          />
+          <img
+            src="/sponshor/4.png"
+            className="csm:h-[76px] h-[46px] w-auto "
+          />
         </div>
       </div>
       <Footer />

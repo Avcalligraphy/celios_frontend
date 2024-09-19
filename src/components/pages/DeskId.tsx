@@ -10,8 +10,10 @@ import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 
 interface DeskProps {
-    params: any
+  params: any;
 }
+
+
 export default function DeskId({params}: DeskProps) {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -55,6 +57,12 @@ export default function DeskId({params}: DeskProps) {
           .join(" ")
     )
   );
+
+  const sorted = filteredData.sort((a, b) => {
+    const dateA = new Date(a.attributes.date).getTime();
+    const dateB = new Date(b.attributes.date).getTime();
+    return dateB - dateA;
+  });
   if (isLoading) {
     return <Loader />; // Tampilkan loading jika masih fetching data
   }
@@ -89,7 +97,9 @@ export default function DeskId({params}: DeskProps) {
               <h1 className="font-bold navMobile:text-[67px] cxl:text-[60px] cmd:text-[57px] csm:text-[40px] text-[37px] cmd:mt-[-70px] mt-[-46px] leading-[100%]  tracking-[-4%] text-white max-w-[300px]   ">
                 {params.deskId
                   .split("-")
-                  .map((word:any) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .map(
+                    (word: any) => word.charAt(0).toUpperCase() + word.slice(1)
+                  )
                   .join(" ")}
               </h1>
             </div>
@@ -115,7 +125,7 @@ export default function DeskId({params}: DeskProps) {
         </div>
         <div className="flex justify-center items-center mt-[30px] mb-[210px] ">
           <div className="grid clxl:grid-cols-2 grid-cols-1 gap-[53px]">
-            {filteredData.map((item) => {
+            {sorted.map((item) => {
               // console.log(item.attributes.description);
               return (
                 <BoxReports
