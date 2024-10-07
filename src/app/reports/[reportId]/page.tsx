@@ -3,12 +3,18 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { title } from "process";
+import dynamic from "next/dynamic";
+
+const DownloadSelector = dynamic(() => import("../../../components/molecules/DownloadSelector"), {
+  ssr: false,
+});
 
 // Tipe untuk data dari API
 interface ReportAttributes {
   title: string;
   description: any;
   date: string;
+  document: any;
 }
 
 interface ReportItem {
@@ -86,12 +92,12 @@ export default async function ReportBlog({
 }: {
   searchParams: { id?: string; link?: string };
 }) {
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const { id, link } = searchParams;
 
   let dataFeatureReport: ReportItem[] | null = null;
   let dataReportId: ReportItem | null = null;
 
-  // Fetch data dari API sesuai parameter
   if (id === "feature") {
     dataFeatureReport = await fetchDataFeatureReport();
   } else if (link) {
@@ -106,7 +112,6 @@ export default async function ReportBlog({
     };
     return new Date(dateString).toLocaleDateString("id-ID", options);
   };
-  
 
   return (
     <>
@@ -139,6 +144,13 @@ export default async function ReportBlog({
                         content={item.attributes.description || []}
                       />
                     </div>
+                    {item.attributes.document?.data &&
+                    item.attributes.document?.data.length > 0 ? (
+                      <DownloadSelector
+                        documents={item.attributes.document.data}
+                        apiURL={apiURL || ""}
+                      />
+                    ) : null}
                   </div>
                 ))}
             </div>
@@ -171,6 +183,13 @@ export default async function ReportBlog({
                       content={dataReportId.attributes.description || []}
                     />
                   </div>
+                  {dataReportId.attributes.document?.data &&
+                  dataReportId.attributes.document?.data.length > 0 ? (
+                    <DownloadSelector
+                      documents={dataReportId.attributes.document.data}
+                      apiURL={apiURL || ""}
+                    />
+                  ) : null}
                 </>
               )}
             </div>

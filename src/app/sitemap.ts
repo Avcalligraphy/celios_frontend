@@ -7,11 +7,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch data dari API blog-reports
   const response = await fetch(`${apiURL}/api/blog-reports`);
   const data = await response.json();
+  const responseBook = await fetch(`${apiURL}/api/publish-houses`);
+  const dataBook = await responseBook.json();
 
   // Ambil semua blog reports dan buat URL dinamis berdasarkan id
   const blogUrls = data.data.map((report: any) => ({
     url: `https://celios.co.id/reports/${report.id}?link=${report.id}`,
     lastModified: new Date(report.attributes.updatedAt).toISOString(),
+  }));
+  const bookUrls = dataBook.data.map((book: any) => ({
+    url: `https://celios.co.id/celios-publishing/${book.id}`,
+    lastModified: new Date(book.attributes.updatedAt).toISOString(),
   }));
 
   // Sitemap statis untuk halaman lain (misalnya about-us)
@@ -59,5 +65,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Gabungkan sitemap statis dan dinamis
-  return [...staticUrls, ...blogUrls];
+  return [...staticUrls, ...blogUrls, ...bookUrls];
 }

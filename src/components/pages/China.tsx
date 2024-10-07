@@ -36,6 +36,7 @@ export default function China() {
   ).slice(0, 10);
 
   const storeDataEvent = useStoreChinaEvent((state) => state.dataChinaEvent);
+  console.log(storeDataEvent);
   const storeDataReportBrief = useStoreChinaReportBrief((state) => state.dataChinaReportBrief)
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
@@ -364,7 +365,7 @@ export default function China() {
               <div className="bg-gradient-to-r from-[#7DD3FC] to-[#FFFFFF] p-[2px] rounded-[32px] mt-[46px] csm:w-[404px] w-[304px] ">
                 <img
                   className="  cxl:h-[367px] csm:h-[267px] h-[167px] csm:w-[400px] w-[300px]  object-cover rounded-[32px] "
-                  src={apiURL + item.attributes.image.data.attributes.url}
+                  src={apiURL + item.attributes.image.data[0].attributes.url}
                 />
               </div>
             </SwiperSlide>

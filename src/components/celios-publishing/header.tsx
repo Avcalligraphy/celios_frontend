@@ -57,28 +57,22 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-            className="flex flex-col gap-[116px] csm:pt-[100px] pt-[60px] justify-center items-center"
-          >
-            {paginatedData.map((item) => (
-              <BoxPublishing
-                key={item.id}
-                title={item.attributes.title}
-                penulis={item.attributes.penulis}
-                penerbit={item.attributes.penerbit}
-                isbn={item.attributes.isbn}
-                cover={item.attributes.cover}
-                halaman={item.attributes.halaman}
-                berat={item.attributes.berat}
-                ukuran={item.attributes.ukuran}
-                linkTokped={item.attributes.linkTokped}
-                linkShoppe={item.attributes.linkShoppe}
-                image={item.attributes.image.data.attributes.url}
-              />
-            ))}
+          <div className="flex flex-col items-center">
+            <div
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="grid cxxl:grid-cols-3 cxl:grid-cols-2 grid-cols-1 gap-[50px] csm:pt-[100px] pt-[60px] justify-center items-center"
+            >
+              {paginatedData.map((item) => (
+                <BoxPublishing
+                  key={item.id}
+                  title={item.attributes.title}
+                  link={item.id}
+                  image={item.attributes.image.data.attributes.url}
+                />
+              ))}
+            </div>
           </div>
           <div className="flex justify-center mt-[30px]">
             {Array.from({ length: totalPages }, (_, index) => (

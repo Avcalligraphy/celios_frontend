@@ -135,7 +135,7 @@ const useStoreReportId = create<StoreStateReportId>((set) => ({
 }));
 
 const fetchDataReportId = async (id:string | null) => {
-  const res = await fetch(`${apiURL}/api/blog-reports/${id}`);
+  const res = await fetch(`${apiURL}/api/blog-reports?populate=*/${id}`);
   const result = await res.json();
   useStoreReportId.getState().setDataReportId(result.data);
 };
