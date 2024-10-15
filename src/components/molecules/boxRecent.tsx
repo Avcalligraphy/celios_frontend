@@ -39,7 +39,7 @@ export default function BoxRecent({ title, date, image, link }: BoxRecentProps) 
         </div>
         <Link
           href={{
-            pathname: `/reports/${title}`,
+            pathname: `/reports/${link}`,
             query: { link: link },
           }}
         >

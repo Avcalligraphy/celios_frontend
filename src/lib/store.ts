@@ -370,9 +370,12 @@ interface ItemAttributesPublish {
   halaman: string;
   berat: string;
   ukuran: string;
+  date:any;
   linkTokped: string;
   linkShoppe: string;
   image: any;
+  desc: string;
+  profile: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -468,6 +471,75 @@ const fetchDataChinaArticle = async () => {
   const result = await res.json();
   useStoreChinaArticle.getState().setDataChinaArticle(result.data);
 };
+
+
+// fetch data mena  article 
+interface ItemAttributesMenaArticle {
+  title: string;
+  link: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+interface ItemMenaArticle {
+  id: number;
+  attributes: ItemAttributesMenaArticle;
+}
+
+interface StoreStateMenaArticle {
+  dataMenaArticle: ItemMenaArticle[];
+  setDataMenaArticle: (newDataMenaArticle: ItemMenaArticle[]) => void;
+}
+
+const useStoreMenaArticle = create<StoreStateMenaArticle>((set) => ({
+  dataMenaArticle: [],
+  setDataMenaArticle: (newDataMenaArticle) => set({ dataMenaArticle: newDataMenaArticle }),
+}));
+
+const fetchDataMenaArticle = async () => {
+  const res = await fetch(
+    `${apiURL}/api/mena-op-eds?pagination[pageSize]=1000000`
+  );
+  const result = await res.json();
+  useStoreMenaArticle.getState().setDataMenaArticle(result.data);
+};
+
+
+// fetch data mena media 
+interface ItemAttributesMenaMedia {
+  title: string;
+  link: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+interface ItemMenaMedia {
+  id: number;
+  attributes: ItemAttributesMenaMedia;
+}
+
+interface StoreStateMenaMedia {
+  dataMenaMedia: ItemMenaMedia[];
+  setDataMenaMedia: (newDataMenaMedia: ItemMenaMedia[]) => void;
+}
+
+const useStoreMenaMedia = create<StoreStateMenaMedia>((set) => ({
+  dataMenaMedia: [],
+  setDataMenaMedia: (newDataMenaMedia) =>
+    set({ dataMenaMedia: newDataMenaMedia }),
+}));
+
+const fetchDataMenaMedia = async () => {
+  const res = await fetch(
+    `${apiURL}/api/mena-medias?pagination[pageSize]=1000000`
+  );
+  const result = await res.json();
+  useStoreMenaMedia.getState().setDataMenaMedia(result.data);
+};
+
+
 
 // fetch data china media 
 interface ItemAttributesChinaMedia {
@@ -608,6 +680,45 @@ const fetchDataChinaReportBrief = async () => {
   const result = await res.json();
   useStoreChinaReportBrief.getState().setDataChinaReportBrief(result.data);
 };
+
+
+// fetch Mena Journal
+interface ItemAttributesMenaJournal {
+  title: string;
+  description: string
+  image: any
+  file: any
+  link:string
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+
+interface ItemMenaJournal {
+  id: number;
+  attributes: ItemAttributesMenaJournal;
+}
+
+interface StoreStateMenaJournal {
+  dataMenaJournal: ItemMenaJournal[];
+  setDataMenaJournal: (newDataMenaJournal: ItemMenaJournal[]) => void;
+}
+
+const useStoreMenaJournal = create<StoreStateMenaJournal>((set) => ({
+  dataMenaJournal: [],
+  setDataMenaJournal: (newDataMenaJournal) =>
+    set({ dataMenaJournal: newDataMenaJournal }),
+}));
+
+const fetchDataMenaJournal = async () => {
+  const res = await fetch(
+    `${apiURL}/api/mena-journals?populate=*&pagination[pageSize]=1000000`
+  );
+  const result = await res.json();
+  useStoreMenaJournal.getState().setDataMenaJournal(result.data);
+};
+
 
 
 // fetch china Event
@@ -893,8 +1004,12 @@ export {
   fetchDataTraining,
   useStoreChinaArticle,
   fetchDataChinaArticle,
+  useStoreMenaArticle,
+  fetchDataMenaArticle,
   useStoreChinaMedia,
   fetchDataChinaMedia,
+  useStoreMenaMedia,
+  fetchDataMenaMedia,
   useStoreChinaBrief,
   fetchDataChinaBrief,
   useStoreChinaReportBrief,
@@ -918,5 +1033,7 @@ export {
   useStoreVision,
   fetchDataVision,
   fetchDataFeatureReport,
-  useStoreFeatureReport
+  useStoreFeatureReport,
+  fetchDataMenaJournal,
+  useStoreMenaJournal
 };

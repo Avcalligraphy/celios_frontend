@@ -11,6 +11,7 @@ interface BookAttributes {
   halaman: string;
   berat: string;
   ukuran: string;
+  date:any
   linkTokped: string;
   linkShoppe: string;
   createdAt: string;
@@ -29,7 +30,8 @@ interface BookItem {
 async function fetchDataBook(id: string): Promise<BookItem> {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const response = await fetch(
-    `${apiURL}/api/publish-houses/${id}?populate[image]=*&populate[profile]=*&populate[desc]=*`
+    `${apiURL}/api/publish-houses/${id}?populate[image]=*&populate[profile]=*&populate[desc]=*`,
+    { cache: "no-store" }
   );
   const data = await response.json();
   return data.data;
@@ -77,6 +79,8 @@ export default async function PublishingDeskPage({
   if (params.publishingId) {
     dataBookId = await fetchDataBook(params.publishingId);
   }
+
+  console.log("Data Book", dataBookId);
 
   return (
     <>
@@ -208,7 +212,7 @@ export default async function PublishingDeskPage({
                     className="h-auto cmd:w-[160px] cmd:w-[160px] w-[140px] "
                   />
                   <h1 className="text-white cmd:text-[40px] csm:text-[36px] text-[30px] font-bold tracking-[-2%] leading-[100%] cmd:mt-[-50px] csm:mt-[-40px] mt-[-40px]">
-                    Writter Profile
+                    Writer Profile
                   </h1>
                   <p className="font-medium cmd:text-[20px] csm:text-[18px] text-[16px] text-white mt-[30px]">
                     {dataBookId?.attributes?.profile || "Profile not available"}

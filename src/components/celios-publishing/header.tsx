@@ -16,7 +16,12 @@ export default function Header() {
     const filtered = storeDataPublish.filter((item) =>
       item.attributes.title.toLowerCase().includes(lowerCaseQuery)
     );
-    setFilteredData(filtered);
+    const sorted = filtered.sort((a, b) => {
+      const dateA = new Date(a.attributes.date).getTime();
+      const dateB = new Date(b.attributes.date).getTime();
+      return dateB - dateA;
+    });
+    setFilteredData(sorted);
     setCurrentPage(1); // Reset to first page on search
   }, [query, storeDataPublish]);
 

@@ -15,6 +15,7 @@ export default function Header() {
     "Sustainable Finance",
     "Mining Advocacy",
     "China-Indonesia Relations",
+    "Mena-Indonesia Relations",
     "Digital Economy",
     "Strategic Litigation",
   ];
@@ -47,6 +48,8 @@ export default function Header() {
                 link={
                   item.attributes.title === "China-Indonesia Relations"
                     ? "/china-indonesia"
+                    : item.attributes.title === "Mena-Indonesia Relations"
+                    ? "/mena-indonesia"
                     : `our-desk/${item.attributes.title
                         .toLowerCase()
                         .replace(/\s+/g, "-")}`
