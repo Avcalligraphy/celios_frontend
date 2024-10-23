@@ -51,7 +51,7 @@ export default function OurTeam() {
     "Atina Rizqiana",
     "Yeta Purnama",
     "Achmad Hanif Imaduddin",
-    "Rumaisha Putri"
+    "Galau D. Muhammad"
   ];
 
   const groupByCategory = (

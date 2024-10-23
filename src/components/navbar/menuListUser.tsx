@@ -8,7 +8,7 @@ const MenuListUser = [
     link: "/our-desk",
   },
   {
-    name: "Reports",
+    name: "Research",
     link: "/reports",
   },
   {

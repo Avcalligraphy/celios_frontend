@@ -12,10 +12,11 @@ export default function Header() {
     "Macro-economy",
     "Just Energy Transition",
     "Fiscal Justice",
+    "Socio Bioeconomy",
     "Sustainable Finance",
     "Mining Advocacy",
     "China-Indonesia Relations",
-    "Mena-Indonesia Relations",
+    // "Mena-Indonesia Relations",
     "Digital Economy",
     "Strategic Litigation",
   ];
